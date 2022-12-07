@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class MainController {
     @FXML
-    void searchButton(ActionEvent ev) throws IOException {
+    void findButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
