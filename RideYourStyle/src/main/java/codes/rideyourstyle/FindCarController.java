@@ -20,19 +20,18 @@ public class FindCarController implements Initializable {
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = new Stage();
-        stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
         stage.setScene(scene);
         stage.show();
     }
     @FXML
-    private ChoiceBox<Vehicle> Engine ;
+    private ChoiceBox<String> Engine ;
     @FXML
-    private ChoiceBox<Vehicle> Mileage ;
+    private ChoiceBox<String> Mileage ;
     @FXML
-    private ChoiceBox<Vehicle> Price ;
+    private ChoiceBox<String> Price ;
     @FXML
-    private ChoiceBox<Vehicle> BodyType ;
+    private ChoiceBox<String> BodyType ;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
