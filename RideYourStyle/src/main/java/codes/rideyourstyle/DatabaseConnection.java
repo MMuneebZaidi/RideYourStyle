@@ -7,7 +7,7 @@ public class DatabaseConnection {
     public Connection getDatabaseLink() {
         String databaseName = "rideyourstyle";
         String databaseUser = "root";
-        String databasePassword = "";
+        String databasePassword = "root";
         String url = "jdbc:mysql://localhost/"+databaseName;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

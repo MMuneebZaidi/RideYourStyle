@@ -18,4 +18,12 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    void CompareButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Compare.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
 }
