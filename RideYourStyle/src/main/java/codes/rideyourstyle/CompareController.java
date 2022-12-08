@@ -8,24 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.sql.*;
 
 public class CompareController implements Initializable {
-
-    @FXML
-    private ChoiceBox<String> choicebox1;
-
-    @FXML
-    private ChoiceBox<String> choicebox2;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] arr ={"Bentley Bentayga","Bentley Continental GT","Bentley Flying Spur","Bentley Mulsanne","BMW 740i","BMW m850i","BMW X7","Chevrolet "};
-        choicebox1.getItems().addAll(arr);
-    }
     @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
@@ -34,5 +24,31 @@ public class CompareController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private ChoiceBox<String> choicebox1;
 
+    @FXML
+    private ChoiceBox<String> choicebox2;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getDatabaseLink();
+            Statement stmt = connectDB.createStatement();
+            String query = "(select name from bentley)union" +
+                           "(select name from bmw)union" +
+                           "(select name from chevrolet)union" +
+                           "(select name from mercedes)union" +
+                           "(select name from porsche)union" +
+                           "(select name from rollsroyce)";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()){
+                String carName = rs.getString("name");
+                choicebox1.getItems().add(carName);
+                choicebox2.getItems().add(carName);
+            }
+        }catch (Exception e){
+            e.printStackTrace();}
+    }
 }
