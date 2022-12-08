@@ -45,7 +45,11 @@
                 </font>
             </Label>
         </AnchorPane>
-      <Button layoutX="530.0" layoutY="403.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="239.0" text="Compare" textAlignment="CENTER" />
+      <Button alignment="CENTER" layoutX="530.0" layoutY="403.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="239.0" text="Compare" textAlignment="CENTER">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Button>
       <ChoiceBox layoutX="291.0" layoutY="296.0" prefHeight="53.0" prefWidth="346.0" />
       <ChoiceBox layoutX="671.0" layoutY="296.0" prefHeight="53.0" prefWidth="346.0" />
       <Label alignment="CENTER" layoutX="335.0" layoutY="202.0" prefHeight="76.0" prefWidth="251.0" text="Select Car 1" textAlignment="CENTER">
