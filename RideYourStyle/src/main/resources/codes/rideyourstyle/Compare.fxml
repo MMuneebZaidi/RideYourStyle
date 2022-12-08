@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.FindCarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.CompareController">
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1084.0">
         <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
             <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" />
