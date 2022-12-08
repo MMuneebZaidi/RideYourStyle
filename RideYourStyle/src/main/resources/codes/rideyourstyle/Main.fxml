@@ -26,7 +26,7 @@
                <Font size="20.0" />
             </font>
          </Button>
-         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="176.0" stylesheets="@../../css-files/Buttons.css" text="Compare Cars" textFill="#a19c9c">
+         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#CompareButton" prefHeight="53.0" prefWidth="176.0" stylesheets="@../../css-files/Buttons.css" text="Compare Cars" textFill="#a19c9c">
             <font>
                <Font size="20.0" />
             </font>
