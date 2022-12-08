@@ -21,7 +21,7 @@
    <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
       <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" />
       <VBox layoutX="14.0" layoutY="411.0" prefHeight="213.0" prefWidth="174.0">
-         <Button mnemonicParsing="false" onAction="#searchButton" prefHeight="53.0" prefWidth="181.0" stylesheets="@../../css-files/Buttons.css" text="Find A Car" textFill="#a19c9c">
+         <Button mnemonicParsing="false" onAction="#findButton" prefHeight="53.0" prefWidth="181.0" stylesheets="@../../css-files/Buttons.css" text="Find A Car" textFill="#a19c9c">
             <font>
                <Font size="20.0" />
             </font>
