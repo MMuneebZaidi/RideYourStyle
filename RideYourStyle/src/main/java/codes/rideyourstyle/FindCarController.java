@@ -1,4 +1,5 @@
 package codes.rideyourstyle;
+import com.mysql.cj.util.StringInspector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,42 +49,102 @@ public class FindCarController implements Initializable {
 
     int minPrice;
     int maxPrice;
-    ObservableList<String> allVehiclesName = FXCollections.observableArrayList();
+    ObservableList<Vehicle> allVehicles = FXCollections.observableArrayList();
 
-    String[] engineRanges = {"1500 - 2999","3000 - 4499","4500 - 5999","6000 - 7499"};
+    String[] engineRanges = {"None","1500 cc - 2999 cc","3000 cc - 4499 cc","4500 cc - 5999 cc","6000 cc - 7499 cc"};
     String[] bodyType = {"Sadan","SUV","Coupe"};
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getDatabaseLink();
         Engine.getItems().addAll(engineRanges);
         BodyType.getItems().addAll(bodyType);
-        try{
-            Statement stm = connectDB.createStatement();
-            String query =  "(select name from bentley)union" +
-                            "(select name from bmw)union" +
-                            "(select name from chevrolet)union" +
-                            "(select name from mercedes)union" +
-                            "(select name from porsche)union" +
-                            "(select name from rollsroyce)";
-            ResultSet rs = stm.executeQuery(query);
-            while (rs.next()){
-                String carName = rs.getString("name");
-                allVehiclesName.add(carName);
+
+        String query;
+
+        for(int i=1;i<=6;i++){
+            if(i==1) {
+                query = "SELECT * FROM bentley";
+            }else if (i==2){
+                query = "SELECT * FROM bmw";
+            }else if (i==3){
+                query = "SELECT * FROM chevrolet";
+            }else if (i==4){
+                query = "SELECT * FROM mercedes";
+            }else if (i==5){
+                query = "SELECT * FROM porsche";
+            }else {
+                query = "SELECT * FROM rollsroyce";
             }
-        }catch (Exception e){
-            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
+            try{
+                Statement stm = connectDB.createStatement();
+                ResultSet output = stm.executeQuery(query);
+
+                while (output.next()){
+
+                    String name = output.getString("Name");
+                    String engine = output.getString("Engine");
+                    String transmissionType = output.getString("Transmission Type");
+                    String enginePower = output.getString("Engine Power");
+                    String topSpeed = output.getString("Top Speed");
+                    String acceleration = output.getString("Acceleration");
+                    String mileage = output.getString("Mileage");
+                    String fuelType = output.getString("Fuel Type");
+                    String fuelCapacity = output.getString("Fuel Tank");
+                    String bodyType = output.getString("Body Type");
+                    String seatingCapacity = output.getString("Seating Capacity");
+                    String doors = output.getString("Doors");
+                    String wheelSize = output.getString("Wheel Size");
+                    String convertible = output.getString("Convertible");
+                    String rating = output.getString("Rating");
+                    String price = output.getString("Price");
+                    String stock = output.getString("Stock");
+
+                    allVehicles.add(new Vehicle(name,  engine,  transmissionType,  enginePower,  topSpeed,  acceleration,  mileage,  fuelType,  bodyType,  price,  rating,  seatingCapacity,  convertible,  doors,  wheelSize,  fuelCapacity, stock));
+
+                }
+            }catch (Exception e){
+                Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
+            }
         }
-        vehicleListView.getItems().addAll(allVehiclesName);
-        minPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
-            minPrice = (int) minPriceSlider.getValue();
-            minPriceLabel.setText(Integer.toString(minPrice));
-        });
-        maxPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
-            maxPrice = (int) maxPriceSlider.getValue();
-            maxPriceLabel.setText(Integer.toString(maxPrice));
-        });
+//        vehicleListView.getItems().addAll(allVehiclesName);
+//        minPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
+//            minPrice = (int) minPriceSlider.getValue();
+//            minPriceLabel.setText(Integer.toString(minPrice));
+//        });
+//        maxPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
+//            maxPrice = (int) maxPriceSlider.getValue();
+//            maxPriceLabel.setText(Integer.toString(maxPrice));
+//        });
+
+    }
+
+    @FXML
+    void searchButton(ActionEvent ev){
+        int minEngine;
+        int maxEngine;
+        switch (Engine.getValue()) {
+            case "1500 cc - 2999 cc" -> {
+                minEngine = 1500;
+                maxEngine = 2999;
+            }
+            case "3000 cc - 4499 cc" -> {
+                minEngine = 3000;
+                maxEngine = 4499;
+            }
+            case "4500 cc - 5999 cc" -> {
+                minEngine = 4500;
+                maxEngine = 5999;
+            }
+            case "6000 cc - 7499 cc" -> {
+                minEngine = 6000;
+                maxEngine = 7499;
+            }
+            default -> {
+                minEngine = 1500;
+                maxEngine = 7499;
+            }
+        }
     }
 }
 
