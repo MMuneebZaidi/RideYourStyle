@@ -1,6 +1,11 @@
 package codes.rideyourstyle;
 
-public class Vehicle {
+import javafx.collections.ObservableList;
+
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Vehicle  {
     String name;
     String engine;
     String transmissionType;
@@ -196,4 +201,5 @@ public class Vehicle {
     public void setStock(String stock) {
         this.stock = stock;
     }
+
 }

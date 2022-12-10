@@ -17,9 +17,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -161,7 +159,16 @@ public class FindCarController implements Initializable {
             case "Sedan" -> extractedVehicles.removeIf(vehicle -> !(Objects.equals(vehicle.bodyType, "Sedan")));
             case "SUV" -> extractedVehicles.removeIf(vehicle -> !(Objects.equals(vehicle.bodyType, "SUV")));
             case "Coupe" -> extractedVehicles.removeIf(vehicle -> !(Objects.equals(vehicle.bodyType, "Coupe")));
-            default -> {
+            default -> {}
+        }
+
+        extractedVehicles.removeIf(vehicle -> !(Integer.parseInt(vehicle.price) >= minPrice && Integer.parseInt(vehicle.price) <= maxPrice));
+
+        for(int i=0;i<extractedVehicles.size();i++) {
+            for (int j = 0; j < extractedVehicles.size(); j++) {
+                if (Double.parseDouble(extractedVehicles.get(i).rating) > Double.parseDouble(extractedVehicles.get(j).rating)){
+                    Collections.swap(extractedVehicles, j, i);
+                }
             }
         }
 
@@ -171,6 +178,7 @@ public class FindCarController implements Initializable {
         vehicleListView.getItems().addAll(extractedNames);
 
     }
+
 }
 
 
