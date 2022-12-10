@@ -1,5 +1,4 @@
 package codes.rideyourstyle;
-import com.mysql.cj.util.StringInspector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +17,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,8 +52,8 @@ public class FindCarController implements Initializable {
     int maxPrice;
     ObservableList<Vehicle> allVehicles = FXCollections.observableArrayList();
 
-    String[] engineRanges = {"None","1500 cc - 2999 cc","3000 cc - 4499 cc","4500 cc - 5999 cc","6000 cc - 7499 cc"};
-    String[] bodyType = {"Sadan","SUV","Coupe"};
+    String[] engineRanges = {"Default","1500 cc - 2999 cc","3000 cc - 4499 cc","4500 cc - 5999 cc","6000 cc - 7499 cc"};
+    String[] bodyType = {"Default","Sedan","SUV","Coupe"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DatabaseConnection connectNow = new DatabaseConnection();
@@ -107,32 +108,41 @@ public class FindCarController implements Initializable {
                 Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
             }
         }
-//        vehicleListView.getItems().addAll(allVehiclesName);
-//        minPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
-//            minPrice = (int) minPriceSlider.getValue();
-//            minPriceLabel.setText(Integer.toString(minPrice));
-//        });
-//        maxPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
-//            maxPrice = (int) maxPriceSlider.getValue();
-//            maxPriceLabel.setText(Integer.toString(maxPrice));
-//        });
-
+        minPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
+            minPrice = (int) minPriceSlider.getValue();
+            minPriceLabel.setText(Integer.toString(minPrice));
+        });
+        maxPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
+            maxPrice = (int) maxPriceSlider.getValue();
+            maxPriceLabel.setText(Integer.toString(maxPrice));
+        });
+        Engine.getSelectionModel().selectFirst();
+        BodyType.getSelectionModel().selectFirst();
     }
-
+    ArrayList<String> extractedNames = new ArrayList<>();
+    ObservableList<Vehicle> extractedVehicles = FXCollections.observableArrayList();
     @FXML
-    void searchButton(ActionEvent ev){
+    void searchButton(){
+        extractedVehicles.clear();
+        extractedNames.clear();
+        vehicleListView.getItems().clear();
+        extractedVehicles.addAll(allVehicles);
+
         int minEngine;
         int maxEngine;
         switch (Engine.getValue()) {
             case "1500 cc - 2999 cc" -> {
+                System.out.println("ok");
                 minEngine = 1500;
                 maxEngine = 2999;
             }
             case "3000 cc - 4499 cc" -> {
+                System.out.println("2nd");
                 minEngine = 3000;
                 maxEngine = 4499;
             }
             case "4500 cc - 5999 cc" -> {
+                System.out.println("3rd");
                 minEngine = 4500;
                 maxEngine = 5999;
             }
@@ -145,6 +155,21 @@ public class FindCarController implements Initializable {
                 maxEngine = 7499;
             }
         }
+        extractedVehicles.removeIf(vehicle -> !(Integer.parseInt(vehicle.engine) >= minEngine && Integer.parseInt(vehicle.engine) <= maxEngine));
+
+        switch (BodyType.getValue()) {
+            case "Sedan" -> extractedVehicles.removeIf(vehicle -> !(Objects.equals(vehicle.bodyType, "Sedan")));
+            case "SUV" -> extractedVehicles.removeIf(vehicle -> !(Objects.equals(vehicle.bodyType, "SUV")));
+            case "Coupe" -> extractedVehicles.removeIf(vehicle -> !(Objects.equals(vehicle.bodyType, "Coupe")));
+            default -> {
+            }
+        }
+
+        for (Vehicle vehicle : extractedVehicles){
+            extractedNames.add(vehicle.name);
+        }
+        vehicleListView.getItems().addAll(extractedNames);
+
     }
 }
 
