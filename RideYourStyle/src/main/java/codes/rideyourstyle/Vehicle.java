@@ -1,9 +1,5 @@
 package codes.rideyourstyle;
-
-import javafx.collections.ObservableList;
-
-import java.util.Collections;
-import java.util.Comparator;
+import java.sql.Blob;
 
 public class Vehicle  {
     String name;
@@ -23,31 +19,12 @@ public class Vehicle  {
     String wheelSize;
     String fuelCapacity;
     String stock;
+    Blob image;
+    public Vehicle(){
 
-    @Override
-    public String toString() {
-        return "Vehicle{" + '\n'+
-                "name='" + name + '\n' +
-                ", engine='" + engine + '\n' +
-                ", transmissionType='" + transmissionType + '\n' +
-                ", enginePower='" + enginePower + '\n' +
-                ", topSpeed='" + topSpeed + '\n' +
-                ", acceleration='" + acceleration + '\n' +
-                ", mileage='" + mileage + '\n' +
-                ", fuelType='" + fuelType + '\n' +
-                ", bodyType='" + bodyType + '\n' +
-                ", price='" + price + '\n' +
-                ", rating='" + rating + '\n' +
-                ", seatingCapacity='" + seatingCapacity + '\n' +
-                ", convertible='" + convertible + '\n' +
-                ", doors='" + doors + '\n' +
-                ", wheelSize='" + wheelSize + '\n' +
-                ", fuelCapacity='" + fuelCapacity + '\n' +
-                ", stock='" + stock + '\n' +
-                '}';
     }
 
-    public Vehicle(String name, String engine, String transmissionType, String enginePower, String topSpeed, String acceleration, String mileage, String fuelType, String bodyType, String price, String rating, String seatingCapacity, String convertible, String doors, String wheelSize, String fuelCapacity, String stock) {
+    public Vehicle(String name, String engine, String transmissionType, String enginePower, String topSpeed, String acceleration, String mileage, String fuelType, String bodyType, String price, String rating, String seatingCapacity, String convertible, String doors, String wheelSize, String fuelCapacity, String stock, Blob image) {
         this.name = name;
         this.engine = engine;
         this.transmissionType = transmissionType;
@@ -65,6 +42,7 @@ public class Vehicle  {
         this.wheelSize = wheelSize;
         this.fuelCapacity = fuelCapacity;
         this.stock = stock;
+        this.image= image;
     }
     public String getName() {
         return name;

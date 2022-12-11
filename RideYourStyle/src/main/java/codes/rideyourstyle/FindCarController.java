@@ -14,9 +14,7 @@ import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,8 +44,9 @@ public class FindCarController implements Initializable {
     private ListView<String> vehicleListView;
 
 
-    int minPrice;
-    int maxPrice;
+
+    int minPrice=10000000;
+    int maxPrice=18000000;
     ObservableList<Vehicle> allVehicles = FXCollections.observableArrayList();
 
     String[] engineRanges = {"Default","1500 cc - 2999 cc","3000 cc - 4499 cc","4500 cc - 5999 cc","6000 cc - 7499 cc"};
@@ -98,9 +97,22 @@ public class FindCarController implements Initializable {
                     String rating = output.getString("Rating");
                     String price = output.getString("Price");
                     String stock = output.getString("Stock");
+                    Blob image = output.getBlob("Image");
 
-                    allVehicles.add(new Vehicle(name,  engine,  transmissionType,  enginePower,  topSpeed,  acceleration,  mileage,  fuelType,  bodyType,  price,  rating,  seatingCapacity,  convertible,  doors,  wheelSize,  fuelCapacity, stock));
-
+                    switch (query) {
+                        case "SELECT * FROM bentley" ->
+                                allVehicles.add(new Bently(name, engine, transmissionType, enginePower, topSpeed, acceleration, mileage, fuelType, bodyType, price, rating, seatingCapacity, convertible, doors, wheelSize, fuelCapacity, stock, image));
+                        case "SELECT * FROM bmw" ->
+                                allVehicles.add(new BMW(name, engine, transmissionType, enginePower, topSpeed, acceleration, mileage, fuelType, bodyType, price, rating, seatingCapacity, convertible, doors, wheelSize, fuelCapacity, stock, image));
+                        case "SELECT * FROM chevrolet" ->
+                                allVehicles.add(new Cheverolet(name, engine, transmissionType, enginePower, topSpeed, acceleration, mileage, fuelType, bodyType, price, rating, seatingCapacity, convertible, doors, wheelSize, fuelCapacity, stock, image));
+                        case "SELECT * FROM mercedes" ->
+                                allVehicles.add(new Mercedes(name, engine, transmissionType, enginePower, topSpeed, acceleration, mileage, fuelType, bodyType, price, rating, seatingCapacity, convertible, doors, wheelSize, fuelCapacity, stock, image));
+                        case "SELECT * FROM porsche" ->
+                                allVehicles.add(new Porsche(name, engine, transmissionType, enginePower, topSpeed, acceleration, mileage, fuelType, bodyType, price, rating, seatingCapacity, convertible, doors, wheelSize, fuelCapacity, stock, image));
+                        case "SELECT * FROM rollsroyce" ->
+                                allVehicles.add(new RollsRoyce(name, engine, transmissionType, enginePower, topSpeed, acceleration, mileage, fuelType, bodyType, price, rating, seatingCapacity, convertible, doors, wheelSize, fuelCapacity, stock, image));
+                    }
                 }
             }catch (Exception e){
                 Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
@@ -121,6 +133,7 @@ public class FindCarController implements Initializable {
     ObservableList<Vehicle> extractedVehicles = FXCollections.observableArrayList();
     @FXML
     void searchButton(){
+
         extractedVehicles.clear();
         extractedNames.clear();
         vehicleListView.getItems().clear();
@@ -130,17 +143,14 @@ public class FindCarController implements Initializable {
         int maxEngine;
         switch (Engine.getValue()) {
             case "1500 cc - 2999 cc" -> {
-                System.out.println("ok");
                 minEngine = 1500;
                 maxEngine = 2999;
             }
             case "3000 cc - 4499 cc" -> {
-                System.out.println("2nd");
                 minEngine = 3000;
                 maxEngine = 4499;
             }
             case "4500 cc - 5999 cc" -> {
-                System.out.println("3rd");
                 minEngine = 4500;
                 maxEngine = 5999;
             }
@@ -171,10 +181,13 @@ public class FindCarController implements Initializable {
                 }
             }
         }
-
         for (Vehicle vehicle : extractedVehicles){
             extractedNames.add(vehicle.name);
         }
+        if(extractedNames.isEmpty()){
+            vehicleListView.getItems().add("No Item Found");
+        }
+
         vehicleListView.getItems().addAll(extractedNames);
 
     }

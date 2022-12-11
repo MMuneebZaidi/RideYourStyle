@@ -1,41 +1,11 @@
 package codes.rideyourstyle;
 
-public class Mercedes {
-    String name;
-    String engine;
-    String transmissionType;
-    String enginePower;
-    String topSpeed;
-    String acceleration;
-    String mileage;
-    String fuelType;
-    String bodyType;
-    String price;
-    String rating;
-    String seatingCapacity;
-    String convertible;
-    String doors;
-    String wheelSize;
-    String fuelCapacity;
-    String stock;
-    public Mercedes(String name, String engine, String transmissionType, String enginePower, String topSpeed, String acceleration, String mileage, String fuelType, String bodyType, String price, String rating, String seatingCapacity, String convertible, String doors, String wheelSize, String fuelCapacity, String stock) {
-        this.name = name;
-        this.engine = engine;
-        this.transmissionType = transmissionType;
-        this.enginePower = enginePower;
-        this.topSpeed = topSpeed;
-        this.acceleration = acceleration;
-        this.mileage = mileage;
-        this.fuelType = fuelType;
-        this.bodyType = bodyType;
-        this.price = price;
-        this.rating = rating;
-        this.seatingCapacity = seatingCapacity;
-        this.convertible = convertible;
-        this.doors = doors;
-        this.wheelSize = wheelSize;
-        this.fuelCapacity = fuelCapacity;
-        this.stock = stock;
+import java.sql.Blob;
+
+public class Mercedes extends Vehicle {
+
+    public Mercedes(String name, String engine, String transmissionType, String enginePower, String topSpeed, String acceleration, String mileage, String fuelType, String bodyType, String price, String rating, String seatingCapacity, String convertible, String doors, String wheelSize, String fuelCapacity, String stock, Blob image) {
+        super(name, engine, transmissionType, enginePower, topSpeed, acceleration, mileage, fuelType, bodyType, price, rating, seatingCapacity, convertible, doors, wheelSize, fuelCapacity, stock, image);
     }
     public String getName() {
         return name;
