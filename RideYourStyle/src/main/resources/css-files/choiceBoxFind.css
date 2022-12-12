@@ -1,0 +1,7 @@
+.choice-box {
+    -fx-pref-width: 181;
+}
+
+.choice-box .context-menu {
+    -fx-pref-width: 181;
+}
