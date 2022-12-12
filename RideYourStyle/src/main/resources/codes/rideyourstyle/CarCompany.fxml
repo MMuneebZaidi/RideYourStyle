@@ -63,7 +63,10 @@
                <children>
                   <HBox prefHeight="193.0" prefWidth="869.0">
                      <children>
-                        <ImageView fx:id="companyLOGO" fitHeight="193.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+                        <ImageView fx:id="companyLOGO" fitHeight="193.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin></ImageView>
                         <Pane prefHeight="193.0" prefWidth="16.0" />
                         <VBox prefHeight="193.0" prefWidth="658.0">
                            <children>
