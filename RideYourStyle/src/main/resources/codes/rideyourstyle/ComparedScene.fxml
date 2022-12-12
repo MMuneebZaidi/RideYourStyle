@@ -59,11 +59,13 @@
                                 <Font name="Berlin Sans FB" size="30.0" />
                             </font>
                         </Label>
-                        <ListView fx:id="car1list" layoutX="245.0" layoutY="83.0" prefHeight="809.0" prefWidth="277.0" styleClass="list-cell" stylesheets="@../../css-files/comparecarlistview.css" />
-                        <ListView fx:id="car2list" layoutX="520.0" layoutY="83.0" prefHeight="809.0" prefWidth="277.0" styleClass="list-cell" stylesheets="@../../css-files/comparecarlistview.css" />
+                        <ListView fx:id="car1list" layoutX="245.0" layoutY="345.0" prefHeight="809.0" prefWidth="277.0" styleClass="list-cell" stylesheets="@../../css-files/comparecarlistview.css" />
+                        <ListView fx:id="car2list" layoutX="520.0" layoutY="345.0" prefHeight="809.0" prefWidth="277.0" styleClass="list-cell" stylesheets="@../../css-files/comparecarlistview.css" />
+                  <ImageView fx:id="compimg2" fitHeight="150.0" fitWidth="257.0" layoutX="530.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="compimg1" fitHeight="150.0" fitWidth="257.0" layoutX="255.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </AnchorPane>
-                <VBox layoutX="226.0" layoutY="118.0" prefHeight="809.0" prefWidth="323.0">
+                <VBox layoutX="226.0" layoutY="380.0" prefHeight="809.0" prefWidth="323.0">
                     <children>
                         <Label prefHeight="50.0" prefWidth="236.0" text="Car Name">
                             <font>
