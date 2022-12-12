@@ -108,4 +108,17 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    void AllCarsButton(ActionEvent event) throws IOException {
+        Company="All Cars";
+        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\ALL-CARS.png";
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
+        root = fxmlLoader.load();
+        CarCompanyController ccc = fxmlLoader.getController();
+        ccc.setCompany(Company,Logo);
+        Scene scene = new Scene(root, 1080, 720);
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
 }

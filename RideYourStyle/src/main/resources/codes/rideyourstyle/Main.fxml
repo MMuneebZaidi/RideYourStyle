@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -87,9 +89,17 @@
          </textFill>
       </Label>
    </HBox>
-   <AnchorPane layoutX="249.0" layoutY="244.0" prefHeight="241.0" prefWidth="355.0">
+   <AnchorPane layoutX="228.0" layoutY="464.0" prefHeight="241.0" prefWidth="355.0" />
+   <AnchorPane layoutX="215.0" layoutY="179.0" prefHeight="54.0" prefWidth="1066.0">
+      <Label alignment="CENTER" layoutX="18.0" layoutY="-2.0" prefHeight="48.0" prefWidth="281.0" text="Find Car By Company" textAlignment="CENTER" textFill="#404040" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Berlin Sans FB" size="26.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <HBox alignment="CENTER_LEFT" layoutX="228.0" layoutY="241.0" prefHeight="241.0" prefWidth="870.0">
       <children>
-         <GridPane layoutX="25.0" prefHeight="229.0" prefWidth="361.0">
+         <GridPane prefHeight="229.0" prefWidth="361.0">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -150,13 +160,24 @@
                </Button>
             </children>
          </GridPane>
+         <Button mnemonicParsing="false" onAction="#AllCarsButton" prefHeight="137.0" prefWidth="144.0">
+            <graphic>
+               <ImageView fitHeight="171.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../images/logos/ALL-CARS.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <styleClass>
+               <String fx:value="transparent" />
+               <String fx:value="shadow" />
+               <String fx:value="button" />
+            </styleClass>
+            <stylesheets>
+               <URL value="@../../css-files/CarGrid.css" />
+               <URL value="@../../css-files/Style.css" />
+            </stylesheets>
+         </Button>
       </children>
-   </AnchorPane>
-   <AnchorPane layoutX="215.0" layoutY="179.0" prefHeight="54.0" prefWidth="1066.0">
-      <Label alignment="CENTER" layoutX="18.0" layoutY="-2.0" prefHeight="48.0" prefWidth="281.0" text="Find Car By Company" textAlignment="CENTER" textFill="#404040" textOverrun="CENTER_ELLIPSIS">
-         <font>
-            <Font name="Berlin Sans FB" size="26.0" />
-         </font>
-      </Label>
-   </AnchorPane>
+   </HBox>
 </AnchorPane>

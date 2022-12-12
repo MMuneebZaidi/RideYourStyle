@@ -277,6 +277,44 @@ public class CarCompanyController implements Initializable {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+
+            }
+            case "All Cars" -> {
+                try {
+                    for (Vehicle vehicle : vehicles) {
+
+                        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                        AnchorPane anchorPane = fxmlLoader.load();
+
+                        CarGridController cgc = fxmlLoader.getController();
+                        cgc.setDetails(vehicle);
+
+                        if (col == 1) {
+                            col = 0;
+                            row++;
+                        }
+
+                        carGridList.add(anchorPane, col++, row);
+
+                        carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
+                        carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                        carGridList.setMaxWidth(Region.USE_PREF_SIZE);
+
+
+                        carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
+                        carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                        carGridList.setMaxHeight(Region.USE_PREF_SIZE);
+
+                        GridPane.setMargin(anchorPane, new Insets(10));
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
         }
     }
