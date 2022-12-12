@@ -22,7 +22,7 @@ public class CarGridController {
     void setDetails(Vehicle vehicle) throws SQLException {
         CarName.setText(vehicle.name);
         CarEngine.setText(vehicle.engine+" cc");
-        CarMileage.setText(vehicle.mileage);
+        CarMileage.setText(vehicle.mileage + " km/L");
         CarTransmissionType.setText(vehicle.transmissionType);
         InputStream is = vehicle.image.getBinaryStream();
         CarImage.setImage(new Image(is));

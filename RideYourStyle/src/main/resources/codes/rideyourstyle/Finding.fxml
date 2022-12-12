@@ -102,8 +102,8 @@
             <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
          </rowConstraints>
-         <Slider fx:id="minPriceSlider" blockIncrement="200000.0" max="1500000.0" min="1000000.0" prefHeight="20.0" prefWidth="192.0" GridPane.rowIndex="2" />
-         <Slider fx:id="maxPriceSlider" max="3.0E7" min="1.8E7" nodeOrientation="LEFT_TO_RIGHT" prefHeight="29.0" prefWidth="384.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Slider fx:id="minPriceSlider" blockIncrement="500000.0" majorTickUnit="200000.0" max="1500000.0" min="1000000.0" minorTickCount="200000" prefHeight="20.0" prefWidth="192.0" snapToTicks="true" GridPane.rowIndex="2" />
+         <Slider fx:id="maxPriceSlider" blockIncrement="500000.0" majorTickUnit="200000.0" max="3.0E7" min="1.8E7" minorTickCount="200000" nodeOrientation="LEFT_TO_RIGHT" prefHeight="29.0" prefWidth="384.0" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <Label alignment="CENTER" prefHeight="30.0" prefWidth="378.0" text="MIN PRICE">
             <font>
                <Font name="Berlin Sans FB" size="20.0" />
@@ -114,12 +114,12 @@
                <Font name="Berlin Sans FB" size="20.0" />
             </font>
          </Label>
-         <Label fx:id="minPriceLabel" alignment="CENTER" layoutX="10.0" layoutY="9.0" prefHeight="30.0" prefWidth="378.0" text="1000000" GridPane.rowIndex="1">
+         <Label fx:id="minPriceLabel" alignment="CENTER" layoutX="10.0" layoutY="9.0" prefHeight="30.0" prefWidth="378.0" text="min" GridPane.rowIndex="1">
             <font>
                <Font name="Berlin Sans FB" size="18.0" />
             </font>
          </Label>
-         <Label fx:id="maxPriceLabel" alignment="CENTER" prefHeight="30.0" prefWidth="378.0" text="30000000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <Label fx:id="maxPriceLabel" alignment="CENTER" prefHeight="30.0" prefWidth="378.0" text="max" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <font>
                <Font name="Berlin Sans FB" size="18.0" />
             </font>
