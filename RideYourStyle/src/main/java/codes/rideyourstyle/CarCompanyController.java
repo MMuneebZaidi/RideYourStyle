@@ -15,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -46,10 +45,18 @@ public class CarCompanyController implements Initializable {
     }
 
     public ObservableList<Vehicle> vehicles;
+    public   MyListener myListener;
 
+    CarDataSingleton data = CarDataSingleton.getInstance();
+    String car;
+    void setCar(Vehicle vehicle){
+        car = vehicle.name;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vehicles = RideYouStyle.allVehicles;
+
+
 
         int col = 0;
         int row = 1;
@@ -73,15 +80,6 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
-
-                            carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-                            carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxHeight(Region.USE_PREF_SIZE);
 
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
@@ -110,17 +108,8 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
-
-                            carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-                            carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxHeight(Region.USE_PREF_SIZE);
-
-                            GridPane.setMargin(anchorPane, new Insets(10));}
+                            GridPane.setMargin(anchorPane, new Insets(10));
+                        }
 
                     }
                 } catch (IOException e) {
@@ -147,16 +136,6 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
-
-                            carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-                            carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxHeight(Region.USE_PREF_SIZE);
-
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
@@ -184,15 +163,6 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
-
-                            carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-                            carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxHeight(Region.USE_PREF_SIZE);
 
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
@@ -222,14 +192,6 @@ public class CarCompanyController implements Initializable {
 
                             carGridList.add(anchorPane, col++, row);
 
-                            carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-                            carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxHeight(Region.USE_PREF_SIZE);
 
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
@@ -259,14 +221,6 @@ public class CarCompanyController implements Initializable {
 
                             carGridList.add(anchorPane, col++, row);
 
-                            carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-                            carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                            carGridList.setMaxHeight(Region.USE_PREF_SIZE);
 
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
@@ -296,14 +250,6 @@ public class CarCompanyController implements Initializable {
 
                         carGridList.add(anchorPane, col++, row);
 
-                        carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
-                        carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                        carGridList.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-                        carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
-                        carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                        carGridList.setMaxHeight(Region.USE_PREF_SIZE);
 
                         GridPane.setMargin(anchorPane, new Insets(10));
 
@@ -316,6 +262,34 @@ public class CarCompanyController implements Initializable {
                 }
 
             }
+        }
+        carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
+        carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        carGridList.setMaxWidth(Region.USE_PREF_SIZE);
+
+
+        carGridList.setMinHeight(Region.USE_COMPUTED_SIZE);
+        carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        carGridList.setMaxHeight(Region.USE_PREF_SIZE);
+
+        if (vehicles.size() > 0) {
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(Vehicle vehicle) {
+                    setCar(vehicle);
+                    data.setVehicle(car);
+                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ComparedScene.fxml"));
+                    Scene scene;
+                    try {
+                        scene = new Scene(fxmlLoader.load(), 1080, 720);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Stage stage = (Stage) carGridList.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            };
         }
     }
 }
