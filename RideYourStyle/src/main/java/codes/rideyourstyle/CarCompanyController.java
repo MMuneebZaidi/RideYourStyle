@@ -45,7 +45,6 @@ public class CarCompanyController implements Initializable {
     }
 
     public ObservableList<Vehicle> vehicles;
-    public   MyListener myListener;
 
     CarDataSingleton data = CarDataSingleton.getInstance();
     String car;
@@ -56,7 +55,10 @@ public class CarCompanyController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vehicles = RideYouStyle.allVehicles;
 
+        companyNAME.setText(MainController.Company);
+        companyLOGO.setImage(new Image(MainController.Logo));
 
+        FindCarController.FXMLSelector="";
 
         int col = 0;
         int row = 1;
@@ -67,7 +69,7 @@ public class CarCompanyController implements Initializable {
                 try {
                     for (Vehicle vehicle : vehicles) {
                         if (vehicle instanceof Mercedes){
-
+                            
                             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
@@ -78,11 +80,24 @@ public class CarCompanyController implements Initializable {
                                 col = 0;
                                 row++;
                             }
-
+                            
                             carGridList.add(anchorPane, col++, row);
-
+                            anchorPane.setOnMousePressed(event -> {
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) carGridList.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            });
                             GridPane.setMargin(anchorPane, new Insets(10));}
-
+                            
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -108,6 +123,20 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
+                            anchorPane.setOnMousePressed(event -> {
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) carGridList.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            });
                             GridPane.setMargin(anchorPane, new Insets(10));
                         }
 
@@ -136,6 +165,20 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
+                            anchorPane.setOnMousePressed(event -> {
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) carGridList.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            });
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
@@ -163,7 +206,20 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
-
+                            anchorPane.setOnMousePressed(event -> {
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) carGridList.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            });
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
@@ -191,8 +247,20 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
-
-
+                            anchorPane.setOnMousePressed(event -> {
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) carGridList.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            });
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
@@ -220,8 +288,20 @@ public class CarCompanyController implements Initializable {
                             }
 
                             carGridList.add(anchorPane, col++, row);
-
-
+                            anchorPane.setOnMousePressed(event -> {
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) carGridList.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            });
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
@@ -249,8 +329,20 @@ public class CarCompanyController implements Initializable {
                         }
 
                         carGridList.add(anchorPane, col++, row);
-
-
+                        anchorPane.setOnMousePressed(event -> {
+                            setCar(vehicle);
+                            data.setVehicle(car);
+                            FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                            Scene scene;
+                            try {
+                                scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Stage stage =  (Stage) carGridList.getScene().getWindow();
+                            stage.setScene(scene);
+                            stage.show();
+                        });
                         GridPane.setMargin(anchorPane, new Insets(10));
 
                     }
@@ -262,6 +354,7 @@ public class CarCompanyController implements Initializable {
                 }
 
             }
+            default -> throw new IllegalStateException("Unexpected value: " + MainController.Company);
         }
         carGridList.setMinWidth(Region.USE_COMPUTED_SIZE);
         carGridList.setPrefWidth(Region.USE_COMPUTED_SIZE);
@@ -272,24 +365,6 @@ public class CarCompanyController implements Initializable {
         carGridList.setPrefHeight(Region.USE_COMPUTED_SIZE);
         carGridList.setMaxHeight(Region.USE_PREF_SIZE);
 
-        if (vehicles.size() > 0) {
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Vehicle vehicle) {
-                    setCar(vehicle);
-                    data.setVehicle(car);
-                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ComparedScene.fxml"));
-                    Scene scene;
-                    try {
-                        scene = new Scene(fxmlLoader.load(), 1080, 720);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    Stage stage = (Stage) carGridList.getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
-                }
-            };
-        }
+        
     }
 }

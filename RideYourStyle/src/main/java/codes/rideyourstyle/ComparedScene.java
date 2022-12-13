@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -57,8 +56,8 @@ public class ComparedScene implements Initializable {
             }
             car1list.getItems().addAll(car1.name,car1.engine, car1.transmissionType,car1.enginePower,car1.topSpeed,car1.acceleration,car1.mileage,car1.fuelType,car1.fuelCapacity,car1.bodyType,car1.seatingCapacity,car1.doors,car1.wheelSize,car1.convertible,car1.rating,car1.price,car1.stock);
             car2list.getItems().addAll(car2.name,car2.engine, car2.transmissionType,car2.enginePower,car2.topSpeed,car2.acceleration,car2.mileage,car2.fuelType,car2.fuelCapacity,car2.bodyType,car2.seatingCapacity,car2.doors,car2.wheelSize,car2.convertible,car2.rating,car2.price,car2.stock);
-            Blob blob = car1.image;
-        InputStream is = null;
+
+        InputStream is;
         try {
             is = car1.image.getBinaryStream();
         } catch (SQLException e) {
@@ -66,8 +65,7 @@ public class ComparedScene implements Initializable {
         }
         compimg1.setImage(new Image(is));
 
-        Blob blob1 = car2.image;
-        InputStream is1 = null;
+        InputStream is1;
         try {
             is1 = car2.image.getBinaryStream();
         } catch (SQLException e) {

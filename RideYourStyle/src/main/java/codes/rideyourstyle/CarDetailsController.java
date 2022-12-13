@@ -13,17 +13,21 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CarDetailsController implements Initializable {
     @FXML
     void backButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Compare.fxml"));
+        FXMLLoader fxmlLoader;
+        if(Objects.equals(FindCarController.FXMLSelector, "Finding")){
+            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
+        }else
+            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         stage.setScene(scene);
