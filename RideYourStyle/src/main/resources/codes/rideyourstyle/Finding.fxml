@@ -90,7 +90,11 @@
          </Button>
       </AnchorPane>
       <HBox layoutX="252.0" layoutY="339.0" prefHeight="360.0" prefWidth="782.0">
-         <ListView fx:id="vehicleListView" prefHeight="339.0" prefWidth="779.0" styleClass="list-cell" stylesheets="@../../css-files/findcarlistview.css" />
+         <ListView fx:id="vehicleListView" prefHeight="339.0" prefWidth="779.0" stylesheets="@../../css-files/findcarlistview.css">
+            <styleClass>
+               <String fx:value="list-view" />
+               <String fx:value="list-cell" />
+            </styleClass></ListView>
       </HBox>
       <GridPane hgap="20.0" layoutX="238.0" layoutY="178.0" prefHeight="81.0" prefWidth="787.0">
          <columnConstraints>

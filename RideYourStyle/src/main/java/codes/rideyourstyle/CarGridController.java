@@ -11,6 +11,8 @@ public class CarGridController {
     @FXML
     private Label CarName;
     @FXML
+    private Label CarPrice;
+    @FXML
     private Label CarEngine;
     @FXML
     private Label CarMileage;
@@ -21,6 +23,7 @@ public class CarGridController {
 
     void setDetails(Vehicle vehicle) throws SQLException {
         CarName.setText(vehicle.name);
+        CarPrice.setText("Rs. "+vehicle.price);
         CarEngine.setText(vehicle.engine+" cc");
         CarMileage.setText(vehicle.mileage + " km/L");
         CarTransmissionType.setText(vehicle.transmissionType);

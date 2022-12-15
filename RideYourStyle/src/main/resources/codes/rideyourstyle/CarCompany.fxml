@@ -63,25 +63,28 @@
                <children>
                   <HBox prefHeight="193.0" prefWidth="869.0">
                      <children>
-                        <ImageView fx:id="companyLOGO" fitHeight="193.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                        <ImageView fx:id="companyLOGO" fitHeight="193.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets left="20.0" top="20.0" />
                            </HBox.margin></ImageView>
                         <Pane prefHeight="193.0" prefWidth="16.0" />
                         <VBox prefHeight="193.0" prefWidth="658.0">
                            <children>
-                              <Pane prefHeight="45.0" prefWidth="658.0" />
+                              <Pane prefHeight="79.0" prefWidth="649.0" />
                               <Label fx:id="companyNAME" prefHeight="53.0" prefWidth="658.0">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="30.0" />
-                                 </font></Label>
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin></Label>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="carScrollVIEW" prefHeight="527.0" prefWidth="836.0" stylesheets="@../../css-files/CarGrid.css">
+                        <ScrollPane fx:id="carScrollVIEW" prefHeight="487.0" prefWidth="861.0" stylesheets="@../../css-files/CarGrid.css">
                            <content>
                               <GridPane fx:id="carGridList" prefHeight="8.0" prefWidth="13.0" styleClass="shadow" stylesheets="@../../css-files/CarGrid.css">
                                 <columnConstraints>

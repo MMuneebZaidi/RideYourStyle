@@ -102,6 +102,39 @@ public class ComparedScene implements Initializable {
             String[] ar3 = {car2.engine,car2.enginePower,car2.topSpeed,car2.acceleration,car2.mileage,car2.fuelCapacity,car2.seatingCapacity,car2.doors,car2.rating,car2.price,car2.stock};
             for(int i = 0; i<ar2.length;i++){
                 if(lastItem.equals(ar2[i])){
+                    if(lastItem.equals(car1.mileage)){
+                        String[] splitCar1 = ar2[i].split(" ");
+                        String[] splitCar2 = ar3[i].split(" ");
+                        double avCar1 = ((Double.parseDouble(splitCar1[0])+Double.parseDouble(splitCar1[2]))*0.5);
+                        double avCar2 = ((Double.parseDouble(splitCar2[0])+Double.parseDouble(splitCar2[2]))*0.5);
+                        if(avCar1<avCar2){
+                            arrow1.setRotate(180);
+                            arrow1.setFill(Color.RED);
+
+                        } else if (avCar1==avCar2) {
+                            arrow1.setVisible(false);
+                        }
+                        continue;
+                    }
+                    if(lastItem.equals(car1.acceleration)){
+                        String[] splitCar1 = ar2[i].split("s");
+                        String[] splitCar2 = ar3[i].split("s");
+                        String car1acc = splitCar1[0];
+                        String car2acc = splitCar2[0];
+                        if(car1acc.equals(car2acc)){
+                            arrow1.setVisible(false);
+                        }
+                        else if(Double.parseDouble(car1acc) >Double.parseDouble(car2acc)) {
+                            arrow1.setRotate(180);
+                            arrow1.setFill(Color.RED);
+
+                        }
+                        continue;
+                    }
+                    if(lastItem.equals(car1.price)){
+                        arrow1.setVisible(false);
+                        continue;
+                    }
                     int i1 = ar2[i].compareTo(ar3[i]);
                     if(i1 ==0){
                         arrow1.setVisible(false);
@@ -109,6 +142,7 @@ public class ComparedScene implements Initializable {
                     else if(i1 <0) {
                         arrow1.setRotate(180);
                         arrow1.setFill(Color.RED);
+
                     }
                 }
             }
@@ -168,6 +202,39 @@ public class ComparedScene implements Initializable {
                 String[] ar3 = {car2.engine,car2.enginePower,car2.topSpeed,car2.acceleration,car2.mileage,car2.fuelCapacity,car2.seatingCapacity,car2.doors,car2.rating,car2.price,car2.stock};
                 for (int i = 0;i< ar3.length;i++){
                     if(lastItem.equals(ar3[i])){
+                        if(lastItem.equals(car2.mileage)){
+                            String[] splitCar1 = ar3[i].split(" ");
+                            String[] splitCar2 = ar2[i].split(" ");
+                            double avCar1 = ((Double.parseDouble(splitCar1[0])+Double.parseDouble(splitCar1[2]))*0.5);
+                            double avCar2 = ((Double.parseDouble(splitCar2[0])+Double.parseDouble(splitCar2[2]))*0.5);
+                            if(avCar1<avCar2){
+                                arrow1.setRotate(180);
+                                arrow1.setFill(Color.RED);
+
+                            } else if (avCar1==avCar2) {
+                                arrow1.setVisible(false);
+                            }
+                            continue;
+                        }
+                        if(lastItem.equals(car2.acceleration)){
+                            String[] splitCar1 = ar2[i].split("s");
+                            String[] splitCar2 = ar3[i].split("s");
+                            String car1acc = splitCar1[0];
+                            String car2acc = splitCar2[0];
+                            if(car1acc.equals(car2acc)){
+                                arrow1.setVisible(false);
+                            }
+                            else if(Double.parseDouble(car1acc) <Double.parseDouble(car2acc)) {
+                                arrow1.setRotate(180);
+                                arrow1.setFill(Color.RED);
+
+                            }
+                            continue;
+                        }
+                        if(lastItem.equals(car2.price)){
+                            arrow1.setVisible(false);
+                            continue;
+                        }
                         int i1 = ar3[i].compareTo(ar2[i]);
                         if(i1 ==0){
                             arrow1.setVisible(false);
@@ -175,6 +242,7 @@ public class ComparedScene implements Initializable {
                         else if(i1 <0) {
                             arrow1.setRotate(180);
                             arrow1.setFill(Color.RED);
+
                         }
                     }
                 }
@@ -187,7 +255,7 @@ public class ComparedScene implements Initializable {
         String s1 = data.getCar1();
         String s2 = data.getCar2();
         list = RideYouStyle.allVehicles;
-        for(int i=0;i<20;i++){
+        for(int i=0;i<RideYouStyle.allVehicles.size();i++){
             if(list.get(i).name.equals(s1))
                 car1 = list.get(i);
             else if(list.get(i).name.equals(s2))

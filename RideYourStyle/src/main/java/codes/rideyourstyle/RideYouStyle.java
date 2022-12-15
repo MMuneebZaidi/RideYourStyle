@@ -15,7 +15,7 @@ public class RideYouStyle extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         stage.setResizable(false);
-        stage.getIcons().add(new Image("E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\RideYourStyleLOGO.png"));
+        stage.getIcons().add(new Image("RideYourStyleLOGO.png"));
         stage.setTitle("Ride Your Style");
         stage.setScene(scene);
         stage.show();
