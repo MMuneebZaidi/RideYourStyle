@@ -141,10 +141,8 @@ public class FindCarController implements Initializable {
         extractedVehicles.addAll(allVehicles);
 
         applyFilters();
-        if(!Objects.equals(Engine.getValue(), "Default")){
-            sortCars();
-        }
 
+        sortCars();
 
         for (Vehicle vehicle : extractedVehicles){
             extractedNames.add(vehicle.name);
