@@ -1,5 +1,4 @@
 package codes.rideyourstyle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -142,8 +141,10 @@ public class FindCarController implements Initializable {
         extractedVehicles.addAll(allVehicles);
 
         applyFilters();
+        if(!Objects.equals(Engine.getValue(), "Default")){
+            sortCars();
+        }
 
-        sortCars();
 
         for (Vehicle vehicle : extractedVehicles){
             extractedNames.add(vehicle.name);
@@ -176,6 +177,12 @@ public class FindCarController implements Initializable {
     }
 
 }
+
+
+
+
+
+
 
 
 
