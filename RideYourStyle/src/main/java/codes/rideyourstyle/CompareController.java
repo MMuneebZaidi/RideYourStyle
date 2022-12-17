@@ -43,7 +43,7 @@ public class CompareController implements Initializable {
     @FXML
     void compareButton() throws IOException {
             if(Objects.equals(car1, car2)){
-                ImageView img = new ImageView( new Image("E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\Mohtaram.png"));
+                ImageView img = new ImageView( new Image("Mohtaram.png"));
                 Stage stage = new Stage();
                 AnchorPane anchorPane = new AnchorPane();
                 anchorPane.getChildren().add(img);
