@@ -7,11 +7,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.sql.*;
 import java.util.logging.Level;
@@ -36,16 +41,27 @@ public class CompareController implements Initializable {
     private ChoiceBox<String> choicebox2;
     DataSingleton data = DataSingleton.getInstance();
     @FXML
-    void compareButton(ActionEvent event) throws IOException {
-            data.setCar1(car1);
-            data.setCar2(car2);
-            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ComparedScene.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-            Stage stage = (Stage) choicebox1.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-
+    void compareButton() throws IOException {
+            if(Objects.equals(car1, car2)){
+                ImageView img = new ImageView( new Image("Mohtaram.png"));
+                Stage stage = new Stage();
+                AnchorPane anchorPane = new AnchorPane();
+                anchorPane.getChildren().add(img);
+                Scene sc = new Scene(anchorPane,300,275);
+                stage.setTitle("Bhaggatt");
+                stage.setResizable(false);
+                stage.setScene(sc);
+                stage.show();
+            }else {data.setCar1(car1);
+                data.setCar2(car2);
+                FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ComparedScene.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                Stage stage = (Stage) choicebox1.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            }
     }
+    ArrayList<String> carName = new ArrayList<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -60,21 +76,17 @@ public class CompareController implements Initializable {
                     "(select name from rollsroyce)";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                String carName = rs.getString("name");
-                choicebox1.getItems().add(carName);
-                choicebox2.getItems().add(carName);
+                carName.add(rs.getString("name"));
             }
-            choicebox1.setOnAction(e -> {
-                car1 = choicebox1.getValue();
-            });
-            choicebox2.setOnAction(e -> {
-                car2 = choicebox2.getValue();
-            });
-
+            choicebox1.getItems().addAll(carName);
+            choicebox2.getItems().addAll(carName);
+            choicebox1.setOnAction(e -> car1 = choicebox1.getValue());
+            choicebox2.setOnAction(e -> car2 = choicebox2.getValue());
         }catch (Exception e) {
             e.printStackTrace();
-            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);}
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
+        }
 
     }
 
-    }
+}

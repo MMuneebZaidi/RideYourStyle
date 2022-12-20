@@ -127,6 +127,12 @@ public class FindCarController implements Initializable {
             }
         }
     }
+    String car;
+    CarDataSingleton data = CarDataSingleton.getInstance();
+    void setCar(Vehicle vehicle){
+        car = vehicle.name;
+    }
+    public static String FXMLSelector;
     @FXML
     void searchButton(){
 
@@ -147,9 +153,34 @@ public class FindCarController implements Initializable {
 
         vehicleListView.getItems().addAll(extractedNames);
 
+        vehicleListView.setOnMouseClicked(event -> {
+            FXMLSelector="Finding";
+            for(Vehicle vehicle : extractedVehicles){
+                if(Objects.equals(vehicleListView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                    setCar(vehicle);
+                    data.setVehicle(car);
+                    FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                    Scene scene;
+                    try {
+                        scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Stage stage =  (Stage) vehicleListView.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+        });
     }
 
 }
+
+
+
+
+
+
 
 
 
