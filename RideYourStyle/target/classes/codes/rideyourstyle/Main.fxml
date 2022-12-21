@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.MainController">
+   <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
+      <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <VBox layoutX="14.0" layoutY="411.0" prefHeight="213.0" prefWidth="174.0">
+         <Button mnemonicParsing="false" onAction="#findButton" prefHeight="53.0" prefWidth="181.0" stylesheets="@../../css-files/Buttons.css" text="Find A Car" textFill="#a19c9c">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#CompareButton" prefHeight="53.0" prefWidth="176.0" stylesheets="@../../css-files/Buttons.css" text="Compare Cars" textFill="#a19c9c">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+      </VBox>
+      <AnchorPane layoutX="43.0" layoutY="28.0" prefHeight="130.0" prefWidth="129.0">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logos/RideYourStyleLOGO.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </AnchorPane>
+   <HBox layoutX="215.0" prefHeight="176.0" prefWidth="1065.0">
+      <Label prefHeight="177.0" prefWidth="1041.0" text="Ride Your Style">
+         <HBox.margin>
+            <Insets left="25.0" />
+         </HBox.margin>
+         <font>
+            <Font name="Brush Script MT Italic" size="86.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.6107010647819491" centerY="0.5662460206810984" focusDistance="-0.44274806248322696" radius="0.9427481935224461">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.7982456088066101" green="0.7982456088066101" blue="0.7982456088066101" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.7982456088066101" green="0.7982456088066101" blue="0.7982456088066101" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.02237136465324384">
+                     <color>
+                        <Color red="0.18421052396297455" green="0.18421052396297455" blue="0.18421052396297455" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.43875156872374094">
+                     <color>
+                        <Color red="0.3245614171028137" green="0.3245614171028137" blue="0.3245614171028137" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.7723577235772358">
+                     <color>
+                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+   </HBox>
+   <AnchorPane layoutX="228.0" layoutY="464.0" prefHeight="241.0" prefWidth="355.0">
+      <children>
+         <HBox layoutY="49.0" prefHeight="144.0" prefWidth="417.0">
+            <children>
+               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AllCarsButton" prefHeight="50.0" prefWidth="408.0" text="ALL CARS" HBox.hgrow="ALWAYS">
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style.css" />
+                  </stylesheets>
+                  <font>
+                     <Font name="Forte" size="24.0" />
+                  </font>
+                  <styleClass>
+                     <String fx:value="shadow" />
+                     <String fx:value="transparent" />
+                     <String fx:value="button" />
+                  </styleClass>
+               </Button>
+            </children>
+         </HBox>
+      </children></AnchorPane>
+   <AnchorPane layoutX="215.0" layoutY="179.0" prefHeight="54.0" prefWidth="1066.0">
+      <Label alignment="CENTER" layoutX="18.0" layoutY="-2.0" prefHeight="48.0" prefWidth="281.0" text="Find Car By Company" textAlignment="CENTER" textFill="#404040" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Berlin Sans FB" size="26.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <HBox alignment="CENTER_LEFT" layoutX="228.0" layoutY="241.0" prefHeight="266.0" prefWidth="870.0">
+      <children>
+         <GridPane alignment="CENTER" prefHeight="259.0" prefWidth="417.0">
+           <columnConstraints>
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+           </rowConstraints>
+            <children>
+               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#MercedesButton" prefHeight="99.0" prefWidth="113.0" text="Mercedes">
+                  <graphic>
+                     <ImageView fitHeight="82.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../images/logos/mercedes-logo.png" />
+                     </ImageView>
+                  </graphic>
+                  <styleClass>
+                     <String fx:value="button" />
+                     <String fx:value="shadow" />
+                     <String fx:value="transparent" />
+                  </styleClass>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style2.css" />
+                  </stylesheets>
+               </Button>
+               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="20.0" mnemonicParsing="false" onAction="#CheveroletButton" prefHeight="99.0" prefWidth="113.0" text="Cheverolet" GridPane.columnIndex="1">
+                  <graphic>
+                     <ImageView fitHeight="68.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../images/logos/CheveroletLogo.png" />
+                     </ImageView>
+                  </graphic>
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style2.css" />
+                  </stylesheets>
+                  <styleClass>
+                     <String fx:value="button" />
+                     <String fx:value="shadow" />
+                     <String fx:value="transparent" />
+                  </styleClass>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#BMWButton" prefHeight="99.0" prefWidth="113.0" text="BMW" GridPane.columnIndex="2">
+                  <graphic>
+                     <ImageView fitHeight="71.0" fitWidth="70.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../images/logos/bmwlogo.png" />
+                     </ImageView>
+                  </graphic>
+                  <styleClass>
+                     <String fx:value="button" />
+                     <String fx:value="shadow" />
+                     <String fx:value="transparent" />
+                  </styleClass>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style2.css" />
+                  </stylesheets>
+               </Button>
+               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="20.0" mnemonicParsing="false" onAction="#BentlyButton" prefHeight="99.0" prefWidth="113.0" text="Bently" GridPane.rowIndex="1">
+                  <graphic>
+                     <ImageView fitHeight="44.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../images/logos/bently.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <styleClass>
+                     <String fx:value="button" />
+                     <String fx:value="shadow" />
+                     <String fx:value="transparent" />
+                  </styleClass>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style2.css" />
+                  </stylesheets>
+               </Button>
+               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#PorscheButton" prefHeight="99.0" prefWidth="113.0" text="Porsche" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <graphic>
+                     <ImageView fitHeight="70.0" fitWidth="63.0" pickOnBounds="true">
+                        <image>
+                           <Image url="@../../images/logos/Porsche.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <styleClass>
+                     <String fx:value="button" />
+                     <String fx:value="shadow" />
+                     <String fx:value="transparent" />
+                  </styleClass>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style2.css" />
+                  </stylesheets>
+               </Button>
+               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#RollsRoyceButton" prefHeight="99.0" prefWidth="113.0" text="Rolls Royce" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <graphic>
+                     <ImageView fitHeight="79.0" fitWidth="88.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../images/logos/rollsroyce.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <styleClass>
+                     <String fx:value="button" />
+                     <String fx:value="shadow" />
+                     <String fx:value="transparent" />
+                  </styleClass>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style2.css" />
+                  </stylesheets>
+               </Button>
+            </children>
+         </GridPane>
+      </children>
+   </HBox>
+</AnchorPane>

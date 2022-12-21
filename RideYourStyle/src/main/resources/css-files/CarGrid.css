@@ -1,0 +1,10 @@
+.carGrid{
+    -fx-background-color: #FFFFFF;
+        -fx-background-radius: 8;
+}
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 5.0 , 0.0 , 0.0 ,5.0);
+}
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
