@@ -9,14 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -89,7 +85,7 @@ public class MainController implements Initializable {
         });
     }
     @FXML
-    void search(KeyEvent event) {
+    void search() {
 
         if(searchBar.getText().isEmpty()){
             searchlistView.setVisible(false);
@@ -112,10 +108,8 @@ public class MainController implements Initializable {
 
         List<String> searchWordsArray = Arrays.asList(searchWords.trim().split(" "));
 
-        return listOfStrings.stream().filter(input -> {
-            return searchWordsArray.stream().allMatch(word ->
-                    input.toLowerCase().contains(word.toLowerCase()));
-        }).collect(Collectors.toList());
+        return listOfStrings.stream().filter(input -> searchWordsArray.stream().allMatch(word ->
+                input.toLowerCase().contains(word.toLowerCase()))).collect(Collectors.toList());
     }
     @FXML
     void findButton(ActionEvent ev) throws IOException {
