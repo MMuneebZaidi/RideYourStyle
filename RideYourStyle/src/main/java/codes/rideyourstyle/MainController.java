@@ -1,5 +1,7 @@
 package codes.rideyourstyle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,10 +22,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -33,10 +32,19 @@ public class MainController implements Initializable {
     private ListView<String> searchlistView;
     @FXML
     private ScrollPane searchscroll;
+    public static String FXMLSelector;
 
     @FXML
     private TextField searchBar;
     ArrayList<String> carName = new ArrayList<>();
+
+    String car;
+    CarDataSingleton data = CarDataSingleton.getInstance();
+    void setCar(Vehicle vehicle){
+        car = vehicle.name;
+    }
+    ObservableList<Vehicle> allVehicles = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -59,6 +67,26 @@ public class MainController implements Initializable {
             e.printStackTrace();
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
         }
+        allVehicles = RideYouStyle.allVehicles;
+        searchlistView.setOnMouseClicked(event -> {
+            FXMLSelector="Finding";
+            for(Vehicle vehicle : allVehicles){
+                if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                    setCar(vehicle);
+                    data.setVehicle(car);
+                    FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                    Scene scene;
+                    try {
+                        scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+        });
     }
     @FXML
     void search(KeyEvent event) {
