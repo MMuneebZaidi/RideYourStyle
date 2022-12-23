@@ -260,7 +260,7 @@
    </HBox>
    <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" layoutX="713.0" layoutY="229.0" prefHeight="265.0" prefWidth="350.0" visible="false">
       <content>
-         <ListView fx:id="listView" prefHeight="265.0" prefWidth="349.0" visible="false" />
+         <ListView fx:id="searchlistView" prefHeight="450.0" prefWidth="350.0" visible="false" />
       </content>
    </ScrollPane>
 </AnchorPane>

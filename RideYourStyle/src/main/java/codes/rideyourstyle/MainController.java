@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 public class MainController implements Initializable {
     @FXML
-    private ListView<String> listView;
+    private ListView<String> searchlistView;
     @FXML
     private ScrollPane searchscroll;
 
@@ -54,7 +54,7 @@ public class MainController implements Initializable {
             while (rs.next()) {
                 carName.add(rs.getString("name"));
             }
-            listView.getItems().addAll(carName);
+            searchlistView.getItems().addAll(carName);
         }catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
@@ -64,20 +64,18 @@ public class MainController implements Initializable {
     void search(KeyEvent event) {
 
         if(searchBar.getText().isEmpty()){
-            listView.setVisible(false);
+            searchlistView.setVisible(false);
             searchscroll.setVisible(false);
         }
         else{
-            listView.getItems().clear();
-            listView.getItems().addAll(searchList(searchBar.getText(),carName));
-            if(listView.getItems().isEmpty()){
-                listView.getItems().clear();
-                listView.getItems().addAll("No Car Found");
+            searchlistView.getItems().clear();
+            searchlistView.getItems().addAll(searchList(searchBar.getText(),carName));
+            if(searchlistView.getItems().isEmpty()){
+                searchlistView.getItems().clear();
+                searchlistView.getItems().addAll("No Car Found");
             }
-            else{
-                listView.setVisible(true);
+                searchlistView.setVisible(true);
                 searchscroll.setVisible(true);
-            }
         }
 
     }
