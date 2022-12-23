@@ -19,7 +19,7 @@
             <children>
                 <AnchorPane prefHeight="1200.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
                     <children>
-                        <Polygon fill="#404040" layoutX="88.0" layoutY="1115.0" points="-88.0, 85.7999267578125, 135.99996948242188, 85.33331298828125, 135.9999542236328, -368.5999755859375, -88.0, -631.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <Polygon fill="#404040" layoutX="88.0" layoutY="1115.0" points="-107.19999694824219, 85.333251953125, 135.99996948242188, 85.33331298828125, 135.9999542236328, -368.5999755859375, -97.59999084472656, -651.7999877929688" stroke="TRANSPARENT" strokeType="INSIDE" />
                         <HBox layoutX="-1.0" layoutY="166.0" prefHeight="105.0" prefWidth="217.0">
                             <children>
                                 <Label prefHeight="101.0" prefWidth="207.0" text="Ride Your Style" textFill="#404040">

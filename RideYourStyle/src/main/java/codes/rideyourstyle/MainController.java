@@ -69,7 +69,7 @@ public class MainController implements Initializable {
         }
         allVehicles = RideYouStyle.allVehicles;
         searchlistView.setOnMouseClicked(event -> {
-            FXMLSelector="Finding";
+            FXMLSelector="Main";
             for(Vehicle vehicle : allVehicles){
                 if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                     setCar(vehicle);

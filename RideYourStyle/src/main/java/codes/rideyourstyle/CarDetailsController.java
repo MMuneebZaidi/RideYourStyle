@@ -26,7 +26,11 @@ public class CarDetailsController implements Initializable {
         FXMLLoader fxmlLoader;
         if(Objects.equals(FindCarController.FXMLSelector, "Finding")){
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
-        }else
+        }
+        else if(Objects.equals(MainController.FXMLSelector, "Main")){
+            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        }
+        else
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
