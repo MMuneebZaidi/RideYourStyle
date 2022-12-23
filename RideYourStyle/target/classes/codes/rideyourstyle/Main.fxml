@@ -5,6 +5,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -116,8 +119,9 @@
             <Font name="Berlin Sans FB" size="26.0" />
          </font>
       </Label>
+      <TextField fx:id="searchBar" layoutX="497.0" layoutY="15.0" onKeyReleased="#search" prefHeight="41.0" prefWidth="350.0" promptText="Enter Car Name" />
    </AnchorPane>
-   <HBox alignment="CENTER_LEFT" layoutX="228.0" layoutY="241.0" prefHeight="266.0" prefWidth="870.0">
+   <HBox alignment="CENTER_LEFT" layoutX="228.0" layoutY="241.0" prefHeight="266.0" prefWidth="452.0">
       <children>
          <GridPane alignment="CENTER" prefHeight="259.0" prefWidth="417.0">
            <columnConstraints>
@@ -254,4 +258,9 @@
          </GridPane>
       </children>
    </HBox>
+   <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" layoutX="713.0" layoutY="229.0" prefHeight="265.0" prefWidth="350.0" visible="false">
+      <content>
+         <ListView fx:id="listView" prefHeight="265.0" prefWidth="349.0" visible="false" />
+      </content>
+   </ScrollPane>
 </AnchorPane>
