@@ -4,7 +4,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -70,8 +72,16 @@
                         <Pane prefHeight="193.0" prefWidth="16.0" />
                         <VBox prefHeight="193.0" prefWidth="658.0">
                            <children>
-                              <Pane prefHeight="79.0" prefWidth="649.0" />
-                              <Label fx:id="companyNAME" prefHeight="53.0" prefWidth="658.0">
+                              <Pane prefHeight="79.0" prefWidth="649.0">
+                                 <children>
+                                    <TextField fx:id="searchBar" layoutX="261.0" layoutY="22.0" onKeyReleased="#search" prefHeight="41.0" prefWidth="350.0" promptText="Enter Car Name" />
+                                    <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" layoutX="260.0" layoutY="64.0" prefHeight="201.0" prefWidth="352.0" visible="false">
+                                       <content>
+                                          <ListView fx:id="searchlistView" prefHeight="450.0" prefWidth="350.0" visible="false" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children></Pane>
+                              <Label fx:id="companyNAME" prefHeight="54.0" prefWidth="252.0">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="30.0" />
                                  </font>

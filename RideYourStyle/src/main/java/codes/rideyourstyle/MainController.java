@@ -43,27 +43,10 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        try {
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = connectNow.getDatabaseLink();
-            Statement stmt = connectDB.createStatement();
-            String query = "(select name from bentley)union" +
-                    "(select name from bmw)union" +
-                    "(select name from chevrolet)union" +
-                    "(select name from mercedes)union" +
-                    "(select name from porsche)union" +
-                    "(select name from rollsroyce)";
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                carName.add(rs.getString("name"));
-            }
-            searchlistView.getItems().addAll(carName);
-        }catch (Exception e) {
-            e.printStackTrace();
-            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
-        }
         allVehicles = RideYouStyle.allVehicles;
+        for (Vehicle vehicle: allVehicles){
+            carName.add(vehicle.name);
+        }
         searchlistView.setOnMouseClicked(event -> {
             FXMLSelector="Main";
             for(Vehicle vehicle : allVehicles){
