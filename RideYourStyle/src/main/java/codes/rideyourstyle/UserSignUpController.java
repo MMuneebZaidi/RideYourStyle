@@ -1,16 +1,5 @@
 package codes.rideyourstyle;
 
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
-import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -20,6 +9,18 @@ import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.stage.Stage;
 
 public class UserSignUpController implements Initializable {
     @FXML
@@ -38,247 +39,274 @@ public class UserSignUpController implements Initializable {
     private TextField City;
     @FXML
     private TextField Phone;
+    @FXML
+    private Label validateName;
+    @FXML
+    private Label validateUsername;
+    @FXML
+    private Label validateEmail;
+    @FXML
+    private Label validatePassword;
+    @FXML
+    private Label validateAge;
+    @FXML
+    private Label validateCNIC;
+    @FXML
+    private Label validateCity;
+    @FXML
+    private Label validatePhone;
 
+    public UserSignUpController() {
+    }
 
-    private boolean checkEmail(String email){
+    private boolean checkEmail(String email) {
         LoginDatabaseConnection db = new LoginDatabaseConnection();
         ObservableList<Info> test = db.retrieveDatabase("user");
         boolean flag = false;
-        for( Info obj : test){
+
+        for (Info obj : test) {
             if (Objects.equals(email, obj.Email)) {
                 flag = true;
+                this.validateEmail.setText("Email already exists! Login.");
                 break;
             }
         }
+
         return flag;
     }
 
-    private boolean validateName(){
+    private boolean validateName() {
         ArrayList<Character> a = new ArrayList<>();
-        String b="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        boolean test=false;
-        for(int i=0;i<b.length();i++)
-        {
+        String b = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        boolean test = false;
+
+        int i;
+        for(i = 0; i < b.length(); ++i) {
             a.add(b.charAt(i));
         }
-        for (int i = 0; i < Name.getText().length(); i++) {
-            if (!a.contains(Name.getText().charAt(i)) && !Character.isWhitespace(Name.getText().charAt(i))) {
-                test=true;
+
+        for(i = 0; i < this.Name.getText().length(); ++i) {
+            if (!a.contains(this.Name.getText().charAt(i)) && !Character.isWhitespace(this.Name.getText().charAt(i))) {
+                test = true;
             }
         }
+
         boolean flag = true;
-        if(Name.getText().isEmpty()){
+        if (this.Name.getText().isEmpty()) {
+            this.validateName.setText("Name cannot be empty!");
             flag = false;
         } else if (test) {
-            flag=false;
+            this.validateName.setText("First letter must be an alphabet!");
+            flag = false;
         }
+
         return flag;
     }
-    private boolean validateUsername(){
+
+    private boolean validateUsername() {
         ArrayList<Character> a = new ArrayList<>();
-        String b="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        boolean test=false;
-        for(int i=0;i<b.length();i++)
-        {
+        String b = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        for(int i = 0; i < b.length(); ++i) {
             a.add(b.charAt(i));
         }
-        if (!a.contains(Username.getText().charAt(0)) && !Character.isWhitespace(Username.getText().charAt(0))) {
-            test=true;
-        }
+
         boolean flag = true;
-        if(Username.getText().isEmpty()){
+        if (this.Username.getText().isEmpty()) {
             flag = false;
-        } else if (test) {
-            flag=false;
-        } else if (Username.getText().contains(" ")) {
+        } else if (!a.contains(this.Username.getText().charAt(0)) && !Character.isWhitespace(this.Username.getText().charAt(0))) {
+            flag = false;
+        } else if (this.Username.getText().contains(" ")) {
             flag = false;
         }
+
         return flag;
     }
-    private boolean validateEmail(){
+
+    private boolean validateEmail() {
         boolean flag = true;
-        if(Email.getText().isEmpty()){
+        if (this.Email.getText().isEmpty()) {
             flag = false;
-        } else if ( !(Email.getText().contains("@"))) {
+        } else if (!this.Email.getText().contains("@")) {
             flag = false;
-        } else if (!(Email.getText().contains("."))) {
+        } else if (!this.Email.getText().contains(".")) {
             flag = false;
-        } else if (checkEmail(Email.getText())) {
+        } else if (this.checkEmail(this.Email.getText())) {
             flag = false;
         }
+
         return flag;
     }
-    private boolean validatePassword(){
+
+    private boolean validatePassword() {
         Pattern pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(Password.getText());
-        boolean b= matcher.find();
-        ArrayList<Character> a = new ArrayList<>();
-        String smallLetters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        boolean test=false;
-        for(int i=0;i<smallLetters.length();i++)
-        {
-            a.add(smallLetters.charAt(i));
-        }
-        for (int i = 0; i < Password.getText().length(); i++) {
-            if (!a.contains(Password.getText().charAt(i)) && !Character.isWhitespace(Password.getText().charAt(i))) {
-                test=true;
-            }
-        }
+        Matcher matcher = pattern.matcher(this.Password.getText());
+        boolean b = matcher.find();
         boolean flag = true;
-        if(Password.getText().isEmpty()){
+        if (this.Password.getText().isEmpty()) {
             flag = false;
-        } else if (Password.getText().length()<8) {
-            flag = false;
-        } else if (test) {
+        } else if (this.Password.getText().length() < 8) {
             flag = false;
         } else if (!b) {
             flag = false;
         }
+
         return flag;
     }
-    private boolean validateCNIC(){
+
+    private boolean validateCNIC() {
         boolean flag = true;
-        if(CNIC.getText().isEmpty()){
+        if (this.CNIC.getText().isEmpty()) {
             flag = false;
-        } else if (CNIC.getText().length()<13) {
-            flag=false;
-        }
-        return flag;
-    }
-    private boolean validatePhone(){
-        boolean flag = true;
-        if(Phone.getText().isEmpty()){
-            flag = false;
-        } else if (Phone.getText().length()<11) {
-            flag=false;
-        }
-        return flag;
-    }
-    private boolean validateAge(){
-        boolean flag = true;
-        if(Age.getText().isEmpty()){
-            flag = false;
-        } else if (Age.getText().length()<2) {
-            flag = false;
-        } else if (Integer.parseInt(Age.getText())<=18) {
+        } else if (this.CNIC.getText().length() < 13) {
             flag = false;
         }
+
         return flag;
     }
-    private boolean validateCity(){
+
+    private boolean validatePhone() {
+        boolean flag = true;
+        if (this.Phone.getText().isEmpty()) {
+            flag = false;
+        } else if (this.Phone.getText().length() < 11) {
+            flag = false;
+        }
+
+        return flag;
+    }
+
+    private boolean validateAge() {
+        boolean flag = true;
+        if (this.Age.getText().isEmpty()) {
+            flag = false;
+        } else if (this.Age.getText().length() < 2) {
+            flag = false;
+        } else if (Integer.parseInt(this.Age.getText()) <= 18) {
+            flag = false;
+        }
+
+        return flag;
+    }
+
+    private boolean validateCity() {
         ArrayList<Character> a = new ArrayList<>();
-        String b="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        boolean test=false;
-        for(int i=0;i<b.length();i++)
-        {
+        String b = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        boolean test = false;
+
+        int i;
+        for(i = 0; i < b.length(); ++i) {
             a.add(b.charAt(i));
         }
-        for (int i = 0; i < City.getText().length(); i++) {
-            if (!a.contains(City.getText().charAt(i)) && !Character.isWhitespace(City.getText().charAt(i))) {
-                test=true;
+
+        for(i = 0; i < this.City.getText().length(); ++i) {
+            if (!a.contains(this.City.getText().charAt(i)) && !Character.isWhitespace(this.City.getText().charAt(i))) {
+                test = true;
             }
         }
+
         boolean flag = true;
-        if(City.getText().isEmpty()){
+        if (this.City.getText().isEmpty()) {
             flag = false;
         } else if (test) {
-            flag=false;
-        } else if (City.getText().contains(" ")) {
+            flag = false;
+        } else if (this.City.getText().contains(" ")) {
             flag = false;
         }
+
         return flag;
     }
+
     @FXML
     void SignupButton(ActionEvent ev) throws SQLException, IOException {
-        if(validateName()){
-            if(validateUsername()){
-                if (validateEmail()){
-                    if(validatePassword()){
-                        if(validateCNIC()){
-                            if(validateAge()){
-                                if(validateCity()){
-                                    if(validatePhone()){
+        if (this.validateName()) {
+            if (this.validateUsername()) {
+                if (this.validateEmail()) {
+                    if (this.validatePassword()) {
+                        if (this.validateCNIC()) {
+                            if (this.validateAge()) {
+                                if (this.validateCity()) {
+                                    if (this.validatePhone()) {
                                         LoginDatabaseConnection db = new LoginDatabaseConnection();
-                                        Info member = new UserInfo(Name.getText(),Username.getText(),Email.getText(),Password.getText(),
-                                                Phone.getText(),Integer.parseInt(Age.getText()), CNIC.getText(), City.getText());
-                                        db.insertData("user",member);
+                                        Info member = new UserInfo(this.Name.getText(), this.Username.getText(), this.Email.getText(), this.Password.getText(), this.Phone.getText(), Integer.parseInt(this.Age.getText()), this.CNIC.getText(), this.City.getText());
+                                        db.insertData("user", member);
                                         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-                                        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-                                        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+                                        Scene scene = new Scene(fxmlLoader.load(), 1080.0, 720.0);
+                                        Stage stage = (Stage)((Node)ev.getSource()).getScene().getWindow();
                                         stage.setScene(scene);
                                         stage.show();
-                                    }else {
+                                    } else {
                                         System.out.println("Invalid Phone Number");
                                     }
-                                }else {
+                                } else {
                                     System.out.println("Invalid City");
                                 }
-                            }else {
+                            } else {
                                 System.out.println("Invalid Age");
                             }
-                        }else {
+                        } else {
                             System.out.println("Invalid CNIC");
                         }
-                    }else {
+                    } else {
                         System.out.println("Invalid Password");
                     }
-                }else {
+                } else {
                     System.out.println("Invalid Email");
                 }
-            }else {
+            } else {
                 System.out.println("Invalid Username");
             }
-        }else {
+        } else {
             System.out.println("Invalid Name");
         }
+
     }
+
     @FXML
     void LoginButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        Scene scene = new Scene(fxmlLoader.load(), 1080.0, 720.0);
+        Stage stage = (Stage)((Node)ev.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CNIC.textProperty().addListener((observable, oldValue, newValue) -> {
+        this.CNIC.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                CNIC.setText(newValue.replaceAll("\\D", ""));
+                this.CNIC.setText(newValue.replaceAll("\\D", ""));
             }
-            if (CNIC.getText().length() > 13) {
-                String s = CNIC.getText().substring(0, 13);
-                CNIC.setText(s);
+
+            if (this.CNIC.getText().length() > 13) {
+                String s = this.CNIC.getText().substring(0, 13);
+                this.CNIC.setText(s);
             }
+
         });
-        Phone.textProperty().addListener((observable, oldValue, newValue) -> {
+        this.Phone.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                Phone.setText(newValue.replaceAll("\\D", ""));
+                this.Phone.setText(newValue.replaceAll("\\D", ""));
             }
-            if (Phone.getText().length() > 11) {
-                String s = Phone.getText().substring(0, 11);
-                Phone.setText(s);
+
+            if (this.Phone.getText().length() > 11) {
+                String s = this.Phone.getText().substring(0, 11);
+                this.Phone.setText(s);
             }
+
         });
-        Age.textProperty().addListener((observable, oldValue, newValue) -> {
+        this.Age.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                Age.setText(newValue.replaceAll("\\D", ""));
+                this.Age.setText(newValue.replaceAll("\\D", ""));
             }
-            if (Age.getText().length() > 2) {
-                String s = Age.getText().substring(0, 2);
-                Age.setText(s);
+
+            if (this.Age.getText().length() > 2) {
+                String s = this.Age.getText().substring(0, 2);
+                this.Age.setText(s);
             }
+
         });
         Pattern pattern = Pattern.compile("[a-zA-Z]*");
-        UnaryOperator<TextFormatter.Change> filter = c -> {
-            if (pattern.matcher(c.getControlNewText()).matches()) {
-                return c ;
-            } else {
-                return null ;
-            }
-        };
+        UnaryOperator<TextFormatter.Change> filter = (c) -> pattern.matcher(c.getControlNewText()).matches() ? c : null;
         TextFormatter<String> formatter = new TextFormatter<>(filter);
-        City.setTextFormatter(formatter);
+        this.City.setTextFormatter(formatter);
     }
 }
