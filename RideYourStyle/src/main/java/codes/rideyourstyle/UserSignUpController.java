@@ -262,8 +262,8 @@ public class UserSignUpController implements Initializable {
             if(validateUsername()){
                 if (validateEmail()){
                     if(validatePassword()){
-                        if(validateCNIC()){
-                            if(validateAge()){
+                        if(validateAge()){
+                            if(validateCNIC()){
                                 if(validateCity()){
                                     if(validatePhone()){
                                         LoginDatabaseConnection db = new LoginDatabaseConnection();
