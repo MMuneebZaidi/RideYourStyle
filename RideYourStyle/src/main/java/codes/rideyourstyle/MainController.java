@@ -1,16 +1,99 @@
 package codes.rideyourstyle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
-public class MainController {
+public class MainController implements Initializable {
+    @FXML
+    private ListView<String> searchlistView;
+    @FXML
+    private ScrollPane searchscroll;
+    public static String FXMLSelector;
+
+    @FXML
+    private TextField searchBar;
+    ArrayList<String> carName = new ArrayList<>();
+
+    String car;
+    CarDataSingleton data = CarDataSingleton.getInstance();
+    void setCar(Vehicle vehicle){
+        car = vehicle.name;
+    }
+    ObservableList<Vehicle> allVehicles = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        allVehicles = RideYouStyle.allVehicles;
+        for (Vehicle vehicle: allVehicles){
+            carName.add(vehicle.name);
+        }
+        searchlistView.setOnMouseClicked(event -> {
+            FXMLSelector="Main";
+            for(Vehicle vehicle : allVehicles){
+                if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                    setCar(vehicle);
+                    data.setVehicle(car);
+                    FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                    Scene scene;
+                    try {
+                        scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+        });
+    }
+    @FXML
+    void search() {
+
+        if(searchBar.getText().isEmpty()){
+            searchlistView.setVisible(false);
+            searchscroll.setVisible(false);
+        }
+        else{
+            searchlistView.getItems().clear();
+            searchlistView.getItems().addAll(searchList(searchBar.getText(),carName));
+            if(searchlistView.getItems().isEmpty()){
+                searchlistView.getItems().clear();
+                searchlistView.getItems().addAll("No Car Found");
+            }
+                searchlistView.setVisible(true);
+                searchscroll.setVisible(true);
+        }
+
+    }
+
+    private List<String> searchList(String searchWords, List<String> listOfStrings) {
+
+        List<String> searchWordsArray = Arrays.asList(searchWords.trim().split(" "));
+
+        return listOfStrings.stream().filter(input -> searchWordsArray.stream().allMatch(word ->
+                input.toLowerCase().contains(word.toLowerCase()))).collect(Collectors.toList());
+    }
     @FXML
     void findButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));

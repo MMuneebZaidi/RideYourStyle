@@ -9,9 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -52,6 +50,7 @@ public class ComparedScene implements Initializable {
     ObservableList<Vehicle> list = FXCollections.observableArrayList();
     Vehicle car1 , car2;
     DataSingleton data = DataSingleton.getInstance();
+
 
     static class XCell1 extends ListCell<String> {
         HBox hbox = new HBox();

@@ -9,6 +9,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,7 +21,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarCompanyController implements Initializable {
 
@@ -30,6 +34,15 @@ public class CarCompanyController implements Initializable {
 
     @FXML
     private Label companyNAME;
+    @FXML
+    private ListView<String> searchlistView;
+    @FXML
+    private ScrollPane searchscroll;
+    public static String FXMLSelector;
+
+    @FXML
+    private TextField searchBar;
+    ArrayList<String> carName = new ArrayList<>();
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
@@ -39,6 +52,15 @@ public class CarCompanyController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    void HomeButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+
     void setCompany(String company,String logo) {
         companyNAME.setText(company);
         companyLOGO.setImage(new Image(logo));
@@ -99,6 +121,29 @@ public class CarCompanyController implements Initializable {
                             GridPane.setMargin(anchorPane, new Insets(10));}
                             
                     }
+                    for (Vehicle vehicle: vehicles){
+                        if(vehicle instanceof Mercedes)
+                        carName.add(vehicle.name);
+                    }
+                    searchlistView.setOnMouseClicked(event -> {
+                        FXMLSelector="Mercedes";
+                        for(Vehicle vehicle : vehicles){
+                            if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -141,6 +186,29 @@ public class CarCompanyController implements Initializable {
                         }
 
                     }
+                    for (Vehicle vehicle: vehicles){
+                        if(vehicle instanceof Bently)
+                            carName.add(vehicle.name);
+                    }
+                    searchlistView.setOnMouseClicked(event -> {
+                        FXMLSelector="Bently";
+                        for(Vehicle vehicle : vehicles){
+                            if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -182,6 +250,29 @@ public class CarCompanyController implements Initializable {
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
+                    for (Vehicle vehicle: vehicles){
+                        if(vehicle instanceof BMW)
+                            carName.add(vehicle.name);
+                    }
+                    searchlistView.setOnMouseClicked(event -> {
+                        FXMLSelector="BMW";
+                        for(Vehicle vehicle : vehicles){
+                            if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -223,6 +314,29 @@ public class CarCompanyController implements Initializable {
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
+                    for (Vehicle vehicle: vehicles){
+                        if(vehicle instanceof RollsRoyce)
+                            carName.add(vehicle.name);
+                    }
+                    searchlistView.setOnMouseClicked(event -> {
+                        FXMLSelector="Rolls Royce";
+                        for(Vehicle vehicle : vehicles){
+                            if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -264,6 +378,29 @@ public class CarCompanyController implements Initializable {
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
+                    for (Vehicle vehicle: vehicles){
+                        if(vehicle instanceof Porsche)
+                            carName.add(vehicle.name);
+                    }
+                    searchlistView.setOnMouseClicked(event -> {
+                        FXMLSelector="Porsche";
+                        for(Vehicle vehicle : vehicles){
+                            if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -305,6 +442,29 @@ public class CarCompanyController implements Initializable {
                             GridPane.setMargin(anchorPane, new Insets(10));}
 
                     }
+                    for (Vehicle vehicle: vehicles){
+                        if(vehicle instanceof Cheverolet)
+                            carName.add(vehicle.name);
+                    }
+                    searchlistView.setOnMouseClicked(event -> {
+                        FXMLSelector="Cheverolet";
+                        for(Vehicle vehicle : vehicles){
+                            if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -346,6 +506,28 @@ public class CarCompanyController implements Initializable {
                         GridPane.setMargin(anchorPane, new Insets(10));
 
                     }
+                    for (Vehicle vehicle: vehicles){
+                            carName.add(vehicle.name);
+                    }
+                    searchlistView.setOnMouseClicked(event -> {
+                        FXMLSelector="All Cars";
+                        for(Vehicle vehicle : vehicles){
+                            if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
+                                setCar(vehicle);
+                                data.setVehicle(car);
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                Scene scene;
+                                try {
+                                    scene = new Scene(fxmlLoader1.load(), 1080, 720);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Stage stage =  (Stage) searchlistView.getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -366,5 +548,32 @@ public class CarCompanyController implements Initializable {
         carGridList.setMaxHeight(Region.USE_PREF_SIZE);
 
         
+    }
+    @FXML
+    void search() {
+
+        if(searchBar.getText().isEmpty()){
+            searchlistView.setVisible(false);
+            searchscroll.setVisible(false);
+        }
+        else{
+            searchlistView.getItems().clear();
+            searchlistView.getItems().addAll(searchList(searchBar.getText(),carName));
+            if(searchlistView.getItems().isEmpty()){
+                searchlistView.getItems().clear();
+                searchlistView.getItems().addAll("No Car Found");
+            }
+            searchlistView.setVisible(true);
+            searchscroll.setVisible(true);
+        }
+
+    }
+
+    private List<String> searchList(String searchWords, List<String> listOfStrings) {
+
+        List<String> searchWordsArray = Arrays.asList(searchWords.trim().split(" "));
+
+        return listOfStrings.stream().filter(input -> searchWordsArray.stream().allMatch(word ->
+                input.toLowerCase().contains(word.toLowerCase()))).collect(Collectors.toList());
     }
 }
