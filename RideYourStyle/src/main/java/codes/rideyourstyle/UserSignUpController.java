@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
@@ -38,7 +40,22 @@ public class UserSignUpController implements Initializable {
     private TextField City;
     @FXML
     private TextField Phone;
-
+    @FXML
+    private Label nameError;
+    @FXML
+    private Label usernameError;
+    @FXML
+    private Label emailError;
+    @FXML
+    private Label passwordError;
+    @FXML
+    private Label ageError;
+    @FXML
+    private Label cnicError;
+    @FXML
+    private Label cityError;
+    @FXML
+    private Label phoneError;
 
     private boolean checkEmail(String email){
         LoginDatabaseConnection db = new LoginDatabaseConnection();
@@ -46,6 +63,8 @@ public class UserSignUpController implements Initializable {
         boolean flag = false;
         for( Info obj : test){
             if (Objects.equals(email, obj.Email)) {
+                emailError.setText("Email already exists! Login");
+                setRed(Email);
                 flag = true;
                 break;
             }
@@ -55,7 +74,7 @@ public class UserSignUpController implements Initializable {
 
     private boolean validateName(){
         ArrayList<Character> a = new ArrayList<>();
-        String b="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String b="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         boolean test=false;
         for(int i=0;i<b.length();i++)
         {
@@ -68,8 +87,12 @@ public class UserSignUpController implements Initializable {
         }
         boolean flag = true;
         if(Name.getText().isEmpty()){
+            nameError.setText("Name cannot be empty!");
+            setRed(Name);
             flag = false;
         } else if (test) {
+            nameError.setText("Name must contains alphabets only!");
+            setRed(Name);
             flag=false;
         }
         return flag;
@@ -77,20 +100,22 @@ public class UserSignUpController implements Initializable {
     private boolean validateUsername(){
         ArrayList<Character> a = new ArrayList<>();
         String b="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        boolean test=false;
         for(int i=0;i<b.length();i++)
         {
             a.add(b.charAt(i));
         }
-        if (!a.contains(Username.getText().charAt(0)) && !Character.isWhitespace(Username.getText().charAt(0))) {
-            test=true;
-        }
         boolean flag = true;
         if(Username.getText().isEmpty()){
+            usernameError.setText("Name cannot be empty!");
+            setRed(Username);
             flag = false;
-        } else if (test) {
+        } else if (!a.contains(Username.getText().charAt(0)) && !Character.isWhitespace(Username.getText().charAt(0))) {
+            usernameError.setText("First letter must be an Alphabet!");
+            setRed(Username);
             flag=false;
         } else if (Username.getText().contains(" ")) {
+            usernameError.setText("No spaces are allowed!");
+            setRed(Username);
             flag = false;
         }
         return flag;
@@ -98,10 +123,16 @@ public class UserSignUpController implements Initializable {
     private boolean validateEmail(){
         boolean flag = true;
         if(Email.getText().isEmpty()){
+            emailError.setText("Field cannot be left empty!");
+            setRed(Email);
             flag = false;
         } else if ( !(Email.getText().contains("@"))) {
+            emailError.setText("Enter correct email!");
+            setRed(Email);
             flag = false;
         } else if (!(Email.getText().contains("."))) {
+            emailError.setText("Enter correct email!");
+            setRed(Email);
             flag = false;
         } else if (checkEmail(Email.getText())) {
             flag = false;
@@ -112,26 +143,18 @@ public class UserSignUpController implements Initializable {
         Pattern pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(Password.getText());
         boolean b= matcher.find();
-        ArrayList<Character> a = new ArrayList<>();
-        String smallLetters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        boolean test=false;
-        for(int i=0;i<smallLetters.length();i++)
-        {
-            a.add(smallLetters.charAt(i));
-        }
-        for (int i = 0; i < Password.getText().length(); i++) {
-            if (!a.contains(Password.getText().charAt(i)) && !Character.isWhitespace(Password.getText().charAt(i))) {
-                test=true;
-            }
-        }
         boolean flag = true;
         if(Password.getText().isEmpty()){
+            passwordError.setText("Enter password!");
+            setRed(Password);
             flag = false;
         } else if (Password.getText().length()<8) {
-            flag = false;
-        } else if (test) {
+            passwordError.setText("Length should be greater then 8 !");
+            setRed(Password);
             flag = false;
         } else if (!b) {
+            passwordError.setText("Must have numbers, digits and Special character!");
+            setRed(Password);
             flag = false;
         }
         return flag;
@@ -139,8 +162,12 @@ public class UserSignUpController implements Initializable {
     private boolean validateCNIC(){
         boolean flag = true;
         if(CNIC.getText().isEmpty()){
+            cnicError.setText("Enter CNIC!");
+            setRed(CNIC);
             flag = false;
         } else if (CNIC.getText().length()<13) {
+            cnicError.setText("Enter valid CNIC!");
+            setRed(CNIC);
             flag=false;
         }
         return flag;
@@ -148,8 +175,12 @@ public class UserSignUpController implements Initializable {
     private boolean validatePhone(){
         boolean flag = true;
         if(Phone.getText().isEmpty()){
+            phoneError.setText("Enter Phone Number!");
+            setRed(Phone);
             flag = false;
         } else if (Phone.getText().length()<11) {
+            phoneError.setText("Enter valid Phone Number!");
+            setRed(Phone);
             flag=false;
         }
         return flag;
@@ -157,10 +188,16 @@ public class UserSignUpController implements Initializable {
     private boolean validateAge(){
         boolean flag = true;
         if(Age.getText().isEmpty()){
+            ageError.setText("Enter age!");
+            setRed(Age);
             flag = false;
         } else if (Age.getText().length()<2) {
+            ageError.setText("Age should be greater then 18!");
+            setRed(Age);
             flag = false;
         } else if (Integer.parseInt(Age.getText())<=18) {
+            ageError.setText("Age should be greater then 18!");
+            setRed(Age);
             flag = false;
         }
         return flag;
@@ -180,22 +217,53 @@ public class UserSignUpController implements Initializable {
         }
         boolean flag = true;
         if(City.getText().isEmpty()){
+            cityError.setText("Enter City!");
+            setRed(City);
             flag = false;
         } else if (test) {
+            cityError.setText("Enter valid city!");
+            setRed(City);
             flag=false;
-        } else if (City.getText().contains(" ")) {
-            flag = false;
         }
         return flag;
     }
+    private void setRed(TextField tf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+        if(!styleClass.contains("error")) {
+            styleClass.add("error");
+        }
+    }
+    private void removeRed(TextField tf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+        styleClass.removeAll(Collections.singleton("error"));
+    }
+    private void removeAll(){
+        removeRed(Name);
+        removeRed(Username);
+        removeRed(Email);
+        removeRed(Password);
+        removeRed(Age);
+        removeRed(CNIC);
+        removeRed(City);
+        removeRed(Phone);
+        nameError.setText(null);
+        usernameError.setText(null);
+        emailError.setText(null);
+        passwordError.setText(null);
+        cnicError.setText(null);
+        cityError.setText(null);
+        ageError.setText(null);
+        phoneError.setText(null);
+    }
     @FXML
     void SignupButton(ActionEvent ev) throws SQLException, IOException {
+        removeAll();
         if(validateName()){
             if(validateUsername()){
                 if (validateEmail()){
                     if(validatePassword()){
-                        if(validateCNIC()){
-                            if(validateAge()){
+                        if(validateAge()){
+                            if(validateCNIC()){
                                 if(validateCity()){
                                     if(validatePhone()){
                                         LoginDatabaseConnection db = new LoginDatabaseConnection();
