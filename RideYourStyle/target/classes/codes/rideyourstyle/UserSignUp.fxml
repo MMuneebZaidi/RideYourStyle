@@ -87,10 +87,10 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <HBox prefHeight="284.0" prefWidth="864.0">
+                              <HBox prefHeight="340.0" prefWidth="864.0">
                                  <children>
                                     <Pane prefHeight="137.0" prefWidth="63.0" />
-                                    <GridPane alignment="CENTER" hgap="15.0" prefHeight="137.0" prefWidth="724.0">
+                                    <GridPane alignment="CENTER" hgap="15.0" prefHeight="342.0" prefWidth="724.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.0" minWidth="10.0" prefWidth="222.0" />
@@ -99,9 +99,13 @@
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="76.33334350585938" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.66665649414062" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.66665649414062" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.66665649414062" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
                                           <Label prefHeight="35.0" prefWidth="141.0" text="Name">
@@ -109,7 +113,7 @@
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="35.0" prefWidth="141.0" text="Email" GridPane.rowIndex="1">
+                                          <Label prefHeight="35.0" prefWidth="141.0" text="Email" GridPane.rowIndex="2">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
@@ -120,38 +124,46 @@
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="365.0" layoutY="27.0" prefHeight="35.0" prefWidth="141.0" text="Password" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                          <Label layoutX="365.0" layoutY="27.0" prefHeight="35.0" prefWidth="141.0" text="Password" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="365.0" layoutY="107.0" prefHeight="35.0" prefWidth="141.0" text="Age" GridPane.rowIndex="2">
+                                          <Label layoutX="365.0" layoutY="107.0" prefHeight="35.0" prefWidth="141.0" text="Age" GridPane.rowIndex="4">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="10.0" layoutY="183.0" prefHeight="35.0" prefWidth="141.0" text="CNIC" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                          <Label layoutX="10.0" layoutY="183.0" prefHeight="35.0" prefWidth="141.0" text="CNIC" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="365.0" layoutY="183.0" prefHeight="35.0" prefWidth="141.0" text="City" GridPane.rowIndex="3">
+                                          <Label layoutX="365.0" layoutY="183.0" prefHeight="35.0" prefWidth="141.0" text="City" GridPane.rowIndex="6">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="10.0" layoutY="258.0" prefHeight="35.0" prefWidth="141.0" text="Phone Number" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                          <Label layoutX="10.0" layoutY="258.0" prefHeight="35.0" prefWidth="141.0" text="Phone Number" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
                                           <TextField fx:id="Username" layoutX="135.0" layoutY="31.0" prefHeight="35.0" promptText="Enter username" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="3" />
-                                          <TextField fx:id="Age" layoutX="511.0" layoutY="107.0" prefHeight="35.0" promptText="Enter age" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <TextField fx:id="CNIC" layoutX="135.0" layoutY="183.0" prefHeight="35.0" promptText="Enter CNIC" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                          <TextField fx:id="City" layoutX="511.0" layoutY="183.0" prefHeight="35.0" promptText="Enter city" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <TextField fx:id="Phone" layoutX="135.0" layoutY="258.0" prefHeight="35.0" promptText="Enter phone number" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                          <PasswordField fx:id="Password" prefHeight="35.0" promptText="Enter Password" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <TextField fx:id="Email" layoutX="135.0" layoutY="29.0" prefHeight="35.0" promptText="Enter email" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="Age" layoutX="511.0" layoutY="107.0" prefHeight="35.0" promptText="Enter age" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <TextField fx:id="CNIC" layoutX="135.0" layoutY="183.0" prefHeight="35.0" promptText="Enter CNIC" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                          <TextField fx:id="City" layoutX="511.0" layoutY="183.0" prefHeight="35.0" promptText="Enter city" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <TextField fx:id="Phone" layoutX="135.0" layoutY="258.0" prefHeight="35.0" promptText="Enter phone number" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                          <PasswordField fx:id="Password" prefHeight="35.0" promptText="Enter Password" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                          <TextField fx:id="Email" layoutX="135.0" layoutY="29.0" prefHeight="35.0" promptText="Enter email" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label fx:id="validateName" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="validateUsername" layoutX="143.0" layoutY="74.0" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <Label fx:id="validateEmail" layoutX="512.0" layoutY="74.0" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label fx:id="validatePassword" layoutX="143.0" layoutY="160.0" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                          <Label fx:id="validateAge" layoutX="512.0" layoutY="160.0" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Label fx:id="validateCNIC" layoutX="143.0" layoutY="246.0" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                          <Label fx:id="validateCity" layoutX="512.0" layoutY="246.0" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Label fx:id="validatePhone" layoutX="143.0" layoutY="331.0" prefHeight="17.0" prefWidth="221.0" textFill="#d70000" GridPane.columnIndex="3" GridPane.rowIndex="7" />
                                        </children>
                                     </GridPane>
                                  </children>
