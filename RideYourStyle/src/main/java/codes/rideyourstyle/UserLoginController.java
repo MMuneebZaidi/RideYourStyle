@@ -5,17 +5,21 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class UserLoginController {
+public class UserLoginController implements Initializable {
     @FXML
     private TextField Email;
     @FXML
@@ -23,8 +27,23 @@ public class UserLoginController {
     @FXML
     private Label validation;
     @FXML
-    void ForgotPassword(){
-
+    private TextField pass_text;
+    @FXML
+    private CheckBox pass_toggle;
+    ObservableList<Info> userinfo = FXCollections.observableArrayList();
+    static Info data;
+    @FXML
+    void ForgotPassword(ActionEvent ev) throws IOException {
+        for(Info member : userinfo){
+            if(member.Email.equals(Email.getText())){
+                data= member;
+                FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ForgotPassword.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
     }
     private void setRed(TextField tf,PasswordField pf) {
         ObservableList<String> styleClass = tf.getStyleClass();
@@ -36,37 +55,93 @@ public class UserLoginController {
             styleClass2.add("error");
         }
     }
-    private void removeRed(TextField tf,PasswordField pf) {
+    private void setRed(TextField tf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+        if(!styleClass.contains("error")) {
+            styleClass.add("error");
+        }
+    }
+    private void removeRed(TextField tf, TextField tf1, PasswordField pf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         styleClass.removeAll(Collections.singleton("error"));
+        ObservableList<String> styleClass1 = tf1.getStyleClass();
+        styleClass1.removeAll(Collections.singleton("error"));
         ObservableList<String> styleClass2 = pf.getStyleClass();
         styleClass2.removeAll(Collections.singleton("error"));
     }
-    private boolean check(ObservableList<Info> data){
+    private boolean checkEmail(ObservableList<Info> data){
         boolean flag = false;
         for(Info info : data){
-            if(Objects.equals(Email.getText(), info.Email) && Objects.equals(Password.getText(), info.Password)){
+            if(Objects.equals(Email.getText(), info.Email)){
                 flag = true;
             }
         }
         return flag;
     }
+    private boolean checkPass(ObservableList<Info> data){
+        boolean flag = false;
+        for(Info info : data){
+            if(Objects.equals(Password.getText(), info.Password)){
+                flag = true;
+            }
+        }
+        return flag;
+    }
+    private boolean validateEmail(){
+        boolean flag = true;
+        if(Email.getText().isEmpty()){
+            validation.setText("Field cannot be left empty!");
+            setRed(Email,Password);
+            setRed(pass_text);
+            flag = false;
+        } else if ( !(Email.getText().contains("@"))) {
+            validation.setText("Enter correct email!");
+            setRed(Email,Password);
+            setRed(pass_text);
+            flag = false;
+        } else if (!(Email.getText().contains("."))) {
+            validation.setText("Enter correct email!");
+            setRed(Email,Password);
+            setRed(pass_text);
+            flag = false;
+        }
+        return flag;
+    }
     @FXML
     void LoginButton(ActionEvent ev) throws IOException {
-        LoginDatabaseConnection db = new LoginDatabaseConnection();
-        userinfo = db.retrieveDatabase("user");
-        removeRed(Email,Password);
-        if(check(userinfo)){
-            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-            Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
-            stage.setScene(scene);
-            stage.show();
-        }else {
-            validation.setText("Incorrect Username or Password!");
-            setRed(Email,Password);
-            Password.setText(null);
+        removeRed(Email,pass_text,Password);
+        if(validateEmail()){
+            if(checkEmail(userinfo)){
+                if(checkPass(userinfo)){
+                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                    Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+                    stage.setScene(scene);
+                    stage.show();
+                }else{
+                    validation.setText("Incorrect Password!");
+                    setRed(pass_text,Password);
+                    Password.setText(null);
+                }
+            }else {
+                validation.setText("Incorrect Username or Password!");
+                setRed(Email,Password);
+                setRed(pass_text);
+                Password.setText(null);
+            }
         }
+    }
+    @FXML
+    public void showPassword() {
+        if (pass_toggle.isSelected()) {
+            pass_text.setText(Password.getText());
+            pass_text.setVisible(true);
+            Password.setVisible(false);
+            return;
+        }
+        Password.setText(pass_text.getText());
+        Password.setVisible(true);
+        pass_text.setVisible(false);
     }
 
     @FXML
@@ -77,5 +152,22 @@ public class UserLoginController {
         stage.setScene(scene);
         stage.show();
     }
-    ObservableList<Info> userinfo = FXCollections.observableArrayList();
+    @FXML
+    void AdminLoginButton(ActionEvent ev) throws IOException {
+
+    }
+    @FXML
+    void GuestButton(ActionEvent ev) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        LoginDatabaseConnection db = new LoginDatabaseConnection();
+        userinfo = db.retrieveDatabase("user");
+        pass_text.setVisible(false);
+    }
 }
