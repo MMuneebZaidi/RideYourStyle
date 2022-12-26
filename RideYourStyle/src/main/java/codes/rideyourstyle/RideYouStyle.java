@@ -12,7 +12,7 @@ public class RideYouStyle extends Application {
     public static ObservableList<Vehicle> allVehicles;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Start.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         stage.setResizable(true);
         stage.getIcons().add(new Image("RideYourStyleLOGO.png"));

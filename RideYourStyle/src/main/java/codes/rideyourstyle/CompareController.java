@@ -24,6 +24,14 @@ import java.util.logging.Logger;
 
 public class CompareController implements Initializable {
     @FXML
+    void HomeButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);

@@ -13,6 +13,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.Cursor?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.CompareController">
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1084.0">
         <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
@@ -39,6 +40,27 @@
                     </font>
                 </Button>
             </HBox>
+            <Button layoutX="60.0" layoutY="625.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="54.0" prefWidth="67.0">
+                <graphic>
+                    <ImageView fitHeight="63.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../images/logos/home.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <styleClass>
+                    <String fx:value="buttonStart" />
+                    <String fx:value="transparent" />
+                    <String fx:value="shadow" />
+                </styleClass>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <stylesheets>
+                    <URL value="@../../css-files/CarGrid.css" />
+                    <URL value="@../../css-files/StartButton.css" />
+                </stylesheets>
+            </Button>
         </AnchorPane>
         <AnchorPane layoutX="217.0" layoutY="33.0" prefHeight="54.0" prefWidth="1066.0">
             <Label layoutX="18.0" layoutY="-2.0" prefHeight="67.0" prefWidth="318.0" text="Compare Cars" textAlignment="CENTER" textFill="#404040" textOverrun="CENTER_ELLIPSIS">

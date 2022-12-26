@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -57,18 +59,26 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button layoutX="60.0" layoutY="625.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="54.0" prefWidth="67.0" stylesheets="@../../css-files/CarGrid.css">
+                        <Button layoutX="60.0" layoutY="625.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="54.0" prefWidth="67.0">
                            <graphic>
                               <ImageView fitHeight="63.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/logos/clipart4338423.png" />
+                                    <Image url="@../../images/logos/home.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                            <styleClass>
+                              <String fx:value="buttonStart" />
                               <String fx:value="transparent" />
                               <String fx:value="shadow" />
                            </styleClass>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <stylesheets>
+                              <URL value="@../../css-files/CarGrid.css" />
+                              <URL value="@../../css-files/StartButton.css" />
+                           </stylesheets>
                         </Button>
                      </children>
                   </AnchorPane>

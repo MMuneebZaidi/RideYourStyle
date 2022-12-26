@@ -22,6 +22,14 @@ import java.util.ResourceBundle;
 
 public class CarDetailsController implements Initializable {
     @FXML
+    void HomeButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader;
         if(Objects.equals(FindCarController.FXMLSelector, "Finding")){

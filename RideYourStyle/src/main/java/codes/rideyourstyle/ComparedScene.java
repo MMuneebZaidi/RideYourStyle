@@ -27,7 +27,16 @@ import java.util.ResourceBundle;
 public class ComparedScene implements Initializable {
 
     @FXML
-    void compBackButton(ActionEvent ev) throws IOException {
+    void HomeButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void BackButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Compare.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
