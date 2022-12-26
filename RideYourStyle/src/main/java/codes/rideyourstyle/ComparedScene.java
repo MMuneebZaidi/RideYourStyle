@@ -262,8 +262,8 @@ public class ComparedScene implements Initializable {
                             }
                             continue;
                         }
-                        if(lastItem.equals(car1.seatingCapacity)){
-                            String c1=ar2[i];
+                        if(lastItem.equals(car2.seatingCapacity)){
+                            String c1 = ar2[i];
                             String c2 = ar3[i];
                             if(c1.equals(c2)){
                                 arrow1.setVisible(false);
