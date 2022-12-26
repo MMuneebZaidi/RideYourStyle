@@ -61,7 +61,7 @@ public class PassResetController implements Initializable {
             repassField.setVisible(false);
             return;
         }
-        Password.setText(repass_show.getText());
+        repassField.setText(repass_show.getText());
         repassField.setVisible(true);
         repass_show.setVisible(false);
     }
