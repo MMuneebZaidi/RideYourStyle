@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Collections;
 
 public class ForgetPassController {
     @FXML
@@ -23,10 +22,6 @@ public class ForgetPassController {
         if(!styleClass.contains("error")) {
             styleClass.add("error");
         }
-    }
-    private void removeRed(TextField tf) {
-        ObservableList<String> styleClass = tf.getStyleClass();
-        styleClass.removeAll(Collections.singleton("error"));
     }
     @FXML
     void resetButton(ActionEvent ev) throws IOException {
