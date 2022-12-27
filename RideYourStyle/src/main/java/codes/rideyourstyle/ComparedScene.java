@@ -132,16 +132,6 @@ public class ComparedScene implements Initializable {
                                 arrow1.setFill(Color.RED);
 
                             }
-                        } else if(lastItem.equals(car1.seatingCapacity)){
-                            int a1 = Integer.parseInt(ar2[i]);
-                            int a2 = Integer.parseInt(ar3[i]);
-                            if(a1 == a2) {
-                                arrow1.setVisible(false);
-                            }
-                            else if(a1 < a2){
-                                arrow1.setFill(Color.RED);
-                                arrow1.setRotate(180);
-                            }
                         } else {
                             int i1 = ar2[i].compareTo(ar3[i]);
                             if (i1 == 0) {
@@ -227,18 +217,7 @@ public class ComparedScene implements Initializable {
                                 arrow1.setFill(Color.RED);
 
                             }
-                        }
-                        else if(lastItem.equals(car2.seatingCapacity)){
-                            int a1 = Integer.parseInt(ar2[i]);
-                            int a2 = Integer.parseInt(ar3[i]);
-                            if(a1 == a2)
-                                arrow1.setVisible(false);
-                            else if(a2 < a1){
-                                arrow1.setRotate(180);
-                                arrow1.setFill(Color.RED);
-                            }
-                        }
-                        else {
+                        } else {
                             int i1 = ar3[i].compareTo(ar2[i]);
                             if (i1 == 0) {
                                 arrow1.setVisible(false);
