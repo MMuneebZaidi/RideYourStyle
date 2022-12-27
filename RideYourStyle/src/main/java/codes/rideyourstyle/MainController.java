@@ -15,12 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class MainController implements Initializable {
@@ -105,6 +100,22 @@ public class MainController implements Initializable {
     @FXML
     void CompareButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Compare.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void LogoutButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void switchButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
         stage.setScene(scene);

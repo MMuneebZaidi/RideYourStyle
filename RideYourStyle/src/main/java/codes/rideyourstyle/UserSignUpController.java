@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +17,6 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserSignUpController implements Initializable {
@@ -32,6 +28,8 @@ public class UserSignUpController implements Initializable {
     private TextField Email;
     @FXML
     private PasswordField Password;
+    @FXML
+    private TextField pass_show;
     @FXML
     private TextField Age;
     @FXML
@@ -56,6 +54,20 @@ public class UserSignUpController implements Initializable {
     private Label cityError;
     @FXML
     private Label phoneError;
+    @FXML
+    private CheckBox pass_toggle;
+    @FXML
+    public void showPassword() {
+        if (pass_toggle.isSelected()) {
+            pass_show.setText(Password.getText());
+            pass_show.setVisible(true);
+            Password.setVisible(false);
+            return;
+        }
+        Password.setText(pass_show.getText());
+        Password.setVisible(true);
+        pass_show.setVisible(false);
+    }
 
     private boolean checkEmail(String email){
         LoginDatabaseConnection db = new LoginDatabaseConnection();
@@ -120,17 +132,20 @@ public class UserSignUpController implements Initializable {
         }
         return flag;
     }
+    public static boolean patternMatches(String emailAddress, String regexPattern) {
+        return Pattern.compile(regexPattern)
+                .matcher(emailAddress)
+                .matches();
+    }
     private boolean validateEmail(){
         boolean flag = true;
+        String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         if(Email.getText().isEmpty()){
             emailError.setText("Field cannot be left empty!");
             setRed(Email);
             flag = false;
-        } else if ( !(Email.getText().contains("@"))) {
-            emailError.setText("Enter correct email!");
-            setRed(Email);
-            flag = false;
-        } else if (!(Email.getText().contains("."))) {
+        } else if (!(patternMatches(Email.getText(), regexPattern))) {
             emailError.setText("Enter correct email!");
             setRed(Email);
             flag = false;
@@ -139,22 +154,67 @@ public class UserSignUpController implements Initializable {
         }
         return flag;
     }
+    private boolean strongPass(){
+        ArrayList<Character> a = new ArrayList<>();
+        String small="abcdefghijklmnopqrstuvwxyz";
+        boolean test = true ;
+        for(int i=0;i<small.length();i++)
+        {
+            a.add(small.charAt(i));
+        }
+        for (int i = 0; i < Password.getText().length(); i++) {
+            if (a.contains(Password.getText().charAt(i)) && !Character.isWhitespace(Password.getText().charAt(i))) {
+                test=true;
+                break;
+            }else
+                test=false;
+        }
+        if(test){
+            ArrayList<Character> a1 = new ArrayList<>();
+            String large="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for(int i=0;i<large.length();i++)
+            {
+                a1.add(large.charAt(i));
+            }
+            for (int i = 0; i < Password.getText().length(); i++) {
+                if (a1.contains(Password.getText().charAt(i)) && !Character.isWhitespace(Password.getText().charAt(i))) {
+                    test=true;
+                    break;
+                }else
+                    test=false;
+            }
+        }
+        if (test){
+            ArrayList<Character> a2 = new ArrayList<>();
+            String num="0123456789";
+            for(int i=0;i<num.length();i++)
+            {
+                a2.add(num.charAt(i));
+            }
+            for (int i = 0; i < Password.getText().length(); i++) {
+                if (a2.contains(Password.getText().charAt(i)) && !Character.isWhitespace(Password.getText().charAt(i))) {
+                    test=true;
+                    break;
+                }else
+                    test=false;
+            }
+        }
+
+        return test;
+    }
     private boolean validatePassword(){
-        Pattern pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(Password.getText());
-        boolean b= matcher.find();
         boolean flag = true;
         if(Password.getText().isEmpty()){
             passwordError.setText("Enter password!");
-            setRed(Password);
+            setRed(pass_show,Password);
             flag = false;
         } else if (Password.getText().length()<8) {
             passwordError.setText("Length should be greater then 8 !");
-            setRed(Password);
+            setRed(pass_show,Password);
             flag = false;
-        } else if (!b) {
-            passwordError.setText("Must have numbers, digits and Special character!");
-            setRed(Password);
+        } else if (!strongPass()){
+            passwordError.setText("Must have numbers & digits!");
+            setRed(pass_show,Password);
             flag = false;
         }
         return flag;
@@ -231,6 +291,16 @@ public class UserSignUpController implements Initializable {
         ObservableList<String> styleClass = tf.getStyleClass();
         if(!styleClass.contains("error")) {
             styleClass.add("error");
+        }
+    }
+    private void setRed(TextField tf,PasswordField pf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+        ObservableList<String> styleClass2 = pf.getStyleClass();
+        if(!styleClass.contains("error")) {
+            styleClass.add("error");
+        }
+        if(!styleClass2.contains("error")) {
+            styleClass2.add("error");
         }
     }
     private void removeRed(TextField tf) {

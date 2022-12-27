@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -64,94 +67,149 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <VBox layoutY="423.0" prefHeight="233.0" prefWidth="216.0" />
+                        <VBox alignment="TOP_CENTER" layoutY="423.0" prefHeight="299.0" prefWidth="216.0" AnchorPane.bottomAnchor="1.6666666666666856" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6666666666666572">
+                           <children>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AdminLoginButton" prefHeight="51.0" prefWidth="123.0" stylesheets="@../../css-files/Buttons.css" text="Admin Login" textFill="#a19c9c">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children></VBox>
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
          </left>
          <center>
-            <Pane BorderPane.alignment="CENTER">
+            <AnchorPane style="-fx-background-color: white;">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                  <VBox prefHeight="720.0" prefWidth="864.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox prefHeight="720.0" prefWidth="864.0">
+                        <Pane prefHeight="183.0" prefWidth="864.0" VBox.vgrow="ALWAYS" />
+                        <HBox prefHeight="62.0" prefWidth="863.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Pane prefHeight="183.0" prefWidth="864.0" />
-                              <Pane prefHeight="75.0" prefWidth="864.0">
+                              <Pane prefHeight="65.0" prefWidth="325.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="60.0" prefWidth="191.0" text="User Login">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <Pane prefHeight="75.0" prefWidth="338.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="137.0" prefWidth="864.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Pane prefHeight="357.0" prefWidth="221.0" HBox.hgrow="ALWAYS" />
+                              <GridPane prefHeight="134.0" prefWidth="333.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.66668701171875" minWidth="10.0" prefWidth="143.66668701171875" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.33331298828125" minWidth="10.0" prefWidth="310.33331298828125" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="76.33334350585938" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.66665649414062" vgrow="SOMETIMES" />
+                                </rowConstraints>
                                  <children>
-                                    <Label layoutX="338.0" layoutY="8.0" prefHeight="60.0" prefWidth="191.0" text="User Login">
+                                    <Label prefHeight="35.0" prefWidth="141.0" text="Email">
                                        <font>
-                                          <Font name="System Bold" size="36.0" />
+                                          <Font size="16.0" />
                                        </font>
                                     </Label>
+                                    <Label prefHeight="35.0" prefWidth="141.0" text="Password" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="Email" prefHeight="35.0" promptText="Enter your email" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" />
+                                    <PasswordField fx:id="Password" prefHeight="35.0" promptText="Enter password" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="pass_text" prefHeight="35.0" promptText="Enter password" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
-                              </Pane>
-                              <HBox prefHeight="137.0" prefWidth="864.0">
+                              </GridPane>
+                              <VBox prefHeight="137.0" prefWidth="123.0">
                                  <children>
-                                    <Pane prefHeight="357.0" prefWidth="221.0" />
-                                    <GridPane prefHeight="134.0" prefWidth="333.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.66668701171875" minWidth="10.0" prefWidth="143.66668701171875" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.33331298828125" minWidth="10.0" prefWidth="310.33331298828125" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="76.33334350585938" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.66665649414062" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Label prefHeight="35.0" prefWidth="141.0" text="Email">
-                                             <font>
-                                                <Font size="16.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="35.0" prefWidth="141.0" text="Password" GridPane.rowIndex="1">
-                                             <font>
-                                                <Font size="16.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="Email" prefHeight="35.0" promptText="Enter your email" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" />
-                                          <PasswordField fx:id="Password" prefHeight="35.0" promptText="Enter password" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                       </children>
-                                    </GridPane>
+                                    <Pane prefHeight="94.0" prefWidth="95.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Pane>
+                                    <CheckBox fx:id="pass_toggle" mnemonicParsing="false" onAction="#showPassword" prefHeight="17.0" prefWidth="105.0" text="Show Password" />
+                                    <Pane prefHeight="24.0" prefWidth="87.0" VBox.vgrow="ALWAYS" />
                                  </children>
-                              </HBox>
-                              <Pane prefHeight="20.0" prefWidth="864.0">
-                                 <children>
-                                    <Label fx:id="validation" layoutX="321.0" layoutY="2.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textFill="#d70000" />
-                                 </children>
-                              </Pane>
-                              <HBox prefHeight="58.0" prefWidth="864.0">
-                                 <children>
-                                    <Pane prefHeight="58.0" prefWidth="306.0" />
-                                    <GridPane prefHeight="58.0" prefWidth="249.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.6666259765625" minWidth="10.0" prefWidth="133.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.66668701171875" minWidth="10.0" prefWidth="117.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" onAction="#ForgotPassword" prefHeight="27.0" prefWidth="115.0" stylesheets="@../../css-files/Style2.css" text="Forgot Password" />
-                                          <Button mnemonicParsing="false" onAction="#LoginButton" prefHeight="27.0" prefWidth="115.0" stylesheets="@../../css-files/Style2.css" text="Log In" GridPane.columnIndex="1" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="29.0" prefWidth="864.0">
-                                 <children>
-                                    <Pane prefHeight="29.0" prefWidth="353.0" />
-                                    <Label prefHeight="29.0" prefWidth="135.0" text="Don't have an account?" />
-                                    <Button mnemonicParsing="false" onAction="#SignupButton" stylesheets="@../../css-files/Style2.css" text="Sign Up" />
-                                 </children>
-                              </HBox>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets left="8.0" />
+                                 </padding>
+                              </VBox>
+                              <Pane prefHeight="137.0" prefWidth="203.0" HBox.hgrow="ALWAYS" />
                            </children>
-                        </VBox>
+                        </HBox>
+                        <HBox fillHeight="false" prefHeight="20.0" prefWidth="200.0">
+                           <children>
+                              <Pane prefHeight="20.0" prefWidth="325.0" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="validation" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textFill="#d70000" />
+                              <Pane prefHeight="20.0" prefWidth="350.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="41.0" prefWidth="863.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Pane prefHeight="41.0" prefWidth="292.0" HBox.hgrow="ALWAYS" />
+                              <GridPane prefHeight="58.0" prefWidth="249.0" HBox.hgrow="ALWAYS">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.6666259765625" minWidth="10.0" prefWidth="133.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.66668701171875" minWidth="10.0" prefWidth="117.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#ForgotPassword" prefHeight="27.0" prefWidth="115.0" stylesheets="@../../css-files/Style2.css" text="Forgot Password" />
+                                    <Button mnemonicParsing="false" onAction="#LoginButton" prefHeight="27.0" prefWidth="115.0" stylesheets="@../../css-files/Style2.css" text="Log In" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Pane prefHeight="58.0" prefWidth="309.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="29.0" prefWidth="864.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Pane prefHeight="31.0" prefWidth="208.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="29.0" prefWidth="129.0" text="Don't have an account?" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" onAction="#SignupButton" prefHeight="25.0" prefWidth="59.0" text="Sign Up" HBox.hgrow="ALWAYS">
+                                 <stylesheets>
+                                    <URL value="@../../css-files/Style2.css" />
+                                    <URL value="@../../css-files/CarGrid.css" />
+                                 </stylesheets>
+                                 <styleClass>
+                                    <String fx:value="transparent" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </Button>
+                              <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="863.0">
+                           <children>
+                              <Pane prefHeight="67.0" prefWidth="184.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="22.0" prefWidth="22.0" text="Or" />
+                              <Button mnemonicParsing="false" onAction="#GuestButton" prefHeight="30.0" prefWidth="125.0" text="Continue as a Guest">
+                                 <styleClass>
+                                    <String fx:value="transparent" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="button" />
+                                 </styleClass>
+                                 <stylesheets>
+                                    <URL value="@../../css-files/CarGrid.css" />
+                                    <URL value="@../../css-files/Style2.css" />
+                                 </stylesheets>
+                              </Button>
+                              <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                           </children></HBox>
+                        <Pane prefHeight="190.0" prefWidth="863.0" VBox.vgrow="ALWAYS" />
                      </children>
-                  </AnchorPane>
+                  </VBox>
                </children>
-            </Pane>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>

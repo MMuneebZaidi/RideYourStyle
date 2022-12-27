@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -22,7 +23,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.MainController">
    <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
       <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" />
       <VBox layoutX="14.0" layoutY="411.0" prefHeight="213.0" prefWidth="174.0">
@@ -46,8 +47,8 @@
             </ImageView>
          </children></AnchorPane>
    </AnchorPane>
-   <HBox layoutX="215.0" prefHeight="176.0" prefWidth="1065.0">
-      <Label prefHeight="177.0" prefWidth="1041.0" text="Ride Your Style">
+   <HBox layoutX="215.0" prefHeight="176.0" prefWidth="865.0" AnchorPane.rightAnchor="-0.33333333333337123" AnchorPane.topAnchor="0.0">
+      <Label prefHeight="176.0" prefWidth="510.0" text="Ride Your Style" HBox.hgrow="ALWAYS">
          <HBox.margin>
             <Insets left="25.0" />
          </HBox.margin>
@@ -91,16 +92,73 @@
             </RadialGradient>
          </textFill>
       </Label>
+      <Pane prefHeight="176.0" prefWidth="239.0" HBox.hgrow="ALWAYS" />
+      <VBox prefHeight="176.0" prefWidth="121.0">
+         <children>
+            <Pane prefHeight="50.0" prefWidth="139.0" VBox.vgrow="ALWAYS" />
+            <GridPane alignment="CENTER" hgap="5.0" prefHeight="72.0" prefWidth="127.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#LogoutButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 5;" text="Logout" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../logoutButton.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <stylesheets>
+                        <URL value="@../../css-files/Style.css" />
+                        <URL value="@../../css-files/CarGrid.css" />
+                     </stylesheets>
+                     <styleClass>
+                        <String fx:value="transparent" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="TOP" layoutX="26.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchButton" prefHeight="60.0" prefWidth="83.0" style="-fx-background-radius: 5;" text="Admin" textAlignment="CENTER" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../switchuser.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <stylesheets>
+                        <URL value="@../../css-files/Style.css" />
+                        <URL value="@../../css-files/CarGrid.css" />
+                     </stylesheets>
+                     <styleClass>
+                        <String fx:value="transparent" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="transparent" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../../css-files/CarGrid.css" />
+                  <URL value="@../../css-files/StartButton.css" />
+               </stylesheets>
+            </GridPane>
+            <Pane prefHeight="47.0" prefWidth="164.0" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+      <Pane prefHeight="176.0" prefWidth="67.0" HBox.hgrow="ALWAYS" />
    </HBox>
    <AnchorPane layoutX="228.0" layoutY="464.0" prefHeight="241.0" prefWidth="355.0">
       <children>
          <HBox layoutY="49.0" prefHeight="144.0" prefWidth="417.0">
             <children>
                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AllCarsButton" prefHeight="50.0" prefWidth="408.0" text="ALL CARS" HBox.hgrow="ALWAYS">
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style.css" />
-                  </stylesheets>
                   <font>
                      <Font name="Forte" size="24.0" />
                   </font>
@@ -109,6 +167,10 @@
                      <String fx:value="transparent" />
                      <String fx:value="button" />
                   </styleClass>
+                  <stylesheets>
+                     <URL value="@../../css-files/CarGrid.css" />
+                     <URL value="@../../css-files/Style.css" />
+                  </stylesheets>
                </Button>
             </children>
          </HBox>

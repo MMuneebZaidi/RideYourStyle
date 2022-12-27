@@ -14,6 +14,9 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import java.lang.String?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.CarDetailsController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
@@ -53,6 +56,27 @@
                               </Button>
                            </children>
                         </HBox>
+                        <Button layoutX="60.0" layoutY="625.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="54.0" prefWidth="67.0">
+                           <graphic>
+                              <ImageView fitHeight="63.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/logos/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="buttonStart" />
+                              <String fx:value="transparent" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <stylesheets>
+                              <URL value="@../../css-files/CarGrid.css" />
+                              <URL value="@../../css-files/StartButton.css" />
+                           </stylesheets>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>

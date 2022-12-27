@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import static codes.rideyourstyle.UserSignUpController.patternMatches;
 
 public class UserLoginController implements Initializable {
     @FXML
@@ -89,17 +90,14 @@ public class UserLoginController implements Initializable {
     }
     private boolean validateEmail(){
         boolean flag = true;
+        String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         if(Email.getText().isEmpty()){
             validation.setText("Field cannot be left empty!");
             setRed(Email,Password);
             setRed(pass_text);
             flag = false;
-        } else if ( !(Email.getText().contains("@"))) {
-            validation.setText("Enter correct email!");
-            setRed(Email,Password);
-            setRed(pass_text);
-            flag = false;
-        } else if (!(Email.getText().contains("."))) {
+        } else if (!(patternMatches(Email.getText(), regexPattern))) {
             validation.setText("Enter correct email!");
             setRed(Email,Password);
             setRed(pass_text);
@@ -154,7 +152,11 @@ public class UserLoginController implements Initializable {
     }
     @FXML
     void AdminLoginButton(ActionEvent ev) throws IOException {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminLogin.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     void GuestButton(ActionEvent ev) throws IOException {
