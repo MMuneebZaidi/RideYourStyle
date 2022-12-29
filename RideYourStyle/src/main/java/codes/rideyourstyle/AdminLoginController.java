@@ -98,7 +98,7 @@ public class AdminLoginController implements Initializable {
         if(validateEmail()){
             if(checkEmail(userinfo)){
                 if(checkPass(userinfo)){
-                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
                     Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
                     stage.setScene(scene);

@@ -59,7 +59,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button layoutX="60.0" layoutY="625.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="54.0" prefWidth="67.0">
+                        <Button layoutX="60.0" layoutY="625.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="54.0" prefWidth="67.0" AnchorPane.bottomAnchor="27.66666666666667">
                            <graphic>
                               <ImageView fitHeight="63.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -80,20 +80,40 @@
                               <URL value="@../../css-files/StartButton.css" />
                            </stylesheets>
                         </Button>
+                        <Button fx:id="mycart" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="44.0" layoutY="550.0" mnemonicParsing="false" onAction="#MyCartButton" prefHeight="54.0" prefWidth="128.0" text="My Cart">
+                           <graphic>
+                              <ImageView fitHeight="44.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../car-in-garage.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Berlin Sans FB" size="13.0" />
+                           </font>
+                           <stylesheets>
+                              <URL value="@../../css-files/CarGrid.css" />
+                              <URL value="@../../css-files/Style.css" />
+                           </stylesheets>
+                           <styleClass>
+                              <String fx:value="transparent" />
+                              <String fx:value="button" />
+                           </styleClass>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
-            <VBox layoutX="216.0" prefHeight="720.0" prefWidth="869.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="-1.3333333333333712" AnchorPane.topAnchor="0.0">
+            <VBox layoutX="216.0" prefHeight="720.0" prefWidth="869.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0000000000001" AnchorPane.rightAnchor="0.6666666666665151" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox prefHeight="193.0" prefWidth="869.0">
+                  <HBox fillHeight="false" prefHeight="193.0" prefWidth="869.0">
                      <children>
-                        <ImageView fx:id="companyLOGO" fitHeight="193.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="companyLOGO" fitHeight="193.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="SOMETIMES">
                            <HBox.margin>
                               <Insets left="20.0" top="20.0" />
                            </HBox.margin></ImageView>
-                        <Pane prefHeight="193.0" prefWidth="16.0" />
-                        <VBox prefHeight="193.0" prefWidth="658.0">
+                        <Pane prefHeight="193.0" prefWidth="16.0" HBox.hgrow="ALWAYS" />
+                        <VBox prefHeight="193.0" prefWidth="658.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Pane prefHeight="79.0" prefWidth="649.0">
                                  <children>
@@ -117,7 +137,7 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="carScrollVIEW" prefHeight="487.0" prefWidth="861.0" stylesheets="@../../css-files/CarGrid.css">
+                        <ScrollPane fx:id="carScrollVIEW" prefHeight="487.0" prefWidth="856.0" stylesheets="@../../css-files/CarGrid.css" HBox.hgrow="ALWAYS">
                            <content>
                               <GridPane fx:id="carGridList" prefHeight="8.0" prefWidth="13.0" styleClass="shadow" stylesheets="@../../css-files/CarGrid.css">
                                 <columnConstraints>
@@ -132,6 +152,9 @@
                               <String fx:value="transparent" />
                               <String fx:value="shadow" />
                            </styleClass>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
                         </ScrollPane>
                      </children>
                   </HBox>

@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 public class LoginDatabaseConnection {
     public Connection DatabaseLink;
 
+
     public Connection getDatabaseLink() {
         String databaseName = "admin/user";
         String databaseUser = "root";
@@ -30,22 +31,23 @@ public class LoginDatabaseConnection {
         try {
             Statement stm = connectDB.createStatement();
             ResultSet output = stm.executeQuery(query);
-            while (output.next()){
-
-                String Name= output.getString("Name");
+            while (output.next()) {
+                int id = output.getInt("id");
+                String Name = output.getString("Name");
                 String Username = output.getString("Username");
-                String Email= output.getString("Email");
-                String Password= output.getString("Password");
+                String Email = output.getString("Email");
+                String Password = output.getString("Password");
                 String CNIC = output.getString("CNIC");
                 String PhoneNumber = output.getString("Phone Number");
                 int Age = output.getInt("Age");
                 String City = output.getString("City");
-                switch (src){
-                    case "user" -> list.add(new UserInfo(Name,Username,Email,Password,PhoneNumber,Age,CNIC,City));
-                    case "admin" -> list.add(new AdminInfo(Name,Username,Email,Password,PhoneNumber,Age,CNIC,City));
+                switch (src) {
+                    case "user" -> list.add(new UserInfo(id,Name, Username, Email, Password, PhoneNumber, Age, CNIC, City));
+                    case "admin" -> list.add(new AdminInfo(id,Name, Username, Email, Password, PhoneNumber, Age, CNIC, City));
                 }
             }
-        } catch (Exception e) {
+        }
+            catch (Exception e) {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
         }
         return list;
@@ -58,5 +60,17 @@ public class LoginDatabaseConnection {
         Connection connectDB = getDatabaseLink();
         Statement stm = connectDB.createStatement();
         stm.execute(query);
+    }
+    public void insertGarageData(Info data) {
+        try {
+            String insert = "INSERT INTO `garage`(`user_id`)";
+            String values = "VALUES ('"+data.id+"')";
+            String query = insert + values;
+            Connection connectDB = getDatabaseLink();
+            Statement stm = connectDB.createStatement();
+            stm.execute(query);
+        } catch (Exception e) {
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 }

@@ -5,18 +5,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 public class UserSignUpController implements Initializable {
@@ -56,6 +60,21 @@ public class UserSignUpController implements Initializable {
     private Label phoneError;
     @FXML
     private CheckBox pass_toggle;
+    public Connection getDatabaseLink() {
+        String databaseName = "admin/user";
+        String databaseUser = "root";
+        String databasePassword = "";
+        String url = "jdbc:mysql://localhost/"+databaseName;
+        Connection DatabaseLink;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            DatabaseLink = DriverManager.getConnection(url,databaseUser,databasePassword);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return DatabaseLink;
+    }
     @FXML
     public void showPassword() {
         if (pass_toggle.isSelected()) {
@@ -337,14 +356,34 @@ public class UserSignUpController implements Initializable {
                                 if(validateCity()){
                                     if(validatePhone()){
                                         LoginDatabaseConnection db = new LoginDatabaseConnection();
-                                        Info member = new UserInfo(Name.getText(),Username.getText(),Email.getText(),Password.getText(),
+                                        Info member = new UserInfo(1,Name.getText(),Username.getText(),Email.getText(),Password.getText(),
                                                 Phone.getText(),Integer.parseInt(Age.getText()), CNIC.getText(), City.getText());
                                         db.insertData("user",member);
+                                        Connection connectDB = getDatabaseLink();
+                                        String query = "SELECT `id` FROM `user` WHERE Email='"+member.Email+"'";
+                                        try {
+                                            Statement stm = connectDB.createStatement();
+                                            ResultSet output = stm.executeQuery(query);
+                                            while (output.next()) {
+                                                member.id = output.getInt("id");
+                                            }
+                                        }
+                                        catch (Exception e) {
+                                            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE,null,e);
+                                        }
+                                        Info data = new UserInfo(member.id);
+                                        LoginDatabaseConnection dbg = new LoginDatabaseConnection();
+                                        dbg.insertGarageData(data);
                                         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-                                        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-                                        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+                                        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+                                        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                                        Scene scene;
+                                        if (stage.isMaximized()) {
+                                            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+                                        } else {
+                                            scene = new Scene(fxmlLoader.load());
+                                        }
                                         stage.setScene(scene);
-                                        stage.show();
                                     }else {
                                         System.out.println("Invalid Phone Number");
                                     }
@@ -373,10 +412,15 @@ public class UserSignUpController implements Initializable {
     @FXML
     void LoginButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
 
     @Override

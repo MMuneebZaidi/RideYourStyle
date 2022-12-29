@@ -105,7 +105,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#LogoutButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 5;" text="Logout" textAlignment="CENTER">
+                  <Button fx:id="LogoutButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#LogoutButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 5;" text="Logout" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -127,6 +127,23 @@
                         <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../switchuser.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <stylesheets>
+                        <URL value="@../../css-files/Style.css" />
+                        <URL value="@../../css-files/CarGrid.css" />
+                     </stylesheets>
+                     <styleClass>
+                        <String fx:value="transparent" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="userloginbutton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#UserLoginButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 5;" text="Login" textAlignment="CENTER" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons8-login-rounded-up-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -181,7 +198,7 @@
             <Font name="Berlin Sans FB" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="searchBar" layoutX="497.0" layoutY="15.0" onKeyReleased="#search" prefHeight="41.0" prefWidth="350.0" promptText="Enter Car Name" />
+      <TextField fx:id="searchBar" layoutX="497.0" layoutY="11.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="263.0" promptText="Enter Car Name" />
    </AnchorPane>
    <HBox alignment="CENTER_LEFT" layoutX="228.0" layoutY="241.0" prefHeight="266.0" prefWidth="452.0">
       <children>
@@ -320,9 +337,9 @@
          </GridPane>
       </children>
    </HBox>
-   <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" layoutX="713.0" layoutY="229.0" prefHeight="265.0" prefWidth="350.0" visible="false">
+   <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" layoutX="713.0" layoutY="217.0" prefHeight="251.0" prefWidth="263.0" visible="false">
       <content>
-         <ListView fx:id="searchlistView" prefHeight="450.0" prefWidth="350.0" visible="false" />
+         <ListView fx:id="searchlistView" prefHeight="477.0" prefWidth="350.0" visible="false" />
       </content>
    </ScrollPane>
 </AnchorPane>

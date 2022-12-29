@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2022 at 02:25 PM
+-- Generation Time: Dec 28, 2022 at 06:52 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -41,6 +41,31 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `garage`
+--
+
+CREATE TABLE `garage` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `car1` varchar(25) DEFAULT NULL,
+  `car2` varchar(25) DEFAULT NULL,
+  `car3` varchar(25) DEFAULT NULL,
+  `car4` varchar(25) DEFAULT NULL,
+  `car5` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `garage`
+--
+
+INSERT INTO `garage` (`id`, `user_id`, `car1`, `car2`, `car3`, `car4`, `car5`) VALUES
+(1, 6, NULL, NULL, NULL, NULL, NULL),
+(2, 9, NULL, NULL, NULL, NULL, NULL),
+(3, 7, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -61,11 +86,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `Name`, `Username`, `Email`, `Password`, `CNIC`, `Phone Number`, `Age`, `City`) VALUES
-(1, 'Muneeb', 'muneebzaidi', 'muneebzaidi12345@gmail.com', 'okMuneeb', '3520262361115', '3189464829', 19, 'Lahore'),
-(2, 'Muhammad Muneeb Zaidi', 'muneebzaidi', 'muneebzaidi123@gmail.com', 'MuneebZaidi123', '3520262361115', '03189464829', 20, 'Lahore'),
 (6, 'Ali', 'alihamza', 'ali@gmail.com', 'okMuneeb', '3274613431123', '03138278944', 23, 'Lahore'),
 (7, 'Test Unit', 'test', 'test@test.com', 'dsaqw_123', '5465757678678', '89868838686', 19, 'Lahore'),
-(8, 'Muneeb', 'muneeb', 'test1@test.com', 'okMuneeb', '3123233232453', '12345678912', 19, 'Lahore'),
 (9, 'Muneeb', 'muneebzaiodi', 'muneebzaidi@gmail.com', 'okMuneeb', '3892389283123', '03189464829', 19, 'Lahore');
 
 --
@@ -77,6 +99,13 @@ INSERT INTO `user` (`id`, `Name`, `Username`, `Email`, `Password`, `CNIC`, `Phon
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `garage`
+--
+ALTER TABLE `garage`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user_id`);
 
 --
 -- Indexes for table `user`
@@ -95,10 +124,26 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `garage`
+--
+ALTER TABLE `garage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `garage`
+--
+ALTER TABLE `garage`
+  ADD CONSTRAINT `garage_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -85,7 +85,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <ScrollPane hbarPolicy="NEVER" layoutX="217.0" layoutY="232.0" prefHeight="487.0" prefWidth="866.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="217.0" layoutY="232.0" prefHeight="487.0" prefWidth="866.0" styleClass="transparent" stylesheets="@../../css-files/CarGrid.css">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="843.0" prefWidth="870.0">
                      <children>

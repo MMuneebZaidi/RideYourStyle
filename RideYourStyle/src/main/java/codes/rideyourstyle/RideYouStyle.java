@@ -14,8 +14,8 @@ public class RideYouStyle extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Start.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        stage.setResizable(true);
         stage.getIcons().add(new Image("RideYourStyleLOGO.png"));
+        stage.setResizable(false);
         stage.setTitle("Ride Your Style");
         stage.setScene(scene);
         stage.show();

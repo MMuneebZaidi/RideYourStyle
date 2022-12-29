@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.UpdateStockController">
+   <children>
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="720.0" prefWidth="216.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <AnchorPane layoutX="44.0" layoutY="59.0" prefHeight="105.0" prefWidth="124.0" AnchorPane.bottomAnchor="537.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.66666666666666" AnchorPane.topAnchor="59.0">
+                           <children>
+                              <ImageView fitHeight="128.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@../../images/logos/RideYourStyleLOGO.png" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="106.65" radius="53.7975" spread="0.24" width="110.54">
+                                       <color>
+                                          <Color red="1.0" green="0.9333333373069763" blue="0.7882353067398071" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.bottomAnchor="0.66668701171875" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6666666666666572" />
+                        <HBox layoutX="-1.0" layoutY="166.0" prefHeight="105.0" prefWidth="217.0">
+                           <children>
+                              <Label prefHeight="101.0" prefWidth="207.0" text="Ride Your Style" textFill="#404040">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Brush Script MT Italic" size="35.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="46.31" radius="20.22" spread="0.38" width="36.57">
+                                       <color>
+                                          <Color red="1.0" green="0.9333333373069763" blue="0.7882353067398071" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox alignment="TOP_CENTER" layoutY="423.0" prefHeight="299.0" prefWidth="216.0" AnchorPane.bottomAnchor="1.6666666666666856" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6666666666666572">
+                           <children>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="123.0" stylesheets="@../../css-files/Buttons.css" text="Admin Login" textFill="#a19c9c">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="43.0" prefWidth="67.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#backButton" prefHeight="43.0" prefWidth="65.0" rotate="180.0" stylesheets="@../../css-files/backbutton.css" text="➜">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane style="-fx-background-color: white;">
+               <children>
+                  <VBox prefHeight="720.0" prefWidth="864.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="29.0" prefWidth="863.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="99.0" prefWidth="863.0">
+                           <children>
+                              <Pane prefHeight="53.0" prefWidth="25.0" />
+                              <Label prefHeight="84.0" prefWidth="409.0" text="Update Stock">
+                                 <font>
+                                    <Font name="Agency FB Bold" size="50.0" />
+                                 </font>
+                              </Label>
+                              <Pane prefHeight="53.0" prefWidth="437.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="221.0" prefWidth="863.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="177.0" text="Search car:">
+                                 <font>
+                                    <Font name="Agency FB Bold" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="24.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Pane prefHeight="92.0" prefWidth="27.0" HBox.hgrow="ALWAYS" />
+                              <VBox prefHeight="155.0" prefWidth="604.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="searchBar" onKeyReleased="#search" prefHeight="41.0" prefWidth="350.0" promptText="Enter Car Name">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin></TextField>
+                                    <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" prefHeight="265.0" prefWidth="572.0" visible="false" VBox.vgrow="ALWAYS">
+                                       <content>
+                                          <ListView fx:id="searchlistView" prefHeight="188.0" prefWidth="602.0" visible="false" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="26.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" prefHeight="265.0" prefWidth="863.0">
+                           <children>
+                              <TableView fx:id="stockUpdateTable" prefHeight="265.0" prefWidth="791.0" HBox.hgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn fx:id="modelCol" editable="false" minWidth="297.333251953125" prefWidth="501.33337342739105" resizable="false" sortable="false" text="Model" />
+                                    <TableColumn fx:id="stockCol" editable="false" maxWidth="237.33343505859375" prefWidth="74.00003051757812" resizable="false" sortable="false" text="Stock" />
+                                    <TableColumn fx:id="updateCol" editable="false" maxWidth="267.3333740234375" prefWidth="240.0" resizable="false" sortable="false" text="Update" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding></HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

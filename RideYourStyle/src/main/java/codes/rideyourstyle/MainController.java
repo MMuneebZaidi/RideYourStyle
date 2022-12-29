@@ -6,13 +6,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.w3c.dom.events.MouseEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -27,6 +33,13 @@ public class MainController implements Initializable {
 
     @FXML
     private TextField searchBar;
+
+    @FXML
+    private Button LogoutButton = new Button();
+
+    @FXML
+    public Button userloginbutton = new Button();
+
     ArrayList<String> carName = new ArrayList<>();
 
     String car;
@@ -61,6 +74,10 @@ public class MainController implements Initializable {
                 }
             }
         });
+     if(UserLoginController.loggedIn==null){
+         userloginbutton.setVisible(true);
+         LogoutButton.setVisible(false);
+     }
     }
     @FXML
     void search() {
@@ -108,19 +125,42 @@ public class MainController implements Initializable {
     @FXML
     void LogoutButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void switchButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminLogin.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
+    @FXML
+    void UserLoginButton(ActionEvent ev) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("RideYourStyleLOGO.png"));
+        stage.setResizable(true);
+        stage.setTitle("Ride Your Style");
         stage.setScene(scene);
         stage.show();
+        ((Stage)(((Node)ev.getSource()).getScene().getWindow())).close();
     }
+
     Parent root;
     public static String Company;
     public static String Logo;
@@ -132,10 +172,15 @@ public class MainController implements Initializable {
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
         ccc.setCompany(Company,Logo);
-        Scene scene = new Scene(root, 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(root);
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void BMWButton(ActionEvent event) throws IOException {
@@ -145,10 +190,15 @@ public class MainController implements Initializable {
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
         ccc.setCompany(Company,Logo);
-        Scene scene = new Scene(root, 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(root);
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void CheveroletButton(ActionEvent event) throws IOException {
@@ -158,10 +208,15 @@ public class MainController implements Initializable {
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
         ccc.setCompany(Company,Logo);
-        Scene scene = new Scene(root, 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(root);
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void PorscheButton(ActionEvent event) throws IOException {
@@ -171,10 +226,15 @@ public class MainController implements Initializable {
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
         ccc.setCompany(Company,Logo);
-        Scene scene = new Scene(root, 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(root);
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void RollsRoyceButton(ActionEvent event) throws IOException {
@@ -184,10 +244,15 @@ public class MainController implements Initializable {
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
         ccc.setCompany(Company,Logo);
-        Scene scene = new Scene(root, 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(root);
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void BentlyButton(ActionEvent event) throws IOException {
@@ -197,10 +262,15 @@ public class MainController implements Initializable {
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
         ccc.setCompany(Company,Logo);
-        Scene scene = new Scene(root, 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(root);
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void AllCarsButton(ActionEvent event) throws IOException {
@@ -210,9 +280,14 @@ public class MainController implements Initializable {
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
         ccc.setCompany(Company,Logo);
-        Scene scene = new Scene(root, 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(root);
+        }
         stage.setScene(scene);
-        stage.show();
     }
 }
