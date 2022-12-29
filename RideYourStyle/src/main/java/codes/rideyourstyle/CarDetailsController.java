@@ -8,9 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -60,40 +58,6 @@ public class CarDetailsController implements Initializable {
     void AddGarageButton () {
         CarDataSingleton garage= CarDataSingleton.getInstance();
         System.out.println(UserLoginController.loggedIn.id);
-//        if(Garage.car1 == null){
-//            for(Vehicle vehicle : RideYouStyle.allVehicles){
-//                if (garage.getVehicle().equals(vehicle.name)){
-//                    Garage.car1=vehicle;
-//                }
-//            }
-//        }else if(Garage.car2 == null){
-//            for(Vehicle vehicle : RideYouStyle.allVehicles){
-//                if (garage.getVehicle().equals(vehicle.name)){
-//                    Garage.car2=vehicle;
-//                }
-//            }
-//        }
-//        else if(Garage.car3 == null){
-//            for(Vehicle vehicle : RideYouStyle.allVehicles){
-//                if (garage.getVehicle().equals(vehicle.name)){
-//                    Garage.car3=vehicle;
-//                }
-//            }
-//        }
-//        else if(Garage.car4 == null){
-//            for(Vehicle vehicle : RideYouStyle.allVehicles){
-//                if (garage.getVehicle().equals(vehicle.name)){
-//                    Garage.car4=vehicle;
-//                }
-//            }
-//        }
-//        else if(Garage.car5 == null){
-//            for(Vehicle vehicle : RideYouStyle.allVehicles){
-//                if (garage.getVehicle().equals(vehicle.name)){
-//                    Garage.car5=vehicle;
-//                }
-//            }
-//        }
         LoginDatabaseConnection db = new LoginDatabaseConnection();
         try {
             Connection connectDB = db.getDatabaseLink();
@@ -130,6 +94,10 @@ public class CarDetailsController implements Initializable {
                     Statement st5 = connectDB.createStatement();
                     st5.execute(q);
                     break;
+                } else if (output.getString("car5") != null) {
+                    Alert a1 = new Alert(Alert.AlertType.WARNING,
+                            "Maximum Limit to add Cars Reached!", ButtonType.OK);
+                    a1.showAndWait();
                 }
             }
         }catch (Exception e) {
