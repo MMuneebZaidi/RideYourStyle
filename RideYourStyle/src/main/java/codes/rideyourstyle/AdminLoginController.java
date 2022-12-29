@@ -69,7 +69,7 @@ public class AdminLoginController implements Initializable {
     private boolean checkPass(ObservableList<Info> data){
         boolean flag = false;
         for(Info info : data){
-            if(Objects.equals(Password.getText(), info.Password)){
+            if(Objects.equals(Password.getText(), info.Password) && Email.getText().equals(info.Email)){
                 flag = true;
             }
         }

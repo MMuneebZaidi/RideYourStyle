@@ -108,9 +108,7 @@ public class AddToGarageController implements Initializable {
                 if (empty) {
                     setGraphic(null);
                     setText(null);
-
                 } else {
-
                     ImageView img = new ImageView(new Image("delete.png",15,15,true,false));
                     Button del = new Button("Delete",img);
 
@@ -137,50 +135,51 @@ public class AddToGarageController implements Initializable {
     }
     @FXML
     void Checkout(){
-        LoginDatabaseConnection db = new LoginDatabaseConnection();
-        System.out.println(UserLoginController.loggedIn.id);
-        for(Vehicle vehicle : Garage.cars){
-            try {
-            Connection connectDB = db.getDatabaseLink();
-            Statement stm = connectDB.createStatement();
-            String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-            ResultSet output = stm.executeQuery(query);
 
-            while (output.next()){
-                if(output.getString("car1") == null){
-                    String q = "UPDATE `garage` SET car1 = '"+vehicle.name+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st1 = connectDB.createStatement();
-                    st1.execute(q);
-                    break;
-                }
-                else if(output.getString("car2") == null){
-                    String q = "UPDATE `garage` SET car2 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st2 = connectDB.createStatement();
-                    st2.execute(q);
-                    break;
-                }
-                else if(output.getString("car3") == null){
-                    String q = "UPDATE `garage` SET car3 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st3 = connectDB.createStatement();
-                    st3.execute(q);
-                    break;
-                }
-                else if(output.getString("car4") == null){
-                    String q = "UPDATE `garage` SET car4 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st4 = connectDB.createStatement();
-                    st4.execute(q);
-                    break;
-                } else if(output.getString("car5") == null){
-                    String q = "UPDATE `garage` SET car5 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st5 = connectDB.createStatement();
-                    st5.execute(q);
-                    break;
-                }
-            }
-            }catch (Exception e) {
-            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
+//        LoginDatabaseConnection db = new LoginDatabaseConnection();
+//        System.out.println(UserLoginController.loggedIn.id);
+//        for(Vehicle vehicle : Garage.cars){
+//            try {
+//            Connection connectDB = db.getDatabaseLink();
+//            Statement stm = connectDB.createStatement();
+//            String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+//            ResultSet output = stm.executeQuery(query);
+//
+//            while (output.next()){
+//                if(output.getString("car1") == null){
+//                    String q = "UPDATE `garage` SET car1 = '"+vehicle.name+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+//                    Statement st1 = connectDB.createStatement();
+//                    st1.execute(q);
+//                    break;
+//                }
+//                else if(output.getString("car2") == null){
+//                    String q = "UPDATE `garage` SET car2 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+//                    Statement st2 = connectDB.createStatement();
+//                    st2.execute(q);
+//                    break;
+//                }
+//                else if(output.getString("car3") == null){
+//                    String q = "UPDATE `garage` SET car3 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+//                    Statement st3 = connectDB.createStatement();
+//                    st3.execute(q);
+//                    break;
+//                }
+//                else if(output.getString("car4") == null){
+//                    String q = "UPDATE `garage` SET car4 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+//                    Statement st4 = connectDB.createStatement();
+//                    st4.execute(q);
+//                    break;
+//                } else if(output.getString("car5") == null){
+//                    String q = "UPDATE `garage` SET car5 = '"+vehicle.name+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+//                    Statement st5 = connectDB.createStatement();
+//                    st5.execute(q);
+//                    break;
+//                }
+//            }
+//            }catch (Exception e) {
+//            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+//            }
+//        }
 
         Garage.cars.clear();
         addToGarage.refresh();
@@ -188,6 +187,45 @@ public class AddToGarageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LoginDatabaseConnection db = new LoginDatabaseConnection();
+        Connection cart = db.getDatabaseLink();
+//        try {
+//            Statement stm = cart.createStatement();
+//            String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+//            ResultSet output = stm.executeQuery(query);
+//
+//            while (output.next()) {
+//                if (output.getString("car1") == null) {
+//                    String q = "UPDATE `garage` SET car1 = '" + vehicle.name + "' WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+//                    Statement st1 = connectDB.createStatement();
+//                    st1.execute(q);
+//                    break;
+//                } else if (output.getString("car2") == null) {
+//                    String q = "UPDATE `garage` SET car2 = '" + vehicle.name + "'WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+//                    Statement st2 = connectDB.createStatement();
+//                    st2.execute(q);
+//                    break;
+//                } else if (output.getString("car3") == null) {
+//                    String q = "UPDATE `garage` SET car3 = '" + vehicle.name + "'WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+//                    Statement st3 = connectDB.createStatement();
+//                    st3.execute(q);
+//                    break;
+//                } else if (output.getString("car4") == null) {
+//                    String q = "UPDATE `garage` SET car4 = '" + vehicle.name + "'WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+//                    Statement st4 = connectDB.createStatement();
+//                    st4.execute(q);
+//                    break;
+//                } else if (output.getString("car5") == null) {
+//                    String q = "UPDATE `garage` SET car5 = '" + vehicle.name + "'WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+//                    Statement st5 = connectDB.createStatement();
+//                    st5.execute(q);
+//                    break;
+//                }
+//
+//            }
+//        }catch (SQLException e) {
+//            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+//        }
         loadDate();
     }
 }

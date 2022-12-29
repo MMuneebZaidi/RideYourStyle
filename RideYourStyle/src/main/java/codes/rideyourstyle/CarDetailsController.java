@@ -3,13 +3,11 @@ package codes.rideyourstyle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -23,7 +21,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -53,50 +50,92 @@ public class CarDetailsController implements Initializable {
         }
         else
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
-        stage.setScene(scene);
-        stage.show();
+            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+            Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+            stage.setScene(scene);
+            stage.show();
     }
 
     @FXML
     void AddGarageButton () {
         CarDataSingleton garage= CarDataSingleton.getInstance();
         System.out.println(UserLoginController.loggedIn.id);
-        if(Garage.car1 == null){
-            for(Vehicle vehicle : RideYouStyle.allVehicles){
-                if (garage.getVehicle().equals(vehicle.name)){
-                    Garage.car1=vehicle;
+//        if(Garage.car1 == null){
+//            for(Vehicle vehicle : RideYouStyle.allVehicles){
+//                if (garage.getVehicle().equals(vehicle.name)){
+//                    Garage.car1=vehicle;
+//                }
+//            }
+//        }else if(Garage.car2 == null){
+//            for(Vehicle vehicle : RideYouStyle.allVehicles){
+//                if (garage.getVehicle().equals(vehicle.name)){
+//                    Garage.car2=vehicle;
+//                }
+//            }
+//        }
+//        else if(Garage.car3 == null){
+//            for(Vehicle vehicle : RideYouStyle.allVehicles){
+//                if (garage.getVehicle().equals(vehicle.name)){
+//                    Garage.car3=vehicle;
+//                }
+//            }
+//        }
+//        else if(Garage.car4 == null){
+//            for(Vehicle vehicle : RideYouStyle.allVehicles){
+//                if (garage.getVehicle().equals(vehicle.name)){
+//                    Garage.car4=vehicle;
+//                }
+//            }
+//        }
+//        else if(Garage.car5 == null){
+//            for(Vehicle vehicle : RideYouStyle.allVehicles){
+//                if (garage.getVehicle().equals(vehicle.name)){
+//                    Garage.car5=vehicle;
+//                }
+//            }
+//        }
+        LoginDatabaseConnection db = new LoginDatabaseConnection();
+        try {
+            Connection connectDB = db.getDatabaseLink();
+            Statement stm = connectDB.createStatement();
+            String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+            ResultSet output = stm.executeQuery(query);
+
+            while (output.next()){
+                if(output.getString("car1") == null){
+                    String q = "UPDATE `garage` SET car1 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                    Statement st1 = connectDB.createStatement();
+                    st1.execute(q);
+                    break;
+                }
+                else if(output.getString("car2") == null){
+                    String q = "UPDATE `garage` SET car2 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                    Statement st2 = connectDB.createStatement();
+                    st2.execute(q);
+                    break;
+                }
+                else if(output.getString("car3") == null){
+                    String q = "UPDATE `garage` SET car3 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                    Statement st3 = connectDB.createStatement();
+                    st3.execute(q);
+                    break;
+                }
+                else if(output.getString("car4") == null){
+                    String q = "UPDATE `garage` SET car4 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                    Statement st4 = connectDB.createStatement();
+                    st4.execute(q);
+                    break;
+                } else if(output.getString("car5") == null){
+                    String q = "UPDATE `garage` SET car5 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                    Statement st5 = connectDB.createStatement();
+                    st5.execute(q);
+                    break;
                 }
             }
-        }else if(Garage.car2 == null){
-            for(Vehicle vehicle : RideYouStyle.allVehicles){
-                if (garage.getVehicle().equals(vehicle.name)){
-                    Garage.car2=vehicle;
-                }
-            }
+        }catch (Exception e) {
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }
-        else if(Garage.car3 == null){
-            for(Vehicle vehicle : RideYouStyle.allVehicles){
-                if (garage.getVehicle().equals(vehicle.name)){
-                    Garage.car3=vehicle;
-                }
-            }
-        }
-        else if(Garage.car4 == null){
-            for(Vehicle vehicle : RideYouStyle.allVehicles){
-                if (garage.getVehicle().equals(vehicle.name)){
-                    Garage.car4=vehicle;
-                }
-            }
-        }
-        else if(Garage.car5 == null){
-            for(Vehicle vehicle : RideYouStyle.allVehicles){
-                if (garage.getVehicle().equals(vehicle.name)){
-                    Garage.car5=vehicle;
-                }
-            }
-        }
+
     }
     @FXML
     private Label vehicleName;

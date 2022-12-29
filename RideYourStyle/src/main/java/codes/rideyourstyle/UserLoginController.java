@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -35,7 +34,7 @@ public class UserLoginController implements Initializable {
     @FXML
     private CheckBox pass_toggle;
     ObservableList<Info> userinfo = FXCollections.observableArrayList();
-    static Info data;
+    public static Info data;
     public static Info loggedIn=null;
     @FXML
     void ForgotPassword(ActionEvent ev) throws IOException {
@@ -91,8 +90,9 @@ public class UserLoginController implements Initializable {
     private boolean checkPass(ObservableList<Info> data){
         boolean flag = false;
         for(Info info : data){
-            if(Objects.equals(Password.getText(), info.Password)){
+            if(Objects.equals(Password.getText(), info.Password) && Email.getText().equals(info.Email)){
                 loggedIn=info;
+                UserLoginController.data=info;
                 flag = true;
             }
         }
@@ -121,7 +121,6 @@ public class UserLoginController implements Initializable {
         if(validateEmail()){
             if(checkEmail(userinfo)){
                 if(checkPass(userinfo)){
-
                     FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
                     Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                     Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
