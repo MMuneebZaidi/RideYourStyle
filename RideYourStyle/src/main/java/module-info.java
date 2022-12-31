@@ -4,7 +4,7 @@ module codes.rideyourstyle {
     requires java.sql;
     requires javafx.graphics;
     requires mysql.connector.j;
-
+    requires com.jfoenix;
     opens codes.rideyourstyle to javafx.fxml;
     exports codes.rideyourstyle;
 }

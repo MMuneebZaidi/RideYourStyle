@@ -36,19 +36,11 @@ public class AddToGarageController implements Initializable {
     Connection cart = db.getDatabaseLink();
     @FXML
     void backButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader;
-        if(Objects.equals(FindCarController.FXMLSelector, "Finding")){
-            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
-        }
-        else if(Objects.equals(MainController.FXMLSelector, "Main")){
-            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        }
-        else
-            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-            Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
-            stage.setScene(scene);
-            stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
     }
     private void loadDate() {
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));

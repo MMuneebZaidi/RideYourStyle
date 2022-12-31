@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -92,7 +94,21 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Pane prefHeight="176.0" prefWidth="239.0" HBox.hgrow="ALWAYS" />
+      <Pane prefHeight="176.0" prefWidth="239.0" HBox.hgrow="ALWAYS">
+         <children>
+            <JFXButton fx:id="ProfileB" layoutX="87.0" layoutY="42.0" onAction="#Profile" prefHeight="108.0" prefWidth="136.0" text="Profile">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children></Pane>
       <VBox prefHeight="176.0" prefWidth="121.0">
          <children>
             <Pane prefHeight="50.0" prefWidth="139.0" VBox.vgrow="ALWAYS" />
@@ -105,23 +121,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="LogoutButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#LogoutButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 5;" text="Logout" textAlignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../logoutButton.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <stylesheets>
-                        <URL value="@../../css-files/Style.css" />
-                        <URL value="@../../css-files/CarGrid.css" />
-                     </stylesheets>
-                     <styleClass>
-                        <String fx:value="transparent" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </Button>
                   <Button alignment="CENTER" contentDisplay="TOP" layoutX="26.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchButton" prefHeight="60.0" prefWidth="83.0" style="-fx-background-radius: 5;" text="Admin" textAlignment="CENTER" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -171,34 +170,80 @@
       </VBox>
       <Pane prefHeight="176.0" prefWidth="67.0" HBox.hgrow="ALWAYS" />
    </HBox>
-   <AnchorPane layoutX="228.0" layoutY="464.0" prefHeight="241.0" prefWidth="355.0">
-      <children>
-         <HBox layoutY="49.0" prefHeight="144.0" prefWidth="417.0">
-            <children>
-               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AllCarsButton" prefHeight="50.0" prefWidth="408.0" text="ALL CARS" HBox.hgrow="ALWAYS">
-                  <font>
-                     <Font name="Forte" size="24.0" />
-                  </font>
-                  <styleClass>
-                     <String fx:value="shadow" />
-                     <String fx:value="transparent" />
-                     <String fx:value="button" />
-                  </styleClass>
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style.css" />
-                  </stylesheets>
-               </Button>
-            </children>
-         </HBox>
-      </children></AnchorPane>
-   <AnchorPane layoutX="215.0" layoutY="179.0" prefHeight="54.0" prefWidth="1066.0">
+   <AnchorPane layoutX="213.0" layoutY="176.0" prefHeight="481.0" prefWidth="1056.0">
       <Label alignment="CENTER" layoutX="18.0" layoutY="-2.0" prefHeight="48.0" prefWidth="281.0" text="Find Car By Company" textAlignment="CENTER" textFill="#404040" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Berlin Sans FB" size="26.0" />
          </font>
       </Label>
       <TextField fx:id="searchBar" layoutX="497.0" layoutY="11.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="263.0" promptText="Enter Car Name" />
+      <JFXDrawer fx:id="profiledraw" defaultDrawerSize="200.0" direction="RIGHT" layoutX="672.0" layoutY="-11.0" prefHeight="550.0" prefWidth="197.0" />
+      <VBox fx:id="profv" layoutX="442.0" layoutY="47.0" prefHeight="471.0" prefWidth="181.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="My Profile">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="transparent" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../../css-files/CarGrid.css" />
+                  <URL value="@../../css-files/Style.css" />
+               </stylesheets>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#MyCartButton" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="My Garage">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="transparent" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../../css-files/CarGrid.css" />
+                  <URL value="@../../css-files/Style.css" />
+               </stylesheets>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="Purchase History">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="transparent" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../../css-files/CarGrid.css" />
+                  <URL value="@../../css-files/Style.css" />
+               </stylesheets>
+            </Button>
+            <Button fx:id="LogoutButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#LogoutButton" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="Logout" textAlignment="CENTER">
+               <stylesheets>
+                  <URL value="@../../css-files/Style.css" />
+                  <URL value="@../../css-files/CarGrid.css" />
+               </stylesheets>
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="21.0" layoutY="321.0" prefHeight="200.0" prefWidth="430.0">
+         <children>
+            <HBox layoutY="49.0" prefHeight="144.0" prefWidth="417.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AllCarsButton" prefHeight="50.0" prefWidth="408.0" text="ALL CARS" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="Forte" size="24.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="transparent" />
+                        <String fx:value="button" />
+                     </styleClass>
+                     <stylesheets>
+                        <URL value="@../../css-files/CarGrid.css" />
+                        <URL value="@../../css-files/Style.css" />
+                     </stylesheets>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
    </AnchorPane>
    <HBox alignment="CENTER_LEFT" layoutX="228.0" layoutY="241.0" prefHeight="266.0" prefWidth="452.0">
       <children>
@@ -333,13 +378,13 @@
                      <URL value="@../../css-files/Style2.css" />
                   </stylesheets>
                </Button>
+               <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" prefHeight="251.0" prefWidth="263.0" visible="false">
+                  <content>
+                     <ListView fx:id="searchlistView" prefHeight="477.0" prefWidth="350.0" visible="false" />
+                  </content>
+               </ScrollPane>
             </children>
          </GridPane>
       </children>
    </HBox>
-   <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" layoutX="713.0" layoutY="217.0" prefHeight="251.0" prefWidth="263.0" visible="false">
-      <content>
-         <ListView fx:id="searchlistView" prefHeight="477.0" prefWidth="350.0" visible="false" />
-      </content>
-   </ScrollPane>
 </AnchorPane>
