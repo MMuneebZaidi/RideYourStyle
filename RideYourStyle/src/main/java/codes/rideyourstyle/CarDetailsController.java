@@ -57,7 +57,6 @@ public class CarDetailsController implements Initializable {
     @FXML
     void AddGarageButton () {
         CarDataSingleton garage= CarDataSingleton.getInstance();
-        System.out.println(UserLoginController.loggedIn.id);
         LoginDatabaseConnection db = new LoginDatabaseConnection();
         try {
             Connection connectDB = db.getDatabaseLink();
