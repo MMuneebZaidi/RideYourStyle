@@ -21,6 +21,7 @@ public class RideYouStyle extends Application {
         stage.show();
     }
     public static void main(String[] args) {
+        System.out.println("test");
         DatabaseConnection db = new DatabaseConnection();
         allVehicles = db.retrieveDatabase();
         launch();
