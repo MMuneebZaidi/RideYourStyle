@@ -180,7 +180,7 @@
       <JFXDrawer fx:id="profiledraw" defaultDrawerSize="200.0" direction="RIGHT" layoutX="672.0" layoutY="-11.0" prefHeight="550.0" prefWidth="197.0" />
       <VBox fx:id="profv" layoutX="442.0" layoutY="47.0" prefHeight="471.0" prefWidth="181.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="My Profile">
+            <Button mnemonicParsing="false" onAction="#profile" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="My Profile">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="transparent" />
