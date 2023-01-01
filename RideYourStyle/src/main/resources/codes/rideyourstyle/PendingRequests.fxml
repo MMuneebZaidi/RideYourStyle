@@ -72,7 +72,7 @@
                         </VBox>
                         <HBox prefHeight="43.0" prefWidth="67.0">
                            <children>
-                              <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" prefHeight="43.0" prefWidth="65.0" rotate="180.0" stylesheets="@../../css-files/backbutton.css" text="➜">
+                              <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="65.0" rotate="180.0" stylesheets="@../../css-files/backbutton.css" text="➜">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -105,10 +105,9 @@
                            <children>
                               <TableView fx:id="pendingRequests" nodeOrientation="LEFT_TO_RIGHT" prefHeight="413.0" prefWidth="812.0">
                                  <columns>
-                                    <TableColumn fx:id="customerName" editable="false" minWidth="73.33337342739105" prefWidth="125.99999177455902" resizable="false" sortable="false" text="Customer Name" />
-                                    <TableColumn fx:id="requests" editable="false" maxWidth="570.6666870117188" prefWidth="441.33325958251953" resizable="false" sortable="false" text="Requests" />
-                                    <TableColumn fx:id="Action" editable="false" maxWidth="474.00006103515625" minWidth="0.0" prefWidth="108.6666259765625" resizable="false" sortable="false" text="Action" />
-                                    <TableColumn fx:id="ManagedBy" maxWidth="152.0" minWidth="135.0" prefWidth="135.0" text="Managed By" />
+                                    <TableColumn fx:id="customerName" editable="false" minWidth="73.33337342739105" prefWidth="141.99999940395355" resizable="false" sortable="false" text="Customer Name" />
+                                    <TableColumn fx:id="requests" editable="false" maxWidth="570.6666870117188" prefWidth="510.00006103515625" resizable="false" sortable="false" text="Requests" />
+                                    <TableColumn fx:id="Action" editable="false" maxWidth="212.00003051757812" minWidth="0.0" prefWidth="159.3333740234375" resizable="false" sortable="false" text="Action" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
