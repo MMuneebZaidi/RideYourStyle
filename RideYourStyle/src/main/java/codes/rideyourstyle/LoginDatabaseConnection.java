@@ -97,4 +97,16 @@ public class LoginDatabaseConnection {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    public void insertSellPurchaseData(Pendings data) {
+        try {
+            String insert = "INSERT INTO `sell/purchase`(`user_id`, `Listed`, `Status`, `Managed By`)";
+            String values = "VALUES ('"+data.getUser_id()+"','"+data.getRequests()+"','"+data.getStatus()+"','"+data.getManagedBy()+"')";
+            String query = insert + values;
+            Connection connectDB = getDatabaseLink();
+            Statement stm = connectDB.createStatement();
+            stm.execute(query);
+        } catch (Exception e) {
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 }

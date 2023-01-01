@@ -20,8 +20,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -95,7 +93,7 @@ public class MainController implements Initializable {
      }
     }
     @FXML
-    void Profile(ActionEvent event) {
+    void Profile() {
         if(profiledraw.isOpened())
             profiledraw.close();
         if(profiledraw.isClosed())
@@ -177,6 +175,7 @@ public class MainController implements Initializable {
     }
     @FXML
     void LogoutButton(ActionEvent event) throws IOException {
+        UserLoginController.loggedIn=null;
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
