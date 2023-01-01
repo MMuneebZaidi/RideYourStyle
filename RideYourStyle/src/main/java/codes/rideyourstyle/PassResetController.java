@@ -62,11 +62,19 @@ public class PassResetController implements Initializable {
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
-        stage.setScene(scene);
-        stage.show();
+        if(data.getPass_name().equals("Reset Password")){
+            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+            Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+            stage.setScene(scene);
+            stage.show();
+        }else {
+            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+            Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     private void setRed(TextField tf,PasswordField pf) {
@@ -211,7 +219,7 @@ public class PassResetController implements Initializable {
     }
     @FXML
     void resetButton(ActionEvent ev) throws SQLException, IOException {
-        if(data.getPass_name().equals("Change Password")) {
+        if(data.getPass_name().equals("Change Password") || data.getPass_name().equals("Reset Password")) {
             removeRed(pass_show, Password);
             removeRed(repass_show, repassField);
             if (validatePassword()) {
@@ -224,11 +232,20 @@ public class PassResetController implements Initializable {
                     Connection connectDB = LDC.getDatabaseLink();
                     Statement stm = connectDB.createStatement();
                     stm.execute(query);
-                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-                    Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
-                    stage.setScene(scene);
-                    stage.show();
+                    if(data.getPass_name().equals("Change Password")) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    else if(data.getPass_name().equals("Reset Password")){
+                        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                        stage.setScene(scene);
+                        stage.show();
+                    }
                 } else {
                     repassError.setText("Password didn't match!");
                     setRed(pass_show, Password);
@@ -292,7 +309,7 @@ public class PassResetController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(data.getPass_name().equals("Change Password")) {
+        if(data.getPass_name().equals("Change Password") || data.getPass_name().equals("Reset Password")) {
             name.setText(data.getPass_name());
         }
         if(data.getPass_name().equals("Change Username")){

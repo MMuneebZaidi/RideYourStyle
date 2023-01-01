@@ -45,7 +45,7 @@ public class ForgetPassController implements Initializable {
     void resetButton(ActionEvent ev) throws IOException {
         if(validatePhone()){
             if(UserLoginController.data.PhoneNumber.equals(Phone.getText())){
-                data.setPass_name("Change Password");
+                data.setPass_name("Reset Password");
                 FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("PasswordReset.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
                 Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
