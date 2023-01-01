@@ -57,7 +57,7 @@ public class AddToGarageController implements Initializable {
                     setGraphic(null);
                     setText(null);
                 } else {
-                    ImageView img = new ImageView(new Image("delete.png",15,15,true,false));
+                    ImageView img = new ImageView(new Image("E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\delete.png",15,15,true,false));
                     Button del = new Button("Delete",img);
 
                     del.setText(null);

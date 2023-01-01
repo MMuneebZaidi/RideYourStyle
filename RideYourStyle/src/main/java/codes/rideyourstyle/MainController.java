@@ -102,6 +102,14 @@ public class MainController implements Initializable {
             profiledraw.open();
     }
     @FXML
+    void profile(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
     void MyCartButton (ActionEvent event) throws IOException {
         ObservableList<Vehicle> test = FXCollections.observableArrayList();
         if(Garage.car1!=null){
