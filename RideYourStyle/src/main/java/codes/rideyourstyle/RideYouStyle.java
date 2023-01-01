@@ -11,13 +11,16 @@ public class RideYouStyle extends Application {
     public static ObservableList<Vehicle> allVehicles;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Start.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        stage.getIcons().add(new Image("RideYourStyleLOGO.png"));
-        stage.setResizable(false);
-        stage.setTitle("Ride Your Style");
-        stage.setScene(scene);
-        stage.show();
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Start.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+            stage.getIcons().add(new Image("RideYourStyleLOGO.png"));
+            stage.setTitle("Ride Your Style");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception ignored){
+        }
     }
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();

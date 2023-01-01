@@ -200,7 +200,7 @@
                   <URL value="@../../css-files/Style.css" />
                </stylesheets>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="Purchase History">
+            <Button mnemonicParsing="false" onAction="#PurchaseHistoryButton" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="Purchase History">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="transparent" />

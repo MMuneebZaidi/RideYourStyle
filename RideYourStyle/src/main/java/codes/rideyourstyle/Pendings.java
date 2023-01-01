@@ -3,6 +3,7 @@ package codes.rideyourstyle;
 import javafx.collections.ObservableList;
 
 public class Pendings {
+    private int id;
     private int user_id;
     private String customerName;
     private StringBuilder requests;
@@ -22,7 +23,27 @@ public class Pendings {
         this.status = status;
         this.ManagedBy = managedBy;
     }
+    public Pendings(int id, int user_id, StringBuilder requests, String status, String managedBy) {
+        this.id = id;
+        this.user_id = user_id;
+        LoginDatabaseConnection databaseConnection = new LoginDatabaseConnection();
+        ObservableList<Info> users = databaseConnection.retrieveDatabase("user");
+        for(Info user : users){
+            if(user.id==user_id){
+                this.customerName=user.Name;
+            }
+        }
+        this.requests = requests;
+        this.status = status;
+        this.ManagedBy = managedBy;
+    }
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public int getUser_id() {
         return user_id;
     }

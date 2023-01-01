@@ -38,9 +38,6 @@ public class MainController implements Initializable {
     private VBox profv;
 
     @FXML
-    private JFXButton LoginB;
-
-    @FXML
     private JFXButton ProfileB;
     @FXML
     private TextField searchBar;
@@ -94,9 +91,9 @@ public class MainController implements Initializable {
     }
     @FXML
     void Profile() {
-        if(profiledraw.isOpened())
+        if(profiledraw.isShown())
             profiledraw.close();
-        if(profiledraw.isClosed())
+        if(profiledraw.isHidden())
             profiledraw.open();
     }
     @FXML
@@ -164,6 +161,14 @@ public class MainController implements Initializable {
 
         return listOfStrings.stream().filter(input -> searchWordsArray.stream().allMatch(word ->
                 input.toLowerCase().contains(word.toLowerCase()))).collect(Collectors.toList());
+    }
+    @FXML
+    void PurchaseHistoryButton(ActionEvent ev) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("PurchaseHistory.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     void findButton(ActionEvent ev) throws IOException {
