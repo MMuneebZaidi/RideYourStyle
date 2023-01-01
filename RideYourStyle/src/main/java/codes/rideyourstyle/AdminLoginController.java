@@ -32,7 +32,7 @@ public class AdminLoginController implements Initializable {
     @FXML
     private CheckBox pass_toggle;
     ObservableList<Info> userinfo = FXCollections.observableArrayList();
-
+    public static Info loggedInAdmin;
     private void setRed(TextField tf,PasswordField pf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         ObservableList<String> styleClass2 = pf.getStyleClass();
@@ -69,7 +69,8 @@ public class AdminLoginController implements Initializable {
     private boolean checkPass(ObservableList<Info> data){
         boolean flag = false;
         for(Info info : data){
-            if(Objects.equals(Password.getText(), info.Password)){
+            if(Objects.equals(Password.getText(), info.Password) && Email.getText().equals(info.Email)){
+                loggedInAdmin=info;
                 flag = true;
             }
         }

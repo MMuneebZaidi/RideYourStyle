@@ -73,4 +73,40 @@ public class LoginDatabaseConnection {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    public void UpdateGarageData(Info data) {
+        try {
+            String update = "UPDATE `garage` SET `car1` = NULL, `car2` = NULL, `car3` = NULL, `car4` = NULL, `car5` = NULL ";
+            String id = "WHERE user_id = '"+data.id+"'";
+            String query = update+id;
+            Connection connectDB = getDatabaseLink();
+            Statement stm = connectDB.createStatement();
+            stm.execute(query);
+        } catch (Exception e) {
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    public void insertPendingData(Info data,StringBuilder cars) {
+        try {
+            String insert = "INSERT INTO `pendings`(`user_id`, `Listed`, `Status`)";
+            String values = "VALUES ('"+data.id+"','"+cars+"','"+"Request Pending"+"')";
+            String query = insert + values;
+            Connection connectDB = getDatabaseLink();
+            Statement stm = connectDB.createStatement();
+            stm.execute(query);
+        } catch (Exception e) {
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    public void insertSellPurchaseData(Pendings data) {
+        try {
+            String insert = "INSERT INTO `sell/purchase`(`user_id`, `Listed`, `Status`, `Managed By`)";
+            String values = "VALUES ('"+data.getUser_id()+"','"+data.getRequests()+"','"+data.getStatus()+"','"+data.getManagedBy()+"')";
+            String query = insert + values;
+            Connection connectDB = getDatabaseLink();
+            Statement stm = connectDB.createStatement();
+            stm.execute(query);
+        } catch (Exception e) {
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 }

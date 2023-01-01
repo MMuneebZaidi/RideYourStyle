@@ -10,7 +10,6 @@ public abstract class Info {
     int Age;
     String CNIC;
     String City;
-    String[] gcar = new String[5];
     public Info(int id, String name, String username, String email, String password, String phoneNumber, int age, String CNIC, String city) {
         this.id = id;
         Name = name;

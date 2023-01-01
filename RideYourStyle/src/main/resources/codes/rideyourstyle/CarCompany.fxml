@@ -80,26 +80,6 @@
                               <URL value="@../../css-files/StartButton.css" />
                            </stylesheets>
                         </Button>
-                        <Button fx:id="mycart" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="44.0" layoutY="550.0" mnemonicParsing="false" onAction="#MyCartButton" prefHeight="54.0" prefWidth="128.0" text="My Cart">
-                           <graphic>
-                              <ImageView fitHeight="44.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../car-in-garage.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Berlin Sans FB" size="13.0" />
-                           </font>
-                           <stylesheets>
-                              <URL value="@../../css-files/CarGrid.css" />
-                              <URL value="@../../css-files/Style.css" />
-                           </stylesheets>
-                           <styleClass>
-                              <String fx:value="transparent" />
-                              <String fx:value="button" />
-                           </styleClass>
-                        </Button>
                      </children>
                   </AnchorPane>
                </children>

@@ -46,36 +46,7 @@ public class CarCompanyController implements Initializable {
     @FXML
     private Button mycart;
     ArrayList<String> carName = new ArrayList<>();
-    @FXML
-    void MyCartButton (ActionEvent event) throws IOException {
-        ObservableList<Vehicle> test = FXCollections.observableArrayList();
-        if(Garage.car1!=null){
-            test.add(Garage.car1);
-        }
-        if(Garage.car2!=null){
-            test.add(Garage.car2);
-        }
-        if(Garage.car3!=null){
-            test.add(Garage.car3);
-        }
-        if(Garage.car4!=null){
-            test.add(Garage.car4);
-        }
-        if(Garage.car5!=null){
-            test.add(Garage.car5);
-        }
-        Garage.setCars(test);
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AddToGarage.fxml"));
-        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
-        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-        Scene scene;
-        if (stage.isMaximized()) {
-            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
-        } else {
-            scene = new Scene(fxmlLoader.load());
-        }
-        stage.setScene(scene);
-    }
+
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
@@ -107,9 +78,6 @@ public class CarCompanyController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(UserLoginController.loggedIn==null){
-            mycart.setDisable(true);
-        }
         vehicles = RideYouStyle.allVehicles;
 
         companyNAME.setText(MainController.Company);

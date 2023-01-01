@@ -1,5 +1,7 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,10 +17,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -30,7 +31,14 @@ public class MainController implements Initializable {
     @FXML
     private ScrollPane searchscroll;
     public static String FXMLSelector;
+    @FXML
+    private JFXDrawer profiledraw;
 
+    @FXML
+    private VBox profv;
+
+    @FXML
+    private JFXButton ProfileB;
     @FXML
     private TextField searchBar;
 
@@ -51,6 +59,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        profiledraw.setSidePane(profv);
         allVehicles = RideYouStyle.allVehicles;
         for (Vehicle vehicle: allVehicles){
             carName.add(vehicle.name);
@@ -77,8 +86,55 @@ public class MainController implements Initializable {
      if(UserLoginController.loggedIn==null){
          userloginbutton.setVisible(true);
          LogoutButton.setVisible(false);
+         ProfileB.setDisable(true);
      }
     }
+    @FXML
+    void Profile() {
+        if(profiledraw.isShown())
+            profiledraw.close();
+        if(profiledraw.isHidden())
+            profiledraw.open();
+    }
+    @FXML
+    void profile(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void MyCartButton (ActionEvent event) throws IOException {
+        ObservableList<Vehicle> test = FXCollections.observableArrayList();
+        if(Garage.car1!=null){
+            test.add(Garage.car1);
+        }
+        if(Garage.car2!=null){
+            test.add(Garage.car2);
+        }
+        if(Garage.car3!=null){
+            test.add(Garage.car3);
+        }
+        if(Garage.car4!=null){
+            test.add(Garage.car4);
+        }
+        if(Garage.car5!=null){
+            test.add(Garage.car5);
+        }
+        Garage.setCars(test);
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AddToGarage.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
+
     @FXML
     void search() {
 
@@ -107,6 +163,14 @@ public class MainController implements Initializable {
                 input.toLowerCase().contains(word.toLowerCase()))).collect(Collectors.toList());
     }
     @FXML
+    void PurchaseHistoryButton(ActionEvent ev) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("PurchaseHistory.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
     void findButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
@@ -124,6 +188,7 @@ public class MainController implements Initializable {
     }
     @FXML
     void LogoutButton(ActionEvent event) throws IOException {
+        UserLoginController.loggedIn=null;
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());

@@ -1,5 +1,8 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,12 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -25,17 +24,17 @@ import static codes.rideyourstyle.UserSignUpController.patternMatches;
 
 public class UserLoginController implements Initializable {
     @FXML
-    private TextField Email;
+    private JFXTextField Email;
     @FXML
-    private PasswordField Password;
+    private JFXPasswordField Password;
     @FXML
     private Label validation;
     @FXML
-    private TextField pass_text;
+    private JFXTextField pass_text;
     @FXML
-    private CheckBox pass_toggle;
+    private JFXCheckBox pass_toggle;
     ObservableList<Info> userinfo = FXCollections.observableArrayList();
-    static Info data;
+    public static Info data;
     public static Info loggedIn=null;
     @FXML
     void ForgotPassword(ActionEvent ev) throws IOException {
@@ -55,7 +54,7 @@ public class UserLoginController implements Initializable {
             }
         }
     }
-    private void setRed(TextField tf,PasswordField pf) {
+    private void setRed(JFXTextField tf,JFXPasswordField pf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         ObservableList<String> styleClass2 = pf.getStyleClass();
         if(!styleClass.contains("error")) {
@@ -65,13 +64,13 @@ public class UserLoginController implements Initializable {
             styleClass2.add("error");
         }
     }
-    private void setRed(TextField tf) {
+    private void setRed(JFXTextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         if(!styleClass.contains("error")) {
             styleClass.add("error");
         }
     }
-    private void removeRed(TextField tf, TextField tf1, PasswordField pf) {
+    private void removeRed(JFXTextField tf, JFXTextField tf1, JFXPasswordField pf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         styleClass.removeAll(Collections.singleton("error"));
         ObservableList<String> styleClass1 = tf1.getStyleClass();
@@ -91,8 +90,9 @@ public class UserLoginController implements Initializable {
     private boolean checkPass(ObservableList<Info> data){
         boolean flag = false;
         for(Info info : data){
-            if(Objects.equals(Password.getText(), info.Password)){
+            if(Objects.equals(Password.getText(), info.Password) && Email.getText().equals(info.Email)){
                 loggedIn=info;
+                UserLoginController.data=info;
                 flag = true;
             }
         }
@@ -121,7 +121,6 @@ public class UserLoginController implements Initializable {
         if(validateEmail()){
             if(checkEmail(userinfo)){
                 if(checkPass(userinfo)){
-
                     FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
                     Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                     Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
