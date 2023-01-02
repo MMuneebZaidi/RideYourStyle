@@ -13,6 +13,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Paint;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -104,11 +105,15 @@ public class UserLoginController implements Initializable {
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         if(Email.getText().isEmpty()){
             validation.setText("Field cannot be left empty!");
+            Email.setFocusColor(Paint.valueOf("RED"));
+            Password.setFocusColor(Paint.valueOf("RED"));
+            pass_text.setFocusColor(Paint.valueOf("RED"));
             setRed(Email,Password);
             setRed(pass_text);
             flag = false;
         } else if (!(patternMatches(Email.getText(), regexPattern))) {
             validation.setText("Enter correct email!");
+            Email.setFocusColor(Paint.valueOf("RED"));
             setRed(Email,Password);
             setRed(pass_text);
             flag = false;
@@ -133,6 +138,8 @@ public class UserLoginController implements Initializable {
                     stage.setScene(scene);
                 }else{
                     validation.setText("Incorrect Password!");
+                    Email.setFocusColor(Paint.valueOf("#e9e9e9"));
+                    Password.setFocusColor(Paint.valueOf("RED"));
                     setRed(pass_text,Password);
                     Password.setText(null);
                 }

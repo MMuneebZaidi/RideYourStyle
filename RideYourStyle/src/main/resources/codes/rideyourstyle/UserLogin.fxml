@@ -28,21 +28,22 @@
          <left>
             <VBox alignment="TOP_CENTER" opacity="0.97" prefHeight="720.0" prefWidth="147.0" style="-fx-background-color: #161a1f;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="118.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                  <Pane maxWidth="111.0" minHeight="118.0" prefHeight="118.0" prefWidth="111.0" style="-fx-background-radius: 10;" styleClass="logo" stylesheets="@../../css-files/background.css">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
-                     <image>
-                        <Image url="@../../RideYourStyleLOGO.png" />
-                     </image>
                      <effect>
-                        <DropShadow />
+                        <DropShadow height="48.26" radius="23.1425" spread="0.36" width="46.31">
+                           <color>
+                              <Color red="0.48627451062202454" green="0.1882352977991104" blue="0.5254902243614197" />
+                           </color>
+                        </DropShadow>
                      </effect>
-                  </ImageView>
+                  </Pane>
                   <Pane prefHeight="188.0" prefWidth="147.0" VBox.vgrow="ALWAYS" />
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <JFXButton focusTraversable="false" onAction="#AdminLoginButton" prefHeight="39.0" prefWidth="111.0" text="Admin Login" textFill="#e9e9e9">
+                        <JFXButton focusTraversable="false" onAction="#AdminLoginButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Admin Login" textFill="#e9e9e9">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -58,7 +59,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton focusTraversable="false" layoutX="28.0" layoutY="91.0" onAction="#GuestButton" prefHeight="39.0" prefWidth="111.0" text="Guest User" textFill="#e9e9e9">
+                        <JFXButton focusTraversable="false" layoutX="28.0" layoutY="91.0" onAction="#GuestButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Guest User" textFill="#e9e9e9">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -73,9 +74,9 @@
                                  </effect>
                               </ImageView>
                            </graphic>
-                           <padding>
-                              <Insets top="5.0" />
-                           </padding>
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
                         </JFXButton>
                      </children>
                   </VBox>
@@ -85,7 +86,7 @@
          <center>
             <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="background">
                <children>
-                  <Pane layoutX="78.0" layoutY="65.0" opacity="0.95" prefHeight="589.0" prefWidth="778.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" AnchorPane.bottomAnchor="65.66666666666663" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="78.66666666666663" AnchorPane.topAnchor="65.0" />
+                  <Pane layoutX="78.0" layoutY="65.0" opacity="0.9" prefHeight="589.0" prefWidth="778.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" AnchorPane.bottomAnchor="65.66666666666663" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="78.66666666666663" AnchorPane.topAnchor="65.0" />
                   <HBox layoutX="78.0" layoutY="65.0" prefHeight="587.0" prefWidth="778.0" AnchorPane.bottomAnchor="67.66666666666663" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="78.66666666666663" AnchorPane.topAnchor="65.0">
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
@@ -162,7 +163,7 @@
                                           </GridPane>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="294.0">
                                              <children>
-                                                <JFXButton buttonType="RAISED" prefHeight="25.0" prefWidth="109.0" ripplerFill="#b1acac" text="Forget Password?" textAlignment="CENTER" textFill="#e9e9e9" underline="true">
+                                                <JFXButton buttonType="RAISED" onAction="#ForgotPassword" prefHeight="25.0" prefWidth="109.0" ripplerFill="#b1acac" text="Forget Password?" textAlignment="CENTER" textFill="#e9e9e9" underline="true">
                                                    <HBox.margin>
                                                       <Insets right="28.0" />
                                                    </HBox.margin>
@@ -188,6 +189,9 @@
                                              <children>
                                                 <JFXButton buttonType="RAISED" onAction="#LoginButton" prefHeight="35.0" prefWidth="119.0" style="-fx-background-color: #727272;" text="Login" textFill="#e9e9e9" GridPane.columnIndex="1" />
                                              </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
                                           </GridPane>
                                           <GridPane prefHeight="42.0" prefWidth="294.0">
                                             <columnConstraints>

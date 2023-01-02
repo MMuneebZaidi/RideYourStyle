@@ -1,6 +1,14 @@
 .background{
-    -fx-background-image: url(bg.gif);
+    -fx-background-image: url(background.gif);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100% 100%;
+}
+
+.logo{
+    -fx-background-image: url(RideYourStyle.gif);
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+    -fx-background-radius: 10;
 }
