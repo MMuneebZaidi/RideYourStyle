@@ -173,7 +173,7 @@
                                                 <Insets left="20.0" />
                                              </padding>
                                           </Button>
-                                          <Button alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="10.0" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="368.0" text="To be added">
+                                          <Button alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="10.0" layoutY="150.0" mnemonicParsing="false" onAction="#ReportButton" prefHeight="70.0" prefWidth="368.0" text="Report">
                                              <graphic>
                                                 <ImageView fitHeight="64.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>

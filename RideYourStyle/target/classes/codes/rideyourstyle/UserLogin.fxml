@@ -33,9 +33,9 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                      <effect>
-                        <DropShadow height="50.2" radius="23.6275" spread="0.36" width="46.31">
+                        <DropShadow height="48.26" radius="23.1425" spread="0.36" width="46.31">
                            <color>
-                              <Color red="0.48708575963974" green="0.19005848467350006" blue="0.5263158082962036" />
+                              <Color red="0.48627451062202454" green="0.1882352977991104" blue="0.5254902243614197" />
                            </color>
                         </DropShadow>
                      </effect>
@@ -43,7 +43,7 @@
                   <Pane prefHeight="188.0" prefWidth="147.0" VBox.vgrow="ALWAYS" />
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <JFXButton focusTraversable="false" onAction="#AdminLoginButton" prefHeight="39.0" prefWidth="111.0" text="Admin Login" textFill="#e9e9e9">
+                        <JFXButton focusTraversable="false" onAction="#AdminLoginButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Admin Login" textFill="#e9e9e9">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -59,7 +59,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton focusTraversable="false" layoutX="28.0" layoutY="91.0" onAction="#GuestButton" prefHeight="39.0" prefWidth="111.0" text="Guest User" textFill="#e9e9e9">
+                        <JFXButton focusTraversable="false" layoutX="28.0" layoutY="91.0" onAction="#GuestButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Guest User" textFill="#e9e9e9">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -74,9 +74,9 @@
                                  </effect>
                               </ImageView>
                            </graphic>
-                           <padding>
-                              <Insets top="5.0" />
-                           </padding>
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
                         </JFXButton>
                      </children>
                   </VBox>

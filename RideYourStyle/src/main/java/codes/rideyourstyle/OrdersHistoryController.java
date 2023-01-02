@@ -15,7 +15,8 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class OrdersHistoryController implements Initializable {
+public class
+OrdersHistoryController implements Initializable {
     @FXML
     private TableView<Pendings> ordersHistory;
     @FXML
