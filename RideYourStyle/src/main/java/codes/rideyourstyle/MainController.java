@@ -1,5 +1,6 @@
 package codes.rideyourstyle;
-
+import java.time.LocalDate;
+import java.time.Month;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import javafx.collections.FXCollections;
@@ -59,6 +60,9 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LocalDate currentdate = LocalDate.now();
+        Month currentMonth = currentdate.getMonth();
+        System.out.println("Current month: "+currentMonth);
         profiledraw.setSidePane(profv);
         allVehicles = RideYouStyle.allVehicles;
         for (Vehicle vehicle: allVehicles){

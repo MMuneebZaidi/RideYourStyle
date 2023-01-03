@@ -6,6 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -28,6 +31,10 @@ public class ReportController  implements Initializable {
     private Label ExpensesG;
     @FXML
     private Label cmonth;
+
+    @FXML
+    private LineChart<?, ?> graph;
+
     @FXML
     private Label Profitg;
     @FXML
@@ -38,7 +45,7 @@ public class ReportController  implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    int profit=0;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Calendar mCalendar = Calendar.getInstance();
@@ -73,12 +80,29 @@ public class ReportController  implements Initializable {
             RevenueG.setText("Rs. "+String.valueOf(Revenue)+"/-");
             int Expenses = (Revenue/100)*95;
             ExpensesG.setText("Rs. "+String.valueOf(Expenses)+"/-");
-            int Profit=Revenue-Expenses;
-            Profitg.setText("Rs. "+String.valueOf(Profit)+"/-");
+            profit=Revenue-Expenses;
+            Profitg.setText("Rs. "+String.valueOf(profit)+"/-");
             cmonth.setText(month);
         }
         catch (SQLException e){
             Logger.getLogger(PendingRequestsController.class.getName()).log(Level.SEVERE, null, e);
         }
+        XYChart.Series dataSeries1 = new XYChart.Series();
+
+
+        dataSeries1.getData().add(new XYChart.Data("Jan", 4192300));
+        dataSeries1.getData().add(new XYChart.Data("Feb", 7430000));
+        dataSeries1.getData().add(new XYChart.Data("Mar", 6271300));
+        dataSeries1.getData().add(new XYChart.Data("Apr", 4567700));
+        dataSeries1.getData().add(new XYChart.Data("May",7542000 ));
+        dataSeries1.getData().add(new XYChart.Data("Jun", 7880000));
+        dataSeries1.getData().add(new XYChart.Data("Jul", 5035000));
+        dataSeries1.getData().add(new XYChart.Data("Aug", 6174700));
+        dataSeries1.getData().add(new XYChart.Data("Sep", 9111111));
+        dataSeries1.getData().add(new XYChart.Data("Oct", 8100600));
+        dataSeries1.getData().add(new XYChart.Data("Nov", 6826351));
+        dataSeries1.getData().add(new XYChart.Data("Dec", profit ));
+
+        graph.getData().addAll(dataSeries1);
     }
 }
