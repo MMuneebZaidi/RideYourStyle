@@ -89,7 +89,7 @@ public class PendingRequestsController implements Initializable {
 
                         try {
                             Statement stm = db.DatabaseLink.createStatement();
-                            String status = "UPDATE `pendings` SET `Status` = 'Accepted' WHERE user_id = '" + this.getTableRow().getItem().getUser_id()+ "'";
+                            String status = "UPDATE `pendings` SET `Status` = 'Approved' WHERE user_id = '" + this.getTableRow().getItem().getUser_id()+ "'";
                             String managedBy = "UPDATE `pendings` SET `Managed By` = '"+AdminLoginController.loggedInAdmin.Email+"' WHERE user_id = '" + this.getTableRow().getItem().getUser_id()+ "'";
                             stm.execute(status);
                             stm.execute(managedBy);

@@ -69,12 +69,6 @@ public class JReportController {
             }catch (SQLException e) {
                 Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }
-//        parameters.put("OrderNo", 1);
-//        parameters.put("CustomerEm", "hehe");
-//        parameters.put("CustomerN", "ok");
-//        parameters.put("ProductN", "lel");
-//        parameters.put("ProductPrice",22);
-//        parameters.put("CustomerEm", UserLoginController.loggedIn.Email);
             jasperPrint = JasperFillManager.fillReport(jReport, parameters, new JREmptyDataSource());
 //               JasperExportManager.exportReportToPdfFile(jasperPrint,"jasper.pdf");
 //

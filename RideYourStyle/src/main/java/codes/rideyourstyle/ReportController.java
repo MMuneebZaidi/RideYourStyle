@@ -9,6 +9,9 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -35,6 +38,8 @@ public class ReportController  implements Initializable {
 
     @FXML
     private Label Profitg;
+    JasperReport jReport;
+    JasperPrint jasperPrint = new JasperPrint();
     @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
@@ -44,25 +49,22 @@ public class ReportController  implements Initializable {
         stage.show();
     }
     int profit=0;
+    Calendar mCalendar = Calendar.getInstance();
+    String month = mCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Calendar mCalendar = Calendar.getInstance();
-        String month = mCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
         try {
             LoginDatabaseConnection db = new LoginDatabaseConnection();
             Connection purchaseHis = db.getDatabaseLink();
             Statement stm = purchaseHis.createStatement();
-
-            int i = 1;
             int Revenue=0;
-            ArrayList<String> arr = new ArrayList<String>();
+            ArrayList<String> arr = new ArrayList<>();
             String purchase = "SELECT * FROM `sell/purchase`";
             ResultSet purchased = stm.executeQuery(purchase);
             while (purchased.next()){
-                int userID = purchased.getInt("user_id");
                 String status = purchased.getString("Status");
                 String s2 = purchased.getString("Listed");
-                if(status.equals("Approved")){
+                if(status.equals("Accepted")){
                     Stream<String> List = s2.lines();
                     List.forEach(arr::add);
                 }
@@ -81,6 +83,7 @@ public class ReportController  implements Initializable {
             profit=Revenue-Expenses;
             Profitg.setText("Rs. "+String.valueOf(profit)+"/-");
             cmonth.setText(month);
+            createReport(Revenue,Expenses,profit,arr.size());
         }
         catch (SQLException e){
             Logger.getLogger(PendingRequestsController.class.getName()).log(Level.SEVERE, null, e);
@@ -102,5 +105,26 @@ public class ReportController  implements Initializable {
         dataSeries1.getData().add(new XYChart.Data("Dec", profit ));
 
         graph.getData().addAll(dataSeries1);
+    }
+    public JasperPrint createReport(int rev, int exp, int tot, int cars) {
+
+        Map<String, Object> parameters = new HashMap<>();
+        String path = "E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\JasperReports\\AdminRep.jrxml";
+        try {
+            jReport = JasperCompileManager.compileReport(path);
+            parameters.put("Month", month);
+            parameters.put("Carn", cars);
+            parameters.put("Expenses", exp);
+            parameters.put("Revenue", rev);
+            parameters.put("Profit", tot);
+            jasperPrint = JasperFillManager.fillReport(jReport, parameters, new JREmptyDataSource());
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"jasper.pdf");
+                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                jasperViewer.setTitle("Monthly data");
+                jasperViewer.setVisible(true);
+        } catch (JRException e) {
+            System.out.println(e);
+        }
+        return jasperPrint;
     }
 }

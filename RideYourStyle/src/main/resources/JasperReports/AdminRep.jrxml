@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AdminRep" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="375ac10c-fa2b-446d-b047-71afadf938ca">
+	<parameter name="Month" class="java.lang.String"/>
+	<parameter name="Carn" class="java.lang.Integer"/>
+	<parameter name="Expenses" class="java.lang.Integer"/>
+	<parameter name="Profit" class="java.lang.Integer"/>
+	<parameter name="Revenue" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<staticText>
+				<reportElement x="170" y="10" width="179" height="59" uuid="60df4fe3-e91f-4fa7-af7b-6d5309e30df3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="35" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Monthly Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="0" width="127" height="45" uuid="d450c76c-f815-4101-97a6-32cb03b1d494"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="18" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[RideYourStyle®]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="360" y="-6" width="100" height="30" uuid="b0803c6e-9de4-4eb7-ac0e-198e09315906"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="25"/>
+				</textElement>
+				<text><![CDATA[For Month:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="-6" width="100" height="30" uuid="65742d4d-d129-49c3-8825-0678fe7e13c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="25" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Month}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="210" splitType="Stretch">
+			<staticText>
+				<reportElement x="117" y="14" width="180" height="43" uuid="2e40f989-2f0b-47dd-b6ab-73659f6fdafe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<text><![CDATA[Total Number of Cars sold:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="295" y="15" width="100" height="40" uuid="e327e96d-54d1-4200-9c4b-77f7454cde77">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Carn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="57" width="100" height="40" uuid="cec0ad8d-6c06-47d2-b701-c8b2be0d2e0a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Revenue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="94" width="100" height="40" uuid="c82f4e66-a828-4635-bf9d-7062e3c11dac">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Expenses}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="134" width="100" height="40" uuid="0936403b-74be-402a-b1e4-c9f027ac3549">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Profit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="94" width="180" height="43" uuid="1bceefbd-19fd-46d5-89cf-d15267d60d5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<text><![CDATA[Total Expenses]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="54" width="180" height="43" uuid="036a3254-0734-49c4-8db5-edf669ba310a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<text><![CDATA[Total Revenue Generated:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="134" width="180" height="43" uuid="59ef6d66-ba14-4df9-a965-ef730b4339ca">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="20"/>
+				</textElement>
+				<text><![CDATA[Total Profit]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
