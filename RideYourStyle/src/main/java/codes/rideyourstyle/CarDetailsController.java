@@ -68,34 +68,76 @@ public class CarDetailsController implements Initializable {
 
             while (output.next()){
                 if(output.getString("car1") == null){
-                    String q = "UPDATE `garage` SET car1 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st1 = connectDB.createStatement();
-                    st1.execute(q);
-                    break;
+                    if(!vehicle.stock.equals("0"))
+                    {
+                        String q = "UPDATE `garage` SET car1 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                        Statement st1 = connectDB.createStatement();
+                        st1.execute(q);
+                        break;
+                    }
+                            else{
+                        Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                                "Sorry, this car is out of stock.", ButtonType.OK);
+                        pending.showAndWait();}
+
                 }
                 else if(output.getString("car2") == null){
-                    String q = "UPDATE `garage` SET car2 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st2 = connectDB.createStatement();
-                    st2.execute(q);
-                    break;
+                    if(!vehicle.stock.equals("0"))
+                    {
+                        String q = "UPDATE `garage` SET car2 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                        Statement st2 = connectDB.createStatement();
+                        st2.execute(q);
+                        break;
+                    }
+                    else{
+                        Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                                "Sorry, this car is out of stock.", ButtonType.OK);
+                        pending.showAndWait();}
+
                 }
                 else if(output.getString("car3") == null){
-                    String q = "UPDATE `garage` SET car3 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st3 = connectDB.createStatement();
-                    st3.execute(q);
-                    break;
+                    if(!vehicle.stock.equals("0"))
+                    {
+                        String q = "UPDATE `garage` SET car3 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                        Statement st3 = connectDB.createStatement();
+                        st3.execute(q);
+                        break;
+                    }
+                    else{
+                        Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                                "Sorry, this car is out of stock.", ButtonType.OK);
+                        pending.showAndWait();}
+
                 }
                 else if(output.getString("car4") == null){
-                    String q = "UPDATE `garage` SET car4 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st4 = connectDB.createStatement();
-                    st4.execute(q);
-                    break;
-                } else if(output.getString("car5") == null){
-                    String q = "UPDATE `garage` SET car5 = '"+garage.getVehicle()+"'WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
-                    Statement st5 = connectDB.createStatement();
-                    st5.execute(q);
-                    break;
-                } else if (output.getString("car5") != null) {
+                    if(!vehicle.stock.equals("0"))
+                    {
+                        String q = "UPDATE `garage` SET car4 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                        Statement st4 = connectDB.createStatement();
+                        st4.execute(q);
+                        break;
+                    }
+                    else{
+                        Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                                "Sorry, this car is out of stock.", ButtonType.OK);
+                        pending.showAndWait();}
+
+                }
+                else if(output.getString("car5") == null){
+                    if(!vehicle.stock.equals("0"))
+                    {
+                        String q = "UPDATE `garage` SET car5 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
+                        Statement st5 = connectDB.createStatement();
+                        st5.execute(q);
+                        break;
+                    }
+                    else{
+                        Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                                "Sorry, this car is out of stock.", ButtonType.OK);
+                        pending.showAndWait();}
+
+                }
+                else if (output.getString("car5") != null) {
                     Alert a1 = new Alert(Alert.AlertType.WARNING,
                             "Maximum Limit to add Cars Reached!", ButtonType.OK);
                     a1.showAndWait();

@@ -14,21 +14,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.view.JasperViewer;
-
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
 public class AddToGarageController implements Initializable {
     @FXML
@@ -160,21 +151,9 @@ public class AddToGarageController implements Initializable {
                         "You already have a pending request!", ButtonType.OK);
                 pending.showAndWait();
             }
-            JReportController jr = new JReportController();
-            LoginDatabaseConnection link = new LoginDatabaseConnection();
-            Connection connectDB = link.getDatabaseLink();
-            byte[] reportData = JasperExportManager.exportReportToPdf(jr.createReport());
-            String INSERT_PICTURE = "UPDATE pendings SET jasper_reports = '" + reportData + "' WHERE user_id='" + UserLoginController.loggedIn.id + "'";
-            connectDB.setAutoCommit(false);
 
-            PreparedStatement ps = connectDB.prepareStatement(INSERT_PICTURE);
-            ps.executeUpdate();
-            connectDB.commit();
-            connectDB.close();
         }catch (SQLException e) {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
-        }catch (JRException e){
-            System.out.println(e);
         }
     }
 

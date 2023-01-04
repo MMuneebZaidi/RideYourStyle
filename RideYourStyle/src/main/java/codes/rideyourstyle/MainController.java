@@ -66,9 +66,6 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LocalDate currentdate = LocalDate.now();
-        Month currentMonth = currentdate.getMonth();
-        System.out.println("Current month: "+currentMonth);
         userloginbutton.setVisible(false);
         profiledraw.setSidePane(profv);
         allVehicles = RideYouStyle.allVehicles;
