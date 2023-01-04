@@ -6,9 +6,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseConnection {
-    public Connection DatabaseLink;
+    public static Connection DatabaseLink;
 
-    public Connection getDatabaseLink() {
+    public static Connection getDatabaseLink() {
         String databaseName = "rideyourstyle";
         String databaseUser = "root";
         String databasePassword = "";
