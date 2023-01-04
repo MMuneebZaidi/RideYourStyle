@@ -1,16 +1,20 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -23,14 +27,7 @@ import java.util.ResourceBundle;
 
 public class PassResetController implements Initializable {
     @FXML
-    private PasswordField Password;
-
-    @FXML
-    private Label label2;
-
-    @FXML
-    private Label label3;
-
+    private JFXPasswordField Password;
     @FXML
     private Label name;
 
@@ -38,25 +35,25 @@ public class PassResetController implements Initializable {
     private Label passError;
 
     @FXML
-    private TextField pass_show;
+    private JFXTextField pass_show;
 
     @FXML
     private CheckBox pass_toggle;
 
     @FXML
-    private TextField reText;
+    private JFXTextField reText;
 
     @FXML
     private Label repassError;
 
     @FXML
-    private PasswordField repassField;
+    private JFXPasswordField repassField;
 
     @FXML
-    private TextField repass_show;
+    private JFXTextField repass_show;
 
     @FXML
-    private TextField text;
+    private JFXTextField text;
 
     CarDataSingleton data = CarDataSingleton.getInstance();
 
@@ -64,16 +61,26 @@ public class PassResetController implements Initializable {
     void backButton(ActionEvent event) throws IOException {
         if(data.getPass_name().equals("Reset Password")){
             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+            Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+            Scene scene;
+            if (stage.isMaximized()) {
+                scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+            } else {
+                scene = new Scene(fxmlLoader.load());
+            }
             stage.setScene(scene);
-            stage.show();
         }else {
             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+            Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+            Scene scene;
+            if (stage.isMaximized()) {
+                scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+            } else {
+                scene = new Scene(fxmlLoader.load());
+            }
             stage.setScene(scene);
-            stage.show();
         }
     }
 
@@ -234,17 +241,27 @@ public class PassResetController implements Initializable {
                     stm.execute(query);
                     if(data.getPass_name().equals("Change Password")) {
                         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                        Scene scene;
+                        if (stage.isMaximized()) {
+                            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+                        } else {
+                            scene = new Scene(fxmlLoader.load());
+                        }
                         stage.setScene(scene);
-                        stage.show();
                     }
                     else if(data.getPass_name().equals("Reset Password")){
                         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                        Scene scene;
+                        if (stage.isMaximized()) {
+                            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+                        } else {
+                            scene = new Scene(fxmlLoader.load());
+                        }
                         stage.setScene(scene);
-                        stage.show();
                     }
                 } else {
                     repassError.setText("Password didn't match!");
@@ -282,6 +299,8 @@ public class PassResetController implements Initializable {
         if(data.getPass_name().equals("Change Number")){
             removeRed(text);
             removeRed(reText);
+            text.setPromptText("Enter new Phone Number");
+            reText.setPromptText("Re-enter Phone Number");
             if(validatePhone()){
                 removeRed(text);
                 passError.setText(null);
@@ -293,10 +312,15 @@ public class PassResetController implements Initializable {
                     Statement stm = connectDB.createStatement();
                     stm.execute(query);
                     FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+                    Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                     Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                    Scene scene;
+                    if (stage.isMaximized()) {
+                        scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+                    } else {
+                        scene = new Scene(fxmlLoader.load());
+                    }
                     stage.setScene(scene);
-                    stage.show();
                 }
                 else {
                     repassError.setText("Phone Number didn't match");
@@ -314,18 +338,15 @@ public class PassResetController implements Initializable {
         }
         if(data.getPass_name().equals("Change Username")){
             name.setText(data.getPass_name());
-            label2.setText(data.getName1());
-            label3.setText(data.getName2());
             pass_toggle.setVisible(false);
             Password.setVisible(false);
             repassField.setVisible(false);
             text.setVisible(true);
             reText.setVisible(true);
+            text.setFocusTraversable(true);
         }
         if(data.getPass_name().equals("Change Number")){
             name.setText(data.getPass_name());
-            label2.setText(data.getName1());
-            label3.setText(data.getName2());
             pass_toggle.setVisible(false);
             Password.setVisible(false);
             repassField.setVisible(false);

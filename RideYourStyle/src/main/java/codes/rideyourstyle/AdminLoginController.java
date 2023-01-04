@@ -6,12 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -100,10 +102,15 @@ public class AdminLoginController implements Initializable {
             if(checkEmail(userinfo)){
                 if(checkPass(userinfo)){
                     FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-                    Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+                    Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+                    Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                    Scene scene;
+                    if (stage.isMaximized()) {
+                        scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+                    } else {
+                        scene = new Scene(fxmlLoader.load());
+                    }
                     stage.setScene(scene);
-                    stage.show();
                 }else{
                     validation.setText("Incorrect Password!");
                     setRed(pass_text,Password);
@@ -133,18 +140,15 @@ public class AdminLoginController implements Initializable {
     @FXML
     void UserLoginButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    void GuestButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
-        stage.setScene(scene);
-        stage.show();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

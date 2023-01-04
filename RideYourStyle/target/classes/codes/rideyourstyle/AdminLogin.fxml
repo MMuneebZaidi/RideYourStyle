@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,156 +19,172 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.AdminLoginController">
+<AnchorPane fx:id="acc" prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../../css-files/background.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.AdminLoginController">
    <children>
       <BorderPane prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="720.0" prefWidth="216.0" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" opacity="0.97" prefHeight="720.0" prefWidth="147.0" style="-fx-background-color: #161a1f;" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;" VBox.vgrow="ALWAYS">
+                  <Pane maxWidth="111.0" minHeight="118.0" prefHeight="118.0" prefWidth="111.0" style="-fx-background-radius: 10;" styleClass="logo" stylesheets="@../../css-files/background.css">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow height="48.26" radius="23.1425" spread="0.36" width="46.31">
+                           <color>
+                              <Color red="0.48627451062202454" green="0.1882352977991104" blue="0.5254902243614197" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="188.0" prefWidth="147.0" VBox.vgrow="ALWAYS" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.bottomAnchor="0.66668701171875" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6666666666666572" />
-                        <HBox layoutX="-1.0" layoutY="166.0" prefHeight="105.0" prefWidth="217.0">
-                           <children>
-                              <Label prefHeight="101.0" prefWidth="207.0" text="Ride Your Style" textFill="#404040">
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font name="Brush Script MT Italic" size="35.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow height="46.31" radius="20.22" spread="0.38" width="36.57">
-                                       <color>
-                                          <Color red="1.0" green="0.9333333373069763" blue="0.7882353067398071" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <AnchorPane layoutX="44.0" layoutY="59.0" prefHeight="105.0" prefWidth="124.0" AnchorPane.bottomAnchor="537.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.66666666666666" AnchorPane.topAnchor="59.0">
-                           <children>
-                              <ImageView fitHeight="128.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <JFXButton focusTraversable="false" onAction="#UserLoginButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="User Login" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/logos/RideYourStyleLOGO.png" />
+                                    <Image url="@../../user.png" />
                                  </image>
                                  <effect>
-                                    <DropShadow blurType="GAUSSIAN" height="106.65" radius="53.7975" spread="0.24" width="110.54">
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
                                        <color>
-                                          <Color red="1.0" green="0.9333333373069763" blue="0.7882353067398071" />
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
                                        </color>
-                                    </DropShadow>
+                                    </InnerShadow>
                                  </effect>
                               </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <VBox alignment="TOP_CENTER" layoutY="423.0" prefHeight="299.0" prefWidth="216.0" AnchorPane.bottomAnchor="1.6666666666666856" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6666666666666572">
-                           <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#UserLoginButton" prefHeight="51.0" prefWidth="146.0" stylesheets="@../../css-files/Buttons.css" text="User Login" textFill="#a19c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="10.0" mnemonicParsing="false" onAction="#GuestButton" prefHeight="51.0" prefWidth="146.0" stylesheets="@../../css-files/Buttons.css" text="Continue as Guest" textFill="#a19c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets top="8.0" />
-                                 </padding>
-                              </Button>
-                           </children>
-                        </VBox>
+                           </graphic>
+                        </JFXButton>
                      </children>
-                  </AnchorPane>
+                  </VBox>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
          </left>
          <center>
-            <AnchorPane style="-fx-background-color: white;">
+            <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="background">
                <children>
-                  <VBox prefHeight="720.0" prefWidth="864.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane layoutX="78.0" layoutY="65.0" opacity="0.9" prefHeight="589.0" prefWidth="778.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" AnchorPane.bottomAnchor="65.66666666666663" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="78.66666666666663" AnchorPane.topAnchor="65.0" />
+                  <HBox layoutX="78.0" layoutY="65.0" prefHeight="587.0" prefWidth="778.0" AnchorPane.bottomAnchor="67.66666666666663" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="78.66666666666663" AnchorPane.topAnchor="65.0">
                      <children>
-                        <Pane prefHeight="183.0" prefWidth="864.0" VBox.vgrow="ALWAYS" />
-                        <HBox prefHeight="62.0" prefWidth="863.0" VBox.vgrow="ALWAYS">
+                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <VBox prefHeight="589.0" prefWidth="401.0">
                            <children>
-                              <Pane prefHeight="65.0" prefWidth="325.0" HBox.hgrow="ALWAYS" />
-                              <Label prefHeight="60.0" prefWidth="235.0" text="Admin Login">
-                                 <font>
-                                    <Font name="System Bold" size="36.0" />
-                                 </font>
-                              </Label>
-                              <Pane prefHeight="75.0" prefWidth="338.0" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="137.0" prefWidth="864.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Pane prefHeight="155.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-                              <GridPane prefHeight="155.0" prefWidth="470.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.66668701171875" minWidth="10.0" prefWidth="81.33" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="413.33336512247723" minWidth="10.0" prefWidth="248.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.33331298828125" minWidth="10.0" prefWidth="126.6666208902995" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="76.33334350585938" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.66665649414062" vgrow="SOMETIMES" />
-                                 </rowConstraints>
+                              <HBox alignment="CENTER" prefHeight="183.0" prefWidth="394.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label prefHeight="35.0" prefWidth="81.333" text="Email">
+                                    <Pane prefHeight="200.0" prefWidth="267.0" HBox.hgrow="ALWAYS" />
+                                    <Label alignment="CENTER" prefHeight="66.0" prefWidth="487.0" text="Admin Login" textFill="#d9c9c9">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font name="Arial Rounded MT Bold" size="40.0" />
                                        </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
                                     </Label>
-                                    <Label prefHeight="35.0" prefWidth="141.0" text="Password" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="Email" prefHeight="35.0" promptText="Enter your email" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" />
-                                    <PasswordField fx:id="Password" prefHeight="35.0" promptText="Enter password" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField fx:id="pass_text" prefHeight="35.0" promptText="Enter password" styleClass="noError" stylesheets="@../../css-files/validation.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <CheckBox fx:id="pass_toggle" mnemonicParsing="false" onAction="#showPassword" prefHeight="17.0" prefWidth="125.0" text="Show Password" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                       <padding>
-                                          <Insets left="8.0" />
-                                       </padding></CheckBox>
+                                    <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="267.0" HBox.hgrow="ALWAYS" />
                                  </children>
-                              </GridPane>
-                              <Pane prefHeight="155.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                        <HBox fillHeight="false" prefHeight="20.0" prefWidth="200.0">
-                           <children>
-                              <Pane prefHeight="20.0" prefWidth="325.0" HBox.hgrow="ALWAYS" />
-                              <Label fx:id="validation" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textFill="#d70000" />
-                              <Pane prefHeight="20.0" prefWidth="350.0" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="41.0" prefWidth="863.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Pane prefHeight="59.0" prefWidth="384.0" HBox.hgrow="ALWAYS" />
-                              <GridPane prefHeight="58.0" prefWidth="249.0" HBox.hgrow="ALWAYS">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.6666259765625" minWidth="10.0" prefWidth="133.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.66668701171875" minWidth="10.0" prefWidth="117.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
+                              </HBox>
+                              <AnchorPane prefHeight="289.0" prefWidth="249.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#LoginButton" prefHeight="27.0" prefWidth="115.0" stylesheets="@../../css-files/Style2.css" text="Log In" GridPane.columnIndex="1" />
+                                    <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="-7.0" prefHeight="294.0" prefWidth="327.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="55.0">
+                                       <children>
+                                          <GridPane prefHeight="112.0" prefWidth="339.0" vgap="15.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="188.3333740234375" minWidth="10.0" prefWidth="43.00001780192058" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="309.66666412353516" minWidth="10.0" prefWidth="263.00001525878906" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="309.66666412353516" minWidth="10.0" prefWidth="54.99998474121094" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <JFXTextField fx:id="Email" focusColor="#e9e9e9" prefHeight="38.0" prefWidth="218.0" promptText="Enter Email" styleClass="textField" stylesheets="@../../css-files/jfoenix.css" GridPane.columnIndex="1" />
+                                                <JFXPasswordField fx:id="Password" focusColor="#e9e9e9" prefHeight="38.0" prefWidth="309.0" promptText="Enter Password" styleClass="textField" stylesheets="@../../css-files/jfoenix.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <JFXTextField fx:id="pass_text" focusColor="#e9e9e9" prefHeight="38.0" promptText="Enter Password" styleClass="textField" stylesheets="@../../css-files/jfoenix.css" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../user.png" />
+                                                   </image>
+                                                   <effect>
+                                                      <InnerShadow>
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </InnerShadow>
+                                                   </effect>
+                                                   <GridPane.margin>
+                                                      <Insets right="15.0" />
+                                                   </GridPane.margin>
+                                                </ImageView>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="51.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                                                   <image>
+                                                      <Image url="@../../password.png" />
+                                                   </image>
+                                                   <effect>
+                                                      <InnerShadow>
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </InnerShadow>
+                                                   </effect>
+                                                   <GridPane.margin>
+                                                      <Insets right="15.0" />
+                                                   </GridPane.margin>
+                                                </ImageView>
+                                                <JFXCheckBox fx:id="pass_toggle" alignment="CENTER" checkedColor="#727272" contentDisplay="GRAPHIC_ONLY" onAction="#showPassword" prefHeight="18.0" prefWidth="17.0" text="Show" textAlignment="CENTER" textFill="#e9e9e9" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="294.0" />
+                                          <Label fx:id="validation" alignment="CENTER" prefHeight="22.0" prefWidth="235.0" textFill="#d40000">
+                                             <VBox.margin>
+                                                <Insets right="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <GridPane prefHeight="41.0" prefWidth="294.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <JFXButton buttonType="RAISED" onAction="#LoginButton" prefHeight="35.0" prefWidth="119.0" style="-fx-background-color: #727272;" text="Login" textFill="#e9e9e9" GridPane.columnIndex="1" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </GridPane>
+                                          <GridPane prefHeight="42.0" prefWidth="294.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="205.00003051757812" minWidth="10.0" prefWidth="204.33334350585938" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="142.33331298828125" minWidth="10.0" prefWidth="89.66665649414062" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
                                  </children>
-                              </GridPane>
-                              <Pane prefHeight="58.0" prefWidth="309.0" />
+                              </AnchorPane>
+                              <Pane prefHeight="79.0" prefWidth="394.0" VBox.vgrow="ALWAYS" />
                            </children>
-                        </HBox>
-                        <Pane prefHeight="190.0" prefWidth="863.0" VBox.vgrow="ALWAYS" />
+                        </VBox>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
             </AnchorPane>
          </center>
