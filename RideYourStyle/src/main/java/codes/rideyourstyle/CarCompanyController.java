@@ -8,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -115,7 +117,7 @@ public class CarCompanyController implements Initializable {
                             
                             carGridList.add(anchorPane, col++, row);
                             anchorPane.setOnMousePressed(event -> {
-                                setCar(vehicle);
+                                CarCompanyController.this.setCar(vehicle);
                                 data.setVehicle(car);
                                 FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
                                 Scene scene;
@@ -124,7 +126,7 @@ public class CarCompanyController implements Initializable {
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
-                                Stage stage =  (Stage) carGridList.getScene().getWindow();
+                                Stage stage = (Stage) carGridList.getScene().getWindow();
                                 stage.setScene(scene);
                                 stage.show();
                             });

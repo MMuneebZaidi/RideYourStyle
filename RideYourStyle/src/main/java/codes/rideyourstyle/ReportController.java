@@ -64,7 +64,7 @@ public class ReportController  implements Initializable {
                 int userID = purchased.getInt("user_id");
                 String status = purchased.getString("Status");
                 String s2 = purchased.getString("Listed");
-                if(status.equals("Accepted")){
+                if(status.equals("Approved")){
                     Stream<String> List = s2.lines();
                     List.forEach(arr::add);
                 }
