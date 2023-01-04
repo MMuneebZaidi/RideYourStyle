@@ -6,6 +6,7 @@ module codes.rideyourstyle {
     requires mysql.connector.j;
     requires com.jfoenix;
     requires jasperreports;
+
     opens codes.rideyourstyle to javafx.fxml;
     exports codes.rideyourstyle;
 }

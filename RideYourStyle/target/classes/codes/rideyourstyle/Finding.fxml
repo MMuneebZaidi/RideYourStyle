@@ -1,156 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<?import java.net.URL?>
-<?import javafx.scene.Cursor?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.FindCarController">
-   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1084.0">
-      <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
-         <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" />
-         <HBox layoutX="-1.0" layoutY="166.0" prefHeight="105.0" prefWidth="217.0">
-            <Label prefHeight="101.0" prefWidth="207.0" text="Ride Your Style" textFill="#404040">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="Brush Script MT Italic" size="35.0" />
-               </font>
-            </Label>
-         </HBox>
-         <AnchorPane layoutX="44.0" layoutY="59.0" prefHeight="105.0" prefWidth="124.0">
-            <ImageView fitHeight="128.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../../images/logos/RideYourStyleLOGO.png" />
-            </ImageView>
-         </AnchorPane>
-         <HBox layoutX="-9.0" prefHeight="43.0" prefWidth="67.0">
-            <Button mnemonicParsing="false" onAction="#backButton" prefHeight="43.0" prefWidth="65.0" rotate="180.0" stylesheets="@../../css-files/backbutton.css" text="➜">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-         </HBox>
-         <Button layoutX="60.0" layoutY="625.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="54.0" prefWidth="67.0">
-            <graphic>
-               <ImageView fitHeight="63.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../images/logos/home.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-            <styleClass>
-               <String fx:value="buttonStart" />
-               <String fx:value="transparent" />
-               <String fx:value="shadow" />
-            </styleClass>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <stylesheets>
-               <URL value="@../../css-files/CarGrid.css" />
-               <URL value="@../../css-files/StartButton.css" />
-            </stylesheets>
-         </Button>
-      </AnchorPane>
-      <AnchorPane layoutX="217.0" layoutY="33.0" prefHeight="54.0" prefWidth="1066.0">
-         <Label layoutX="18.0" layoutY="-2.0" prefHeight="67.0" prefWidth="318.0" text="FIND YOUR CAR" textAlignment="CENTER" textFill="#404040" textOverrun="CENTER_ELLIPSIS">
-            <font>
-               <Font name="Berlin Sans FB" size="30.0" />
-            </font>
-         </Label>
-      </AnchorPane>
-      <GridPane layoutX="238.0" layoutY="113.0" prefHeight="50.0" prefWidth="837.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.77777099609375" minWidth="10.0" prefWidth="107.00002034505208" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="346.33331298828125" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="148.44449869791663" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="434.33321126302087" minWidth="10.0" prefWidth="236.44449869791663" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="49.5555419921875" minHeight="10.0" prefHeight="41.111083984375" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <Label prefHeight="41.0" prefWidth="113.0" text="ENGINE">
-            <font>
-               <Font name="Berlin Sans FB" size="20.0" />
-            </font>
-         </Label>
-         <Label layoutX="10.0" layoutY="14.0" prefHeight="41.0" prefWidth="113.0" text="BODY TYPE" GridPane.columnIndex="2">
-            <font>
-               <Font name="Berlin Sans FB" size="20.0" />
-            </font>
-         </Label>
-         <ChoiceBox fx:id="Engine" prefHeight="34.0" prefWidth="181.0" stylesheets="@../../css-files/choiceBoxFind.css" GridPane.columnIndex="1">
-            <styleClass>
-               <String fx:value="choice-box" />
-               <String fx:value="context-menu" />
-            </styleClass></ChoiceBox>
-         <ChoiceBox fx:id="BodyType" layoutX="129.0" layoutY="65.0" prefHeight="34.0" prefWidth="181.0" stylesheets="@../../css-files/choiceBoxFind.css" GridPane.columnIndex="3">
-            <styleClass>
-               <String fx:value="choice-box" />
-               <String fx:value="context-menu" />
-            </styleClass></ChoiceBox>
-      </GridPane>
-      <AnchorPane layoutX="891.0" layoutY="258.0" prefHeight="0.0" prefWidth="133.0">
-         <Button layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchButton" prefHeight="41.0" prefWidth="117.0" text="SEARCH">
-            <font>
-               <Font size="17.0" />
-            </font>
-         </Button>
-      </AnchorPane>
-      <HBox layoutX="252.0" layoutY="339.0" prefHeight="360.0" prefWidth="782.0">
-         <ListView fx:id="vehicleListView" prefHeight="339.0" prefWidth="779.0" stylesheets="@../../css-files/findcarlistview.css">
-            <styleClass>
-               <String fx:value="list-view" />
-               <String fx:value="list-cell" />
-            </styleClass></ListView>
-      </HBox>
-      <GridPane hgap="20.0" layoutX="238.0" layoutY="178.0" prefHeight="81.0" prefWidth="787.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <Slider fx:id="minPriceSlider" blockIncrement="500000.0" majorTickUnit="200000.0" max="1500000.0" min="1000000.0" minorTickCount="200000" prefHeight="20.0" prefWidth="192.0" snapToTicks="true" GridPane.rowIndex="2" />
-         <Slider fx:id="maxPriceSlider" blockIncrement="500000.0" majorTickUnit="200000.0" max="3.0E7" min="1.8E7" minorTickCount="200000" nodeOrientation="LEFT_TO_RIGHT" prefHeight="29.0" prefWidth="384.0" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Label alignment="CENTER" prefHeight="30.0" prefWidth="378.0" text="MIN PRICE">
-            <font>
-               <Font name="Berlin Sans FB" size="20.0" />
-            </font>
-         </Label>
-         <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="381.0" text="MAX PRICE" GridPane.columnIndex="1">
-            <font>
-               <Font name="Berlin Sans FB" size="20.0" />
-            </font>
-         </Label>
-         <Label fx:id="minPriceLabel" alignment="CENTER" layoutX="10.0" layoutY="9.0" prefHeight="30.0" prefWidth="378.0" text="min" GridPane.rowIndex="1">
-            <font>
-               <Font name="Berlin Sans FB" size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="maxPriceLabel" alignment="CENTER" prefHeight="30.0" prefWidth="378.0" text="max" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <font>
-               <Font name="Berlin Sans FB" size="18.0" />
-            </font>
-         </Label>
-      </GridPane>
-   </AnchorPane>
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../../css-files/background.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.FindCarController">
+   <children>
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox alignment="TOP_CENTER" opacity="0.97" prefHeight="720.0" prefWidth="147.0" style="-fx-background-color: #161a1f;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane maxWidth="111.0" minHeight="118.0" prefHeight="118.0" prefWidth="111.0" style="-fx-background-radius: 10;" styleClass="logo" stylesheets="@../../css-files/background.css">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow height="48.26" radius="23.1425" spread="0.36" width="46.31">
+                           <color>
+                              <Color red="0.48627451062202454" green="0.1882352977991104" blue="0.5254902243614197" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="188.0" prefWidth="147.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <JFXButton alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="3.0" layoutX="8.0" layoutY="14.0" maxHeight="56.0" maxWidth="200.0" onAction="#backButton" prefHeight="20.0" prefWidth="19.0" ripplerFill="#7c3086" style="-fx-border-radius: 5;" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../backButton.png" />
+                                 </image>
+                                 <effect>
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                       <color>
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="3.0" layoutX="44.0" layoutY="14.0" maxHeight="56.0" maxWidth="200.0" onAction="#HomeButton" prefHeight="20.0" prefWidth="19.0" ripplerFill="#7c3086" style="-fx-border-radius: 5;" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/logos/home.png" />
+                                 </image>
+                                 <effect>
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                       <color>
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                     </children></Pane>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="background">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" opacity="0.89" prefHeight="138.0" prefWidth="915.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
+                  <VBox layoutX="9.0" layoutY="10.0" prefHeight="138.0" prefWidth="915.0" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="183.0" prefWidth="394.0">
+                           <children>
+                              <Pane prefHeight="138.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="65.0" prefWidth="563.0" text="Find Your Dream Car" textFill="#d9c9c9">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="50.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Pane layoutX="10.0" layoutY="10.0" prefHeight="138.0" prefWidth="312.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox layoutX="9.0" layoutY="153.0" prefHeight="557.0" prefWidth="915.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="153.0">
+                     <children>
+                        <AnchorPane opacity="0.89" prefHeight="557.0" prefWidth="927.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label prefHeight="65.0" prefWidth="493.0" text="Select Attributes" textFill="#d9c9c9" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="30.000000000000057" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="36.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <GridPane layoutX="75.0" layoutY="64.0" prefHeight="137.0" prefWidth="788.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="51.66666666666663" AnchorPane.topAnchor="64.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="137.0" prefWidth="137.66668701171875" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="256.66666666666663" prefWidth="256.66666666666663" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="137.0" prefWidth="137.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="256.66666666666663" prefWidth="256.66666666666663" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="37.33333333333333" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="62.666656494140625" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label alignment="CENTER" maxWidth="137.0" prefHeight="65.0" prefWidth="137.0" text="Body Type:" textFill="#d9c9c9" GridPane.columnIndex="2">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="22.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label maxWidth="137.0" prefHeight="65.0" prefWidth="137.0" text="Engine :" textFill="#d9c9c9">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="22.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label prefHeight="65.0" prefWidth="563.0" text="Min Price :" textFill="#d9c9c9" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="22.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label fx:id="minPriceLabel" alignment="CENTER" maxWidth="257.0" prefHeight="26.0" prefWidth="257.0" text="min" textFill="#d9c9c9" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="15.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label fx:id="maxPriceLabel" alignment="CENTER" maxHeight="26.0" maxWidth="257.0" prefHeight="26.0" prefWidth="257.0" text="max" textFill="#d9c9c9" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="15.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="563.0" text="Max Price :" textFill="#d9c9c9" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="22.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <JFXSlider fx:id="minPriceSlider" blockIncrement="500000.0" majorTickUnit="200000.0" max="1500000.0" maxWidth="257.0" min="1000000.0" minorTickCount="200000" prefHeight="14.0" prefWidth="217.0" snapToTicks="true" stylesheets="@../../css-files/Slider.css" value="1000000.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" />
+                                    <JFXSlider fx:id="maxPriceSlider" blockIncrement="500000.0" majorTickUnit="200000.0" max="3.0E7" maxWidth="257.0" min="1.8E7" minorTickCount="200000" prefHeight="14.0" prefWidth="256.0" snapToTicks="true" stylesheets="@../../css-files/Slider.css" value="3.0E7" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.rowIndex="2" />
+                                    <ChoiceBox fx:id="Engine" prefHeight="38.0" prefWidth="257.0" stylesheets="@../../css-files/choiceBoxes.css" GridPane.columnIndex="1" />
+                                    <ChoiceBox fx:id="BodyType" prefHeight="38.0" prefWidth="257.0" stylesheets="@../../css-files/choiceBoxes.css" GridPane.columnIndex="3" />
+                                 </children>
+                              </GridPane>
+                              <JFXListView fx:id="vehicleListView" fixedCellSize="50.0" layoutX="74.0" layoutY="201.0" prefHeight="339.0" prefWidth="768.0" style="-fx-background-color: #e2cee6; -fx-background-radius: 5;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="201.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>

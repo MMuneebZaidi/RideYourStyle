@@ -1,5 +1,10 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXScrollPane;
+import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -35,16 +41,14 @@ public class CarCompanyController implements Initializable {
     @FXML
     private Label companyNAME;
     @FXML
-    private ListView<String> searchlistView;
+    private JFXListView<String> searchlistView;
     @FXML
-    private ScrollPane searchscroll;
+    private JFXScrollPane searchscroll;
     public static String FXMLSelector;
 
     @FXML
-    private TextField searchBar;
+    private JFXTextField searchBar;
 
-    @FXML
-    private Button mycart;
     ArrayList<String> carName = new ArrayList<>();
 
 
@@ -97,6 +101,9 @@ public class CarCompanyController implements Initializable {
                             
                             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
+
+                            anchorPane.setCursor(Cursor.HAND);
+                            anchorPane.setStyle("-fx-background-radius: 15;");
 
                             CarGridController cgc = fxmlLoader.getController();
                             cgc.setDetails(vehicle);
@@ -161,6 +168,9 @@ public class CarCompanyController implements Initializable {
 
                             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
+
+                            anchorPane.setCursor(Cursor.HAND);
+                            anchorPane.setStyle("-fx-background-radius: 15;");
 
                             CarGridController cgc = fxmlLoader.getController();
                             cgc.setDetails(vehicle);
@@ -227,6 +237,9 @@ public class CarCompanyController implements Initializable {
                             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
+                            anchorPane.setCursor(Cursor.HAND);
+                            anchorPane.setStyle("-fx-background-radius: 15;");
+
                             CarGridController cgc = fxmlLoader.getController();
                             cgc.setDetails(vehicle);
 
@@ -290,6 +303,9 @@ public class CarCompanyController implements Initializable {
 
                             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
+
+                            anchorPane.setCursor(Cursor.HAND);
+                            anchorPane.setStyle("-fx-background-radius: 15;");
 
                             CarGridController cgc = fxmlLoader.getController();
                             cgc.setDetails(vehicle);
@@ -355,6 +371,9 @@ public class CarCompanyController implements Initializable {
                             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
+                            anchorPane.setCursor(Cursor.HAND);
+                            anchorPane.setStyle("-fx-background-radius: 15;");
+
                             CarGridController cgc = fxmlLoader.getController();
                             cgc.setDetails(vehicle);
 
@@ -419,6 +438,9 @@ public class CarCompanyController implements Initializable {
                             FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
+                            anchorPane.setCursor(Cursor.HAND);
+                            anchorPane.setStyle("-fx-background-radius: 15;");
+
                             CarGridController cgc = fxmlLoader.getController();
                             cgc.setDetails(vehicle);
 
@@ -482,7 +504,8 @@ public class CarCompanyController implements Initializable {
 
                         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
                         AnchorPane anchorPane = fxmlLoader.load();
-
+                        anchorPane.setCursor(Cursor.HAND);
+                        anchorPane.setStyle("-fx-background-radius: 15;");
                         CarGridController cgc = fxmlLoader.getController();
                         cgc.setDetails(vehicle);
 

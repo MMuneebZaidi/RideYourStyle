@@ -1,4 +1,6 @@
 package codes.rideyourstyle;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXSlider;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,8 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Slider;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -39,15 +40,15 @@ public class FindCarController implements Initializable {
     @FXML
     private ChoiceBox<String> BodyType ;
     @FXML
-    private Slider minPriceSlider;
+    private JFXSlider minPriceSlider;
     @FXML
-    private Slider maxPriceSlider;
+    private JFXSlider maxPriceSlider;
     @FXML
     private Label minPriceLabel;
     @FXML
     private Label maxPriceLabel;
     @FXML
-    private ListView<String> vehicleListView;
+    private JFXListView<String> vehicleListView;
 
 
 
@@ -55,8 +56,12 @@ public class FindCarController implements Initializable {
     int maxPrice=30000000;
     ObservableList<Vehicle> allVehicles = FXCollections.observableArrayList();
 
-    String[] engineRanges = {"Default","1500 cc - 2999 cc","3000 cc - 4499 cc","4500 cc - 5999 cc","6000 cc - 7499 cc"};
-    String[] bodyType = {"Default","Sedan","SUV","Coupe"};
+    String[] engineRanges = {"ALL","1500 cc - 2999 cc","3000 cc - 4499 cc","4500 cc - 5999 cc","6000 cc - 7499 cc"};
+    String[] bodyType = {"ALL","Sedan","SUV","Coupe"};
+    public static String colorToHex(Color color) {
+        return String.format("#%02X%02X%02X", (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255), (int) (color.getBlue() * 255));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -65,17 +70,37 @@ public class FindCarController implements Initializable {
         Engine.getItems().addAll(engineRanges);
         BodyType.getItems().addAll(bodyType);
 
+        minPriceSlider.setStyle("-fx-custom-color : ORANGE;");
+        maxPriceSlider.setStyle("-fx-custom-color : ORANGE;");
+
         minPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
+            if(minPriceSlider.isFocused()){
+                Color imageColor = Color.RED.interpolate(Color.ORANGE,
+                        minPriceSlider.getValue() / 100);
+                minPriceSlider.setStyle("-fx-custom-color : "+colorToHex(imageColor)+";");
+            }
             minPrice = (int) minPriceSlider.getValue();
             minPriceLabel.setText(Integer.toString(minPrice));
         });
         maxPriceSlider.valueProperty().addListener((observableValue, number, t1) -> {
+            if(maxPriceSlider.isFocused()){
+                Color imageColor = Color.RED.interpolate(Color.ORANGE,
+                        maxPriceSlider.getValue() / 100);
+                maxPriceSlider.setStyle("-fx-custom-color : "+colorToHex(imageColor)+";");
+            }
             maxPrice = (int) maxPriceSlider.getValue();
             maxPriceLabel.setText(Integer.toString(maxPrice));
         });
 
         Engine.getSelectionModel().selectFirst();
         BodyType.getSelectionModel().selectFirst();
+
+        Engine.valueProperty().addListener(((observableValue, s, t1) -> searchButton()));
+        BodyType.valueProperty().addListener(((observableValue, s, t1) -> searchButton()));
+
+        minPriceSlider.setOnMouseReleased(mouseEvent -> searchButton());
+        maxPriceSlider.setOnMouseReleased(mouseEvent -> searchButton());
+        searchButton();
     }
     ArrayList<String> extractedNames = new ArrayList<>();
     ObservableList<Vehicle> extractedVehicles = FXCollections.observableArrayList();
@@ -149,7 +174,7 @@ public class FindCarController implements Initializable {
         extractedVehicles.addAll(allVehicles);
 
         applyFilters();
-        if(!Objects.equals(Engine.getValue(), "Default")){
+        if(!Objects.equals(Engine.getValue(), "ALL")){
             sortCars();
         }
 

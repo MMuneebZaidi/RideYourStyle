@@ -1,5 +1,7 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXListCell;
+import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,10 +46,10 @@ public class ComparedScene implements Initializable {
         stage.show();
     }
     @FXML
-    private ListView<String> car1list;
+    private JFXListView<String> car1list;
 
     @FXML
-    private ListView<String> car2list;
+    private JFXListView<String> car2list;
 
 
     @FXML

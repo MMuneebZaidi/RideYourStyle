@@ -1,4 +1,6 @@
 package codes.rideyourstyle;
+
+import com.jfoenix.controls.*;
 import java.time.LocalDate;
 import java.time.Month;
 import com.jfoenix.controls.JFXButton;
@@ -28,9 +30,9 @@ import java.util.stream.Collectors;
 
 public class MainController implements Initializable {
     @FXML
-    private ListView<String> searchlistView;
+    private JFXListView<String> searchlistView;
     @FXML
-    private ScrollPane searchscroll;
+    private JFXScrollPane searchscroll;
     public static String FXMLSelector;
     @FXML
     private JFXDrawer profiledraw;
@@ -41,13 +43,17 @@ public class MainController implements Initializable {
     @FXML
     private JFXButton ProfileB;
     @FXML
-    private TextField searchBar;
+    private JFXButton MyGarage;
+    @FXML
+    private JFXButton MyRecord;
+    @FXML
+    private JFXTextField searchBar;
 
     @FXML
-    private Button LogoutButton = new Button();
+    private JFXButton LogoutButton = new JFXButton();
 
     @FXML
-    public Button userloginbutton = new Button();
+    public JFXButton userloginbutton = new JFXButton();
 
     ArrayList<String> carName = new ArrayList<>();
 
@@ -63,6 +69,7 @@ public class MainController implements Initializable {
         LocalDate currentdate = LocalDate.now();
         Month currentMonth = currentdate.getMonth();
         System.out.println("Current month: "+currentMonth);
+        userloginbutton.setVisible(false);
         profiledraw.setSidePane(profv);
         allVehicles = RideYouStyle.allVehicles;
         for (Vehicle vehicle: allVehicles){
@@ -91,6 +98,8 @@ public class MainController implements Initializable {
          userloginbutton.setVisible(true);
          LogoutButton.setVisible(false);
          ProfileB.setDisable(true);
+         MyRecord.setDisable(true);
+         MyGarage.setDisable(true);
      }
     }
     @FXML

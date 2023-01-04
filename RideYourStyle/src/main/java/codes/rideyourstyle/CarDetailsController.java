@@ -1,5 +1,7 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +29,7 @@ import java.util.logging.Logger;
 public class CarDetailsController implements Initializable {
 
     @FXML
-    private Button AddGarageButton;
+    private JFXButton AddGarageButton;
 
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
@@ -107,7 +109,7 @@ public class CarDetailsController implements Initializable {
     @FXML
     private Label vehicleName;
     @FXML
-    private ListView<String> vehicleList;
+    private JFXListView<String> vehicleList;
     @FXML
     private ImageView vehicleImage;
     ObservableList<Vehicle> list = FXCollections.observableArrayList();
