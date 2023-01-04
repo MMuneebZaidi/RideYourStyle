@@ -30,60 +30,61 @@ public class JReportController {
     JasperReport jReport;
     JasperDesign design;
     InputStream input = null;
+    JasperPrint jasperPrint = new JasperPrint();
     int orderno;
+    String ordern;
     int Revenue = 0;
-    @FXML
-    void printReport(ActionEvent event) throws JRException {
-                Map<String, Object> parameters = new HashMap<>();
-                String path = "E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\JasperReports\\Order_Receipt.jrxml";
-                jReport = JasperCompileManager.compileReport(path);
-                LoginDatabaseConnection link = new LoginDatabaseConnection();
-                Connection connectDB = link.getDatabaseLink();
+    public JasperPrint createReport() {
 
-                String query = "SELECT * FROM `sell/purchase` WHERE user_id='" + UserLoginController.loggedIn.id + "'";
-                try {
-                    Statement stm = connectDB.createStatement();
-                    ResultSet rs = stm.executeQuery(query);
-                    ArrayList<String> arr = new ArrayList<>();
-                    while (rs.next()){
-                        orderno = rs.getInt("id");
-                        String ordern = rs.getString("Listed");
-                        String status = rs.getString("Status");
-                        while(status.equals("Accepted")) {
-                            parameters.put("OrderNo", orderno);
-                            parameters.put("CustomerEm", UserLoginController.loggedIn.Email);
-                            parameters.put("CustomerN", UserLoginController.loggedIn.Username);
-                            parameters.put("ProductN", ordern);
-                            Stream<String> List = ordern.lines();
-                            List.forEach(arr::add);
-                            System.out.println("ok");
-                            for (String s : arr) {
-                                for (Vehicle v1 : RideYouStyle.allVehicles) {
-                                    if (s.equals(v1.name)) {
-                                        Revenue = Revenue + Integer.parseInt(v1.price);
-                                    }
-                                }
-                            }
-                            break;
-                        }
+        Map<String, Object> parameters = new HashMap<>();
+        String path = "E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\JasperReports\\Order_Receipt.jrxml";
+        try {
+            jReport = JasperCompileManager.compileReport(path);
+            LoginDatabaseConnection link = new LoginDatabaseConnection();
+            Connection connectDB = link.getDatabaseLink();
 
-                        parameters.put("ProductPrice",Revenue);
-                    }
-                } catch (SQLException e) {
-                    Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+            String query = "SELECT id, Listed FROM `pendings` WHERE user_id='" + UserLoginController.loggedIn.id + "'";
+            try {
+                Statement stm = connectDB.createStatement();
+                ResultSet rs = stm.executeQuery(query);
+                ArrayList<String> arr = new ArrayList<>();
+                while (rs.next()) {
+                    orderno = rs.getInt("id");
+                    ordern = rs.getString("Listed");
                 }
+                parameters.put("OrderNo", orderno);
+                parameters.put("CustomerEm", UserLoginController.loggedIn.Email);
+                parameters.put("CustomerN", UserLoginController.loggedIn.Username);
+                parameters.put("ProductN", ordern);
+                Stream<String> List = ordern.lines();
+                List.forEach(arr::add);
+                for (String s : arr) {
+                    for (Vehicle v1 : RideYouStyle.allVehicles) {
+                        if (s.equals(v1.name)) {
+                            Revenue = Revenue + Integer.parseInt(v1.price);
+                        }
+                    }
+                }
+                parameters.put("ProductPrice", Revenue);
+            }catch (SQLException e) {
+                Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+        }
 //        parameters.put("OrderNo", 1);
 //        parameters.put("CustomerEm", "hehe");
 //        parameters.put("CustomerN", "ok");
 //        parameters.put("ProductN", "lel");
 //        parameters.put("ProductPrice",22);
 //        parameters.put("CustomerEm", UserLoginController.loggedIn.Email);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(jReport, parameters, new JREmptyDataSource());
-               JasperExportManager.exportReportToPdfFile(jasperPrint,"jasper.pdf");
+            jasperPrint = JasperFillManager.fillReport(jReport, parameters, new JREmptyDataSource());
+//               JasperExportManager.exportReportToPdfFile(jasperPrint,"jasper.pdf");
+//
+//                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+//                jasperViewer.setTitle("My Jasper Report");
+//                jasperViewer.setVisible(true);
 
-                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                jasperViewer.setTitle("My Jasper Report");
-                jasperViewer.setVisible(true);
+        } catch (JRException e) {
+            System.out.println(e);
+        }
+        return jasperPrint;
     }
-
 }

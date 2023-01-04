@@ -126,7 +126,7 @@ public class UserLoginController implements Initializable {
         if(validateEmail()){
             if(checkEmail(userinfo)){
                 if(checkPass(userinfo)){
-                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("jasper.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
                     Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                     Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                     Scene scene;
