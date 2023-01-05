@@ -122,21 +122,21 @@ public class AddToGarageController implements Initializable {
         addToGarage.setItems(Garage.getCars());
     }
     @FXML
-    void Checkout(){
+    void Checkout() {
         try {
             Statement stm = cart.createStatement();
             String check = "SELECT `user_id` FROM `pendings`";
             ResultSet checking = stm.executeQuery(check);
             boolean test = true;
-            while (checking.next()){
-                if(UserLoginController.loggedIn.id==checking.getInt("user_id")){
-                    test=false;
+            while (checking.next()) {
+                if (UserLoginController.loggedIn.id == checking.getInt("user_id")) {
+                    test = false;
                 }
             }
-            if (test){
+            if (test) {
                 String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
                 ResultSet output = stm.executeQuery(query);
-                StringBuilder cars= new StringBuilder();
+                StringBuilder cars = new StringBuilder();
                 while (output.next()) {
                     if (output.getString("car1") != null) {
                         cars.append(output.getString("car1")).append("\n");
@@ -154,20 +154,33 @@ public class AddToGarageController implements Initializable {
                         cars.append(output.getString("car5"));
                     }
                 }
-                db.insertPendingData(UserLoginController.loggedIn,cars);
+                db.insertPendingData(UserLoginController.loggedIn, cars);
                 db.UpdateGarageData(UserLoginController.loggedIn);
                 Garage.cars.clear();
                 addToGarage.refresh();
-            }else {
+            } else {
                 Alert pending = new Alert(Alert.AlertType.INFORMATION,
                         "You already have a pending request!", ButtonType.OK);
                 pending.showAndWait();
             }
+                    JReportController jr = new JReportController();
+                    LoginDatabaseConnection link = new LoginDatabaseConnection();
+                    Connection connectDB = link.getDatabaseLink();
+                    byte[] reportData = JasperExportManager.exportReportToPdf(jr.createReport());
+                    String INSERT_PICTURE = "UPDATE pendings SET jasper_reports = '" + reportData + "' WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+                    connectDB.setAutoCommit(false);
 
-        }catch (SQLException e) {
-            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
+                    PreparedStatement ps = connectDB.prepareStatement(INSERT_PICTURE);
+
+                    ps.executeUpdate();
+                    connectDB.commit();
+                    connectDB.close();
+                } catch (SQLException e) {
+                    Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+                } catch (JRException e) {
+                    System.out.println(e);
+                }
+            }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

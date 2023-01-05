@@ -70,11 +70,12 @@ public class JReportController {
                 Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }
             jasperPrint = JasperFillManager.fillReport(jReport, parameters, new JREmptyDataSource());
-//               JasperExportManager.exportReportToPdfFile(jasperPrint,"jasper.pdf");
+
 //
-//                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-//                jasperViewer.setTitle("My Jasper Report");
-//                jasperViewer.setVisible(true);
+                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"jasper.pdf");
+                jasperViewer.setTitle("My Jasper Report");
+                jasperViewer.setVisible(true);
 
         } catch (JRException e) {
             System.out.println(e);

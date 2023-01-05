@@ -21,10 +21,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,6 +109,7 @@ public class PendingRequestsController implements Initializable {
                             Statement stm = db.DatabaseLink.createStatement();
                             String status = "UPDATE `pendings` SET `Status` = 'Approved' WHERE user_id = '" + this.getTableRow().getItem().getUser_id()+ "'";
                             String managedBy = "UPDATE `pendings` SET `Managed By` = '"+AdminLoginController.loggedInAdmin.Email+"' WHERE user_id = '" + this.getTableRow().getItem().getUser_id()+ "'";
+
                             stm.execute(status);
                             stm.execute(managedBy);
 

@@ -2,6 +2,8 @@ package codes.rideyourstyle;
 
 import javafx.collections.ObservableList;
 
+import java.sql.Blob;
+
 public class Pendings {
     private int id;
     private int user_id;
@@ -9,6 +11,8 @@ public class Pendings {
     private StringBuilder requests;
     private String status;
     private String ManagedBy;
+
+    Blob jasper_report;
 
     public Pendings(int user_id, StringBuilder requests, String status, String managedBy) {
         this.user_id = user_id;
@@ -82,5 +86,13 @@ public class Pendings {
 
     public void setManagedBy(String managedBy) {
         ManagedBy = managedBy;
+    }
+
+    public Blob getJasper_report() {
+        return jasper_report;
+    }
+
+    public void setJasper_report(Blob jasper_report) {
+        this.jasper_report = jasper_report;
     }
 }

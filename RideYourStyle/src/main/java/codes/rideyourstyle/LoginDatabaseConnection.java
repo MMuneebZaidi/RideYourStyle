@@ -99,12 +99,21 @@ public class LoginDatabaseConnection {
     }
     public void insertSellPurchaseData(Pendings data) {
         try {
+            Blob report = null;
             String insert = "INSERT INTO `sell/purchase`(`user_id`, `Listed`, `Status`, `Managed By`)";
             String values = "VALUES ('"+data.getUser_id()+"','"+data.getRequests()+"','"+data.getStatus()+"','"+data.getManagedBy()+"')";
             String query = insert + values;
             Connection connectDB = getDatabaseLink();
             Statement stm = connectDB.createStatement();
             stm.execute(query);
+            String q = "SELECT jasper_reports from `pendings` where user_id = '" + data.getUser_id() + "'";
+            ResultSet rs = stm.executeQuery(q);
+            while (rs.next()){
+                report = rs.getBlob("jasper_reports");
+            }
+            String q2 = "UPDATE `sell/purchase` SET jasper_reports = '" + report + "' WHERE user_id = '" + data.getUser_id() + "' AND Listed = '" + data.getRequests() + "'";
+            PreparedStatement ps = connectDB.prepareStatement(q2);
+            ps.executeUpdate();
         } catch (Exception e) {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }

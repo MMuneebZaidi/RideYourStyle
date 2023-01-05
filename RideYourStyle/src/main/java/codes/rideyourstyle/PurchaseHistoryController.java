@@ -18,13 +18,16 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -127,15 +130,16 @@ public class PurchaseHistoryController implements Initializable {
 
                 } else {
                     ImageView Receipt = new ImageView(new Image("printReceipt.png",15.0,15.0,false,false));
-                    Receipt.setDisable(true);
+                    Receipt.setDisable(false);
+
                     Receipt.setOnMouseClicked(actionEvent -> {
-                        System.out.println("ok");
+
+
                     });
 
                     HBox update = new HBox(Receipt);
 
                     HBox.setMargin(update, new Insets(1, 1, 1, 1));
-
 
                     setGraphic(update);
                     setText(null);
