@@ -1,5 +1,6 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +24,20 @@ public class ForgetPassController implements Initializable {
 
     CarDataSingleton data = CarDataSingleton.getInstance();
     @FXML
-    private TextField Phone;
+    private JFXTextField Phone;
+    @FXML
+    void backButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
     private void setRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         if(!styleClass.contains("error")) {
@@ -58,6 +72,7 @@ public class ForgetPassController implements Initializable {
                     scene = new Scene(fxmlLoader.load());
                 }
                 stage.setScene(scene);
+                stage.show();
             }else{
                 setRed(Phone);
                 validation.setText("Phone number didn't match!");

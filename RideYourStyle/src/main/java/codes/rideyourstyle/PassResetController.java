@@ -60,7 +60,7 @@ public class PassResetController implements Initializable {
     @FXML
     void backButton(ActionEvent event) throws IOException {
         if(data.getPass_name().equals("Reset Password")){
-            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ForgotPassword.fxml"));
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
             Scene scene;

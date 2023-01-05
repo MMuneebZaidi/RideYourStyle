@@ -198,7 +198,7 @@
                                     <TextField fx:id="Profitg" editable="false" focusTraversable="false" layoutX="199.0" layoutY="239.0" prefHeight="38.0" prefWidth="234.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
-                              <LineChart fx:id="graph" layoutX="218.0" layoutY="289.0" prefHeight="259.0" prefWidth="445.0" title="Monthly Report" titleSide="BOTTOM" AnchorPane.bottomAnchor="9.000000000000057" AnchorPane.leftAnchor="217.99999999999994" AnchorPane.rightAnchor="251.33333333333331" AnchorPane.topAnchor="288.99999999999994">
+                              <LineChart fx:id="graph" layoutX="218.0" layoutY="289.0" maxHeight="273.0" prefHeight="273.0" prefWidth="485.0" title="Monthly Report" titleSide="BOTTOM" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="217.99999999999994" AnchorPane.rightAnchor="211.33333333333331">
                                  <xAxis>
                                     <CategoryAxis side="BOTTOM" />
                                  </xAxis>
