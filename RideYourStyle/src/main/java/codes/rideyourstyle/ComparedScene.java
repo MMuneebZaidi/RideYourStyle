@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,19 +33,29 @@ public class ComparedScene implements Initializable {
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
 
     @FXML
     void BackButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Compare.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     private JFXListView<String> car1list;

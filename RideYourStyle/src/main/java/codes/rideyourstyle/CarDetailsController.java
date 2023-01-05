@@ -8,11 +8,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,26 +36,35 @@ public class CarDetailsController implements Initializable {
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader;
-        if(Objects.equals(FindCarController.FXMLSelector, "Finding")){
+        if (Objects.equals(FindCarController.FXMLSelector, "Finding")) {
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
-        }
-        else if(Objects.equals(MainController.FXMLSelector, "Main")){
+        } else if (Objects.equals(MainController.FXMLSelector, "Main")) {
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        }
-        else
+        } else {
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+            Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+            Scene scene;
+            if (stage.isMaximized()) {
+                scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+            } else {
+                scene = new Scene(fxmlLoader.load());
+            }
             stage.setScene(scene);
-            stage.show();
+        }
     }
 
     @FXML

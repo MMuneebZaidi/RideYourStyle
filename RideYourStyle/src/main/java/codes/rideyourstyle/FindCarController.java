@@ -7,11 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -22,18 +24,28 @@ public class FindCarController implements Initializable {
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     private ChoiceBox<String> Engine ;
@@ -195,15 +207,18 @@ public class FindCarController implements Initializable {
                     setCar(vehicle);
                     data.setVehicle(car);
                     FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                    Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+                    Stage stage = (Stage) vehicleListView.getScene().getWindow();
                     Scene scene;
                     try {
-                        scene = new Scene(fxmlLoader1.load(), 1080, 720);
-                    } catch (IOException e) {
+                        if (stage.isMaximized()) {
+                            scene = new Scene(fxmlLoader1.load(), screenSize.getWidth(), screenSize.getHeight());
+                        } else {
+                            scene = new Scene(fxmlLoader1.load());
+                        }                    } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    Stage stage =  (Stage) vehicleListView.getScene().getWindow();
                     stage.setScene(scene);
-                    stage.show();
                 }
             }
         });
