@@ -361,6 +361,7 @@ public class UserSignUpController implements Initializable {
                                         db.insertData("user",member);
                                         Connection connectDB = getDatabaseLink();
                                         String query = "SELECT `id` FROM `user` WHERE Email='"+member.Email+"'";
+
                                         try {
                                             Statement stm = connectDB.createStatement();
                                             ResultSet output = stm.executeQuery(query);
