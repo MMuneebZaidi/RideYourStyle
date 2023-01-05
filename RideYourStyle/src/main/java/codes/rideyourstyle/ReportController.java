@@ -3,11 +3,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -23,13 +26,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+@SuppressWarnings("ALL")
 public class ReportController  implements Initializable {
     @FXML
-    private Label CarsSold;
+    private TextField CarsSold;
     @FXML
-    private Label RevenueG;
+    private TextField RevenueG;
     @FXML
-    private Label ExpensesG;
+    private TextField ExpensesG;
     @FXML
     private Label cmonth;
 
@@ -37,16 +41,35 @@ public class ReportController  implements Initializable {
     private LineChart<?, ?> graph;
 
     @FXML
-    private Label Profitg;
+    private TextField Profitg;
     JasperReport jReport;
     JasperPrint jasperPrint = new JasperPrint();
+
     @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
+    }
+    @FXML
+    void HomeButton(ActionEvent ev) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
     }
     int profit=0;
     Calendar mCalendar = Calendar.getInstance();
@@ -57,6 +80,7 @@ public class ReportController  implements Initializable {
             LoginDatabaseConnection db = new LoginDatabaseConnection();
             Connection purchaseHis = db.getDatabaseLink();
             Statement stm = purchaseHis.createStatement();
+
             int Revenue=0;
             ArrayList<String> arr = new ArrayList<>();
             String purchase = "SELECT * FROM `sell/purchase`";
@@ -64,24 +88,24 @@ public class ReportController  implements Initializable {
             while (purchased.next()){
                 String status = purchased.getString("Status");
                 String s2 = purchased.getString("Listed");
-                if(status.equals("Accepted")){
+                if(status.equals("Approved")){
                     Stream<String> List = s2.lines();
                     List.forEach(arr::add);
                 }
             }
-            CarsSold.setText(String.valueOf(arr.size())+" cars");
+            CarsSold.setText(arr.size() +" cars");
             for(String s:arr){
                 for(Vehicle v1:RideYouStyle.allVehicles){
                     if(s.equals(v1.name)){
-                        Revenue=Revenue+Integer.valueOf(v1.price);
+                        Revenue=Revenue+Integer.parseInt(v1.price);
                     }
                 }
             }
-            RevenueG.setText("Rs. "+String.valueOf(Revenue)+"/-");
+            RevenueG.setText("Rs. "+ Revenue +"/-");
             int Expenses = (Revenue/100)*95;
-            ExpensesG.setText("Rs. "+String.valueOf(Expenses)+"/-");
+            ExpensesG.setText("Rs. "+ Expenses +"/-");
             profit=Revenue-Expenses;
-            Profitg.setText("Rs. "+String.valueOf(profit)+"/-");
+            Profitg.setText("Rs. "+ profit +"/-");
             cmonth.setText(month);
             createReport(Revenue,Expenses,profit,arr.size());
         }

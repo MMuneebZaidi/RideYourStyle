@@ -43,7 +43,7 @@ public class AdminDashboardController implements Initializable {
     }
     @FXML
     void UpdateStockButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("test.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UpdateStock.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
