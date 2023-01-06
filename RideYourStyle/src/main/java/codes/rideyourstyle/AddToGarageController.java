@@ -22,6 +22,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -136,26 +137,34 @@ public class AddToGarageController implements Initializable {
                     test = false;
                 }
             }
+            String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+            ResultSet output = stm.executeQuery(query);
             if (test) {
-                String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
-                ResultSet output = stm.executeQuery(query);
                 StringBuilder cars = new StringBuilder();
                 while (output.next()) {
-                    if (output.getString("car1") != null) {
-                        cars.append(output.getString("car1")).append("\n");
+                    if(output.getString("car1")!=null && !Objects.equals(output.getString("car1"), "")){
+                        if (output.getString("car1") != null) {
+                            cars.append(output.getString("car1")).append("\n");
+                        }
+                        if (output.getString("car2") != null) {
+                            cars.append(output.getString("car2")).append("\n");
+                        }
+                        if (output.getString("car3") != null) {
+                            cars.append(output.getString("car3")).append("\n");
+                        }
+                        if (output.getString("car4") != null) {
+                            cars.append(output.getString("car4")).append("\n");
+                        }
+                        if (output.getString("car5") != null) {
+                            cars.append(output.getString("car5"));
+                        }
+                    }else {
+                        Alert pending = new Alert(Alert.AlertType.WARNING,
+                                "Your Cart is Empty!!", ButtonType.OK);
+                        pending.showAndWait();
+                        break;
                     }
-                    if (output.getString("car2") != null) {
-                        cars.append(output.getString("car2")).append("\n");
-                    }
-                    if (output.getString("car3") != null) {
-                        cars.append(output.getString("car3")).append("\n");
-                    }
-                    if (output.getString("car4") != null) {
-                        cars.append(output.getString("car4")).append("\n");
-                    }
-                    if (output.getString("car5") != null) {
-                        cars.append(output.getString("car5"));
-                    }
+
                 }
                 db.insertPendingData(UserLoginController.loggedIn, cars);
                 db.UpdateGarageData(UserLoginController.loggedIn);
@@ -166,22 +175,26 @@ public class AddToGarageController implements Initializable {
                         "You already have a pending request!", ButtonType.OK);
                 pending.showAndWait();
             }
+            while (output.next()) {
+                if(output.getString("car1")!=null && !Objects.equals(output.getString("car1"), "")){
                     JReportController jr = new JReportController();
                     LoginDatabaseConnection link = new LoginDatabaseConnection();
                     Connection connectDB = link.getDatabaseLink();
                     byte[] reportData = JasperExportManager.exportReportToPdf(jr.createReport());
                     String INSERT_PICTURE = "UPDATE pendings SET jasper_reports = '" + reportData + "' WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
                     connectDB.setAutoCommit(false);
-
                     PreparedStatement ps = connectDB.prepareStatement(INSERT_PICTURE);
-
                     ps.executeUpdate();
                     connectDB.commit();
                     connectDB.close();
+                    break;
+                }
+            }
+
                 } catch (SQLException e) {
                     Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
                 } catch (JRException e) {
-                    System.out.println(e);
+                    throw new RuntimeException();
                 }
             }
 

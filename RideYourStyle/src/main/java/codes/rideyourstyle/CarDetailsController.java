@@ -53,7 +53,7 @@ public class CarDetailsController implements Initializable {
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
         } else if (Objects.equals(MainController.FXMLSelector, "Main")) {
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        } else {
+        } else
             fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
@@ -64,7 +64,7 @@ public class CarDetailsController implements Initializable {
                 scene = new Scene(fxmlLoader.load());
             }
             stage.setScene(scene);
-        }
+
     }
 
     @FXML
