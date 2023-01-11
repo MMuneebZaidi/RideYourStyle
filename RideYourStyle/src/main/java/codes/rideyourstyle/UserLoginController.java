@@ -206,6 +206,7 @@ public class UserLoginController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        pass_text.setOnKeyReleased(keyEvent -> Password.setText(pass_text.getText()));
         LoginDatabaseConnection db = new LoginDatabaseConnection();
         userinfo = db.retrieveDatabase("user");
         pass_text.setVisible(false);

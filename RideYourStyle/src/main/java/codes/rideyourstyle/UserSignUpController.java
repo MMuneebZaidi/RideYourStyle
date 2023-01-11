@@ -1,5 +1,7 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,23 +27,23 @@ import java.util.regex.Pattern;
 
 public class UserSignUpController implements Initializable {
     @FXML
-    private TextField Name;
+    private JFXTextField Name;
     @FXML
-    private TextField Username;
+    private JFXTextField Username;
     @FXML
-    private TextField Email;
+    private JFXTextField Email;
     @FXML
-    private PasswordField Password;
+    private JFXPasswordField Password;
     @FXML
-    private TextField pass_show;
+    private JFXTextField pass_show;
     @FXML
-    private TextField Age;
+    private JFXTextField Age;
     @FXML
-    private TextField CNIC;
+    private JFXTextField CNIC;
     @FXML
-    private TextField City;
+    private JFXTextField City;
     @FXML
-    private TextField Phone;
+    private JFXTextField Phone;
     @FXML
     private Label nameError;
     @FXML
@@ -60,6 +62,20 @@ public class UserSignUpController implements Initializable {
     private Label phoneError;
     @FXML
     private CheckBox pass_toggle;
+    @FXML
+    void GuestButton(ActionEvent ev) throws IOException {
+        UserLoginController.loggedIn=null;
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
     public Connection getDatabaseLink() {
         String databaseName = "admin/user";
         String databaseUser = "root";
@@ -426,6 +442,7 @@ public class UserSignUpController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        pass_show.setOnKeyReleased(keyEvent -> Password.setText(pass_show.getText()));
         CNIC.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 CNIC.setText(newValue.replaceAll("\\D", ""));
