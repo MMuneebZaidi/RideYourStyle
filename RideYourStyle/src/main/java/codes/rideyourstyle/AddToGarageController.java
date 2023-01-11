@@ -158,14 +158,17 @@ public class AddToGarageController implements Initializable {
                         if (output.getString("car5") != null) {
                             cars.append(output.getString("car5"));
                         }
+                        Alert placed = new Alert(Alert.AlertType.INFORMATION,
+                                "Your Order has been Placed!!", ButtonType.OK);
+                        placed.showAndWait();
                     }else {
-                        Alert pending = new Alert(Alert.AlertType.WARNING,
+                        Alert empty = new Alert(Alert.AlertType.WARNING,
                                 "Your Cart is Empty!!", ButtonType.OK);
-                        pending.showAndWait();
+                        empty.showAndWait();
                         break;
                     }
-
                 }
+
                 db.insertPendingData(UserLoginController.loggedIn, cars);
                 db.UpdateGarageData(UserLoginController.loggedIn);
                 Garage.cars.clear();

@@ -60,6 +60,8 @@ OrdersHistoryController implements Initializable {
         if (stage.isMaximized()) {
             scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
         } else {
+
+
             scene = new Scene(fxmlLoader.load());
         }
         stage.setScene(scene);

@@ -84,12 +84,15 @@ public class CarDetailsController implements Initializable {
                         String q = "UPDATE `garage` SET car1 = '"+garage.getVehicle()+"' WHERE user_id = '"+UserLoginController.loggedIn.id+"'";
                         Statement st1 = connectDB.createStatement();
                         st1.execute(q);
+                        Alert garageupd = new Alert(Alert.AlertType.INFORMATION,
+                                "Your Cart has been Updated!", ButtonType.OK);
+                        garageupd.showAndWait();
                         break;
                     }
                             else{
-                        Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                        Alert outofstock = new Alert(Alert.AlertType.INFORMATION,
                                 "Sorry, this car is out of stock.", ButtonType.OK);
-                        pending.showAndWait();}
+                        outofstock.showAndWait();}
 
                 }
                 else if(output.getString("car2") == null){
