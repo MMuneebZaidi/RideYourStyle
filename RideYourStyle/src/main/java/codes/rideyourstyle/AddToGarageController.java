@@ -131,41 +131,32 @@ public class AddToGarageController implements Initializable {
             Statement stm = cart.createStatement();
             String check = "SELECT `user_id` FROM `pendings`";
             ResultSet checking = stm.executeQuery(check);
+            String list = null;
             boolean test = true;
             while (checking.next()) {
                 if (UserLoginController.loggedIn.id == checking.getInt("user_id")) {
                     test = false;
                 }
             }
-            String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
-            ResultSet output = stm.executeQuery(query);
             if (test) {
+                String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+                ResultSet output = stm.executeQuery(query);
                 StringBuilder cars = new StringBuilder();
                 while (output.next()) {
-                    if(output.getString("car1")!=null && !Objects.equals(output.getString("car1"), "")){
-                        if (output.getString("car1") != null) {
-                            cars.append(output.getString("car1")).append("\n");
-                        }
-                        if (output.getString("car2") != null) {
-                            cars.append(output.getString("car2")).append("\n");
-                        }
-                        if (output.getString("car3") != null) {
-                            cars.append(output.getString("car3")).append("\n");
-                        }
-                        if (output.getString("car4") != null) {
-                            cars.append(output.getString("car4")).append("\n");
-                        }
-                        if (output.getString("car5") != null) {
-                            cars.append(output.getString("car5"));
-                        }
-                        Alert placed = new Alert(Alert.AlertType.INFORMATION,
-                                "Your Order has been Placed!!", ButtonType.OK);
-                        placed.showAndWait();
-                    }else {
-                        Alert empty = new Alert(Alert.AlertType.WARNING,
-                                "Your Cart is Empty!!", ButtonType.OK);
-                        empty.showAndWait();
-                        break;
+                    if (output.getString("car1") != null) {
+                        cars.append(output.getString("car1")).append("\n");
+                    }
+                    if (output.getString("car2") != null) {
+                        cars.append(output.getString("car2")).append("\n");
+                    }
+                    if (output.getString("car3") != null) {
+                        cars.append(output.getString("car3")).append("\n");
+                    }
+                    if (output.getString("car4") != null) {
+                        cars.append(output.getString("car4")).append("\n");
+                    }
+                    if (output.getString("car5") != null) {
+                        cars.append(output.getString("car5"));
                     }
                 }
 
@@ -173,33 +164,37 @@ public class AddToGarageController implements Initializable {
                 db.UpdateGarageData(UserLoginController.loggedIn);
                 Garage.cars.clear();
                 addToGarage.refresh();
-            } else {
-                Alert pending = new Alert(Alert.AlertType.INFORMATION,
-                        "You already have a pending request!", ButtonType.OK);
-                pending.showAndWait();
-            }
-            while (output.next()) {
-                if(output.getString("car1")!=null && !Objects.equals(output.getString("car1"), "")){
+                String q = "SELECT Listed from pendings";
+
+                ResultSet rs = stm.executeQuery(q);
+                while (rs.next()){
+                    list = rs.getString("Listed");
+                }
+                if(!(list== null)) {
                     JReportController jr = new JReportController();
                     LoginDatabaseConnection link = new LoginDatabaseConnection();
                     Connection connectDB = link.getDatabaseLink();
                     byte[] reportData = JasperExportManager.exportReportToPdf(jr.createReport());
                     String INSERT_PICTURE = "UPDATE pendings SET jasper_reports = '" + reportData + "' WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
                     connectDB.setAutoCommit(false);
+
                     PreparedStatement ps = connectDB.prepareStatement(INSERT_PICTURE);
+
                     ps.executeUpdate();
                     connectDB.commit();
                     connectDB.close();
-                    break;
                 }
+            }else {
+                Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                        "You already have a pending request!", ButtonType.OK);
+                pending.showAndWait();
             }
-
-                } catch (SQLException e) {
-                    Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
-                } catch (JRException e) {
-                    throw new RuntimeException();
-                }
+            }catch (SQLException e) {
+            Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
+        } catch (JRException e) {
+            System.out.println(e);
             }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
