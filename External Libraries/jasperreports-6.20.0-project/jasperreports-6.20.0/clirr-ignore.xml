@@ -1,0 +1,12 @@
+<differences>
+	<difference>
+		<className>net/sf/jasperreports/engine/util/JRLoader</className>
+		<differenceType>7002</differenceType>
+		<method>*loadToMemoryInputStream(java.io.InputStream)</method>
+	</difference>
+	<difference>
+		<className>net/sf/jasperreports/util/JacksonUtil</className>
+		<differenceType>7002</differenceType>
+		<method>*getEscapedJsonString(java.lang.Object)</method>
+	</difference>
+</differences>
