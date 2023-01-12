@@ -23,7 +23,7 @@ import java.util.*;
 public class FindCarController implements Initializable {
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -36,7 +36,7 @@ public class FindCarController implements Initializable {
     }
     @FXML
     void backButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -77,7 +77,7 @@ public class FindCarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        allVehicles = RideYouStyle.allVehicles;
+        allVehicles = RideYourStyle.allVehicles;
 
         Engine.getItems().addAll(engineRanges);
         BodyType.getItems().addAll(bodyType);
@@ -206,7 +206,7 @@ public class FindCarController implements Initializable {
                 if(Objects.equals(vehicleListView.getSelectionModel().getSelectedItem(), vehicle.name)){
                     setCar(vehicle);
                     data.setVehicle(car);
-                    FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                    FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                     Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                     Stage stage = (Stage) vehicleListView.getScene().getWindow();
                     Scene scene;

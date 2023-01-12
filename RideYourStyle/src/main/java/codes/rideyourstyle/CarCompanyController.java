@@ -51,7 +51,7 @@ public class CarCompanyController implements Initializable {
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -64,7 +64,7 @@ public class CarCompanyController implements Initializable {
     }
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -89,7 +89,7 @@ public class CarCompanyController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        vehicles = RideYouStyle.allVehicles;
+        vehicles = RideYourStyle.allVehicles;
 
         companyNAME.setText(MainController.Company);
         companyLOGO.setImage(new Image(MainController.Logo));
@@ -106,7 +106,7 @@ public class CarCompanyController implements Initializable {
                     for (Vehicle vehicle : vehicles) {
                         if (vehicle instanceof Mercedes){
                             
-                            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
                             anchorPane.setCursor(Cursor.HAND);
@@ -124,7 +124,7 @@ public class CarCompanyController implements Initializable {
                             anchorPane.setOnMousePressed(event -> {
                                 CarCompanyController.this.setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -153,7 +153,7 @@ public class CarCompanyController implements Initializable {
                             if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -183,7 +183,7 @@ public class CarCompanyController implements Initializable {
                     for (Vehicle vehicle : vehicles) {
                         if (vehicle instanceof Bently){
 
-                            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
                             anchorPane.setCursor(Cursor.HAND);
@@ -201,7 +201,7 @@ public class CarCompanyController implements Initializable {
                             anchorPane.setOnMousePressed(event -> {
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Scene scene;
                                 try {
                                     scene = new Scene(fxmlLoader1.load(), 1080, 720);
@@ -226,7 +226,7 @@ public class CarCompanyController implements Initializable {
                             if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -256,7 +256,7 @@ public class CarCompanyController implements Initializable {
                     for (Vehicle vehicle : vehicles) {
                         if (vehicle instanceof BMW){
 
-                            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
                             anchorPane.setCursor(Cursor.HAND);
@@ -274,7 +274,7 @@ public class CarCompanyController implements Initializable {
                             anchorPane.setOnMousePressed(event -> {
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -303,7 +303,7 @@ public class CarCompanyController implements Initializable {
                             if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -333,7 +333,7 @@ public class CarCompanyController implements Initializable {
                     for (Vehicle vehicle : vehicles) {
                         if (vehicle instanceof RollsRoyce){
 
-                            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
                             anchorPane.setCursor(Cursor.HAND);
@@ -351,7 +351,7 @@ public class CarCompanyController implements Initializable {
                             anchorPane.setOnMousePressed(event -> {
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -380,7 +380,7 @@ public class CarCompanyController implements Initializable {
                             if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -410,7 +410,7 @@ public class CarCompanyController implements Initializable {
                     for (Vehicle vehicle : vehicles) {
                         if (vehicle instanceof Porsche){
 
-                            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
                             anchorPane.setCursor(Cursor.HAND);
@@ -428,7 +428,7 @@ public class CarCompanyController implements Initializable {
                             anchorPane.setOnMousePressed(event -> {
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -457,7 +457,7 @@ public class CarCompanyController implements Initializable {
                             if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -487,7 +487,7 @@ public class CarCompanyController implements Initializable {
                     for (Vehicle vehicle : vehicles) {
                         if (vehicle instanceof Cheverolet){
 
-                            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("cargrid.fxml"));
                             AnchorPane anchorPane = fxmlLoader.load();
 
                             anchorPane.setCursor(Cursor.HAND);
@@ -505,7 +505,7 @@ public class CarCompanyController implements Initializable {
                             anchorPane.setOnMousePressed(event -> {
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -534,7 +534,7 @@ public class CarCompanyController implements Initializable {
                             if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;
@@ -564,7 +564,7 @@ public class CarCompanyController implements Initializable {
                 try {
                     for (Vehicle vehicle : vehicles) {
 
-                        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("cargrid.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("cargrid.fxml"));
                         AnchorPane anchorPane = fxmlLoader.load();
                         anchorPane.setCursor(Cursor.HAND);
                         anchorPane.setStyle("-fx-background-radius: 15;");
@@ -580,7 +580,7 @@ public class CarCompanyController implements Initializable {
                         anchorPane.setOnMousePressed(event -> {
                             setCar(vehicle);
                             data.setVehicle(car);
-                            FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                            FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                             Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                             Scene scene;
@@ -608,7 +608,7 @@ public class CarCompanyController implements Initializable {
                             if(Objects.equals(searchlistView.getSelectionModel().getSelectedItem(), vehicle.name)){
                                 setCar(vehicle);
                                 data.setVehicle(car);
-                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYouStyle.class.getResource("CarDetail.fxml"));
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(RideYourStyle.class.getResource("CarDetail.fxml"));
                                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                 Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
                                 Scene scene;

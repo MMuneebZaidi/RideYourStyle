@@ -101,7 +101,7 @@ public class AdminLoginController implements Initializable {
         if(validateEmail()){
             if(checkEmail(userinfo)){
                 if(checkPass(userinfo)){
-                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("AdminDashboard.fxml"));
                     Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                     Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                     Scene scene;
@@ -139,7 +139,7 @@ public class AdminLoginController implements Initializable {
 
     @FXML
     void UserLoginButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("UserLogin.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;

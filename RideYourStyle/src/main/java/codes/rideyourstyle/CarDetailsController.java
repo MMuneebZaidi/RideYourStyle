@@ -35,7 +35,7 @@ public class CarDetailsController implements Initializable {
 
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -50,11 +50,11 @@ public class CarDetailsController implements Initializable {
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader;
         if (Objects.equals(FindCarController.FXMLSelector, "Finding")) {
-            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Finding.fxml"));
+            fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Finding.fxml"));
         } else if (Objects.equals(MainController.FXMLSelector, "Main")) {
-            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+            fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         } else
-            fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("CarCompany.fxml"));
+            fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
             Scene scene;
@@ -175,7 +175,7 @@ public class CarDetailsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String v1 = data.getVehicle();
-        list = RideYouStyle.allVehicles;
+        list = RideYourStyle.allVehicles;
         for (Vehicle value : list) {
             if (value.name.equals(v1))
                 vehicle = value;

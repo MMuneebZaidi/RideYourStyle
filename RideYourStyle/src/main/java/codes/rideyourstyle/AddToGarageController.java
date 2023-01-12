@@ -22,7 +22,6 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +29,7 @@ import java.util.logging.Logger;
 public class AddToGarageController implements Initializable {
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -54,7 +53,7 @@ public class AddToGarageController implements Initializable {
     Connection cart = db.getDatabaseLink();
     @FXML
     void backButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -205,35 +204,35 @@ public class AddToGarageController implements Initializable {
 
             while (output.next()) {
                 if (output.getString("car1") != null) {
-                    for(Vehicle vehicle : RideYouStyle.allVehicles){
+                    for(Vehicle vehicle : RideYourStyle.allVehicles){
                         if (output.getString("car1").equals(vehicle.name)){
                             Garage.cars.add(vehicle);
                         }
                     }
                 }
                 if (output.getString("car2") != null) {
-                    for(Vehicle vehicle : RideYouStyle.allVehicles){
+                    for(Vehicle vehicle : RideYourStyle.allVehicles){
                         if (output.getString("car2").equals(vehicle.name)){
                             Garage.cars.add(vehicle);
                         }
                     }
                 }
                 if (output.getString("car3") != null) {
-                    for(Vehicle vehicle : RideYouStyle.allVehicles){
+                    for(Vehicle vehicle : RideYourStyle.allVehicles){
                         if (output.getString("car3").equals(vehicle.name)){
                             Garage.cars.add(vehicle);
                         }
                     }
                 }
                 if (output.getString("car4") != null) {
-                    for(Vehicle vehicle : RideYouStyle.allVehicles){
+                    for(Vehicle vehicle : RideYourStyle.allVehicles){
                         if (output.getString("car4").equals(vehicle.name)){
                             Garage.cars.add(vehicle);
                         }
                     }
                 }
                 if (output.getString("car5") != null) {
-                    for(Vehicle vehicle : RideYouStyle.allVehicles){
+                    for(Vehicle vehicle : RideYourStyle.allVehicles){
                         if (output.getString("car5").equals(vehicle.name)){
                             Garage.cars.add(vehicle);
                         }

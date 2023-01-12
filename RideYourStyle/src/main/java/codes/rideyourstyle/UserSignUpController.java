@@ -65,7 +65,7 @@ public class UserSignUpController implements Initializable {
     @FXML
     void GuestButton(ActionEvent ev) throws IOException {
         UserLoginController.loggedIn=null;
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -391,7 +391,7 @@ public class UserSignUpController implements Initializable {
                                         Info data = new UserInfo(member.id);
                                         LoginDatabaseConnection dbg = new LoginDatabaseConnection();
                                         dbg.insertGarageData(data);
-                                        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+                                        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("UserLogin.fxml"));
                                         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                                         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                                         Scene scene;
@@ -428,7 +428,7 @@ public class UserSignUpController implements Initializable {
     }
     @FXML
     void LoginButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("UserLogin.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;

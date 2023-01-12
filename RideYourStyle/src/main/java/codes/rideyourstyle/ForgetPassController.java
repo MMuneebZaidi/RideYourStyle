@@ -27,7 +27,7 @@ public class ForgetPassController implements Initializable {
     private JFXTextField Phone;
     @FXML
     void backButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("UserLogin.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -62,7 +62,7 @@ public class ForgetPassController implements Initializable {
         if(validatePhone()){
             if(UserLoginController.data.PhoneNumber.equals(Phone.getText())){
                 data.setPass_name("Reset Password");
-                FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("PasswordReset.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("PasswordReset.fxml"));
                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                 Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                 Scene scene;

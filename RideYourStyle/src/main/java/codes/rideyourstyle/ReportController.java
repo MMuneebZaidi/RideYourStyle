@@ -47,7 +47,7 @@ public class ReportController  implements Initializable {
 
     @FXML
     void backButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("AdminDashboard.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -60,7 +60,7 @@ public class ReportController  implements Initializable {
     }
     @FXML
     void HomeButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("AdminDashboard.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -95,7 +95,7 @@ public class ReportController  implements Initializable {
             }
             CarsSold.setText(arr.size() +" cars");
             for(String s:arr){
-                for(Vehicle v1:RideYouStyle.allVehicles){
+                for(Vehicle v1: RideYourStyle.allVehicles){
                     if(s.equals(v1.name)){
                         Revenue=Revenue+Integer.parseInt(v1.price);
                     }

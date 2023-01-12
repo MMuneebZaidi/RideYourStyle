@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 public class CompareController implements Initializable {
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -40,7 +40,7 @@ public class CompareController implements Initializable {
     }
     @FXML
     void backButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -74,7 +74,7 @@ public class CompareController implements Initializable {
                 stage.show();
             }else {data.setCar1(car1);
                 data.setCar2(car2);
-                FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ComparedScene.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("ComparedScene.fxml"));
                 Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                 Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                 Scene scene;

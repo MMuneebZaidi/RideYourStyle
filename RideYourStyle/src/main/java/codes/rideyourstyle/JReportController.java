@@ -1,20 +1,10 @@
 package codes.rideyourstyle;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
-import net.sf.jasperreports.export.SimpleExporterInput;
-import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.view.JasperViewer;
 
-import java.io.File;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,7 +49,7 @@ public class JReportController {
                 Stream<String> List = ordern.lines();
                 List.forEach(arr::add);
                 for (String s : arr) {
-                    for (Vehicle v1 : RideYouStyle.allVehicles) {
+                    for (Vehicle v1 : RideYourStyle.allVehicles) {
                         if (s.equals(v1.name)) {
                             Revenue = Revenue + Integer.parseInt(v1.price);
                         }

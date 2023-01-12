@@ -60,7 +60,7 @@ public class PassResetController implements Initializable {
     @FXML
     void backButton(ActionEvent event) throws IOException {
         if(data.getPass_name().equals("Reset Password")){
-            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ForgotPassword.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("ForgotPassword.fxml"));
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
             Scene scene;
@@ -71,7 +71,7 @@ public class PassResetController implements Initializable {
             }
             stage.setScene(scene);
         }else {
-            FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Profile.fxml"));
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
             Scene scene;
@@ -240,7 +240,7 @@ public class PassResetController implements Initializable {
                     Statement stm = connectDB.createStatement();
                     stm.execute(query);
                     if(data.getPass_name().equals("Change Password")) {
-                        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Profile.fxml"));
                         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                         Scene scene;
@@ -252,7 +252,7 @@ public class PassResetController implements Initializable {
                         stage.setScene(scene);
                     }
                     else if(data.getPass_name().equals("Reset Password")){
-                        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("UserLogin.fxml"));
                         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                         Scene scene;
@@ -283,7 +283,7 @@ public class PassResetController implements Initializable {
                     Connection connectDB = LDC.getDatabaseLink();
                     Statement stm = connectDB.createStatement();
                     stm.execute(query);
-                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Profile.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
                     Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                     stage.setScene(scene);
@@ -311,7 +311,7 @@ public class PassResetController implements Initializable {
                     Connection connectDB = LDC.getDatabaseLink();
                     Statement stm = connectDB.createStatement();
                     stm.execute(query);
-                    FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Profile.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Profile.fxml"));
                     Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
                     Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
                     Scene scene;

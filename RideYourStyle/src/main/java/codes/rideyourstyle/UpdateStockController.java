@@ -46,7 +46,7 @@ public class UpdateStockController implements Initializable {
     private JFXTextField searchBar;
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("AdminDashboard.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -64,7 +64,7 @@ public class UpdateStockController implements Initializable {
     ObservableList<Vehicle> tableList = FXCollections.observableArrayList();
     @FXML
     void backButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("AdminDashboard.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -232,7 +232,7 @@ public class UpdateStockController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        allVehicles.addAll(RideYouStyle.allVehicles);
+        allVehicles.addAll(RideYourStyle.allVehicles);
         for (Vehicle vehicle: allVehicles){
             carName.add(vehicle.name);
         }

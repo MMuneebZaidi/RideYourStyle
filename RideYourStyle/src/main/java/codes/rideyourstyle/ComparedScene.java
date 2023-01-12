@@ -1,6 +1,5 @@
 package codes.rideyourstyle;
 
-import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +31,7 @@ public class ComparedScene implements Initializable {
 
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Main.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         Scene scene;
@@ -46,7 +45,7 @@ public class ComparedScene implements Initializable {
 
     @FXML
     void BackButton(ActionEvent ev) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Compare.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("Compare.fxml"));
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
         Scene scene;
@@ -251,9 +250,9 @@ public class ComparedScene implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String s1 = data.getCar1();
         String s2 = data.getCar2();
-        list = RideYouStyle.allVehicles;
+        list = RideYourStyle.allVehicles;
 
-        for(int i=0;i<RideYouStyle.allVehicles.size();i++){
+        for(int i = 0; i< RideYourStyle.allVehicles.size(); i++){
             if(list.get(i).name.equals(s1))
                 car1 = list.get(i);
             else if(list.get(i).name.equals(s2))
