@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,120 +15,125 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.AddToGarageController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../../css-files/background.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.AddToGarageController">
    <children>
       <BorderPane prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="720.0" prefWidth="216.0" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" opacity="0.97" prefHeight="720.0" prefWidth="147.0" style="-fx-background-color: #161a1f;" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;" VBox.vgrow="ALWAYS">
+                  <Pane maxWidth="111.0" minHeight="118.0" prefHeight="118.0" prefWidth="111.0" style="-fx-background-radius: 10;" styleClass="logo" stylesheets="@../../css-files/background.css">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow height="48.26" radius="23.1425" spread="0.36" width="46.31">
+                           <color>
+                              <Color red="0.48627451062202454" green="0.1882352977991104" blue="0.5254902243614197" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="188.0" prefWidth="147.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <AnchorPane layoutX="44.0" layoutY="59.0" prefHeight="105.0" prefWidth="124.0" AnchorPane.bottomAnchor="537.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.66666666666666" AnchorPane.topAnchor="59.0">
-                           <children>
-                              <ImageView fitHeight="128.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <JFXButton alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="3.0" layoutX="8.0" layoutY="14.0" maxHeight="56.0" maxWidth="200.0" onAction="#backButton" prefHeight="20.0" prefWidth="19.0" ripplerFill="#7c3086" style="-fx-border-radius: 5;" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/logos/RideYourStyleLOGO.png" />
+                                    <Image url="@../../backButton.png" />
                                  </image>
                                  <effect>
-                                    <DropShadow blurType="GAUSSIAN" height="106.65" radius="53.7975" spread="0.24" width="110.54">
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
                                        <color>
-                                          <Color red="1.0" green="0.9333333373069763" blue="0.7882353067398071" />
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
                                        </color>
-                                    </DropShadow>
+                                    </InnerShadow>
                                  </effect>
                               </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.bottomAnchor="0.66668701171875" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6666666666666572" />
-                        <HBox layoutX="-1.0" layoutY="166.0" prefHeight="105.0" prefWidth="217.0">
-                           <children>
-                              <Label prefHeight="101.0" prefWidth="207.0" text="Ride Your Style" textFill="#404040">
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font name="Brush Script MT Italic" size="35.0" />
-                                 </font>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="3.0" layoutX="44.0" layoutY="14.0" maxHeight="56.0" maxWidth="200.0" onAction="#HomeButton" prefHeight="20.0" prefWidth="19.0" ripplerFill="#7c3086" style="-fx-border-radius: 5;" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/logos/home.png" />
+                                 </image>
                                  <effect>
-                                    <DropShadow height="46.31" radius="20.22" spread="0.38" width="36.57">
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
                                        <color>
-                                          <Color red="1.0" green="0.9333333373069763" blue="0.7882353067398071" />
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
                                        </color>
-                                    </DropShadow>
+                                    </InnerShadow>
                                  </effect>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <VBox alignment="TOP_CENTER" layoutY="423.0" prefHeight="299.0" prefWidth="216.0" AnchorPane.bottomAnchor="1.6666666666666856" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6666666666666572">
-                           <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="123.0" stylesheets="@../../css-files/Buttons.css" text="Admin Login" textFill="#a19c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </VBox>
-                        <HBox prefHeight="43.0" prefWidth="67.0">
-                           <children>
-                              <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" prefHeight="43.0" prefWidth="65.0" rotate="180.0" stylesheets="@../../css-files/backbutton.css" text="➜">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
                      </children>
-                  </AnchorPane>
+                  </Pane>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
          </left>
          <center>
-            <AnchorPane style="-fx-background-color: white;">
+            <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="background">
                <children>
-                  <VBox prefHeight="720.0" prefWidth="864.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane layoutX="9.0" layoutY="10.0" opacity="0.89" prefHeight="138.0" prefWidth="915.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
+                  <VBox layoutX="9.0" layoutY="10.0" prefHeight="138.0" prefWidth="915.0" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="10.0">
                      <children>
-                        <Pane prefHeight="12.0" prefWidth="863.0" />
-                        <HBox alignment="CENTER_LEFT" prefHeight="99.0" prefWidth="863.0">
+                        <HBox alignment="CENTER" prefHeight="183.0" prefWidth="394.0">
                            <children>
-                              <Pane prefHeight="53.0" prefWidth="25.0" />
-                              <Label prefHeight="84.0" prefWidth="409.0" text="Your Garage">
+                              <Pane prefHeight="138.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="65.0" prefWidth="563.0" text="My Garage" textFill="#d9c9c9">
                                  <font>
-                                    <Font name="Agency FB Bold" size="50.0" />
+                                    <Font name="Arial Rounded MT Bold" size="50.0" />
                                  </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
                               </Label>
-                              <Pane prefHeight="53.0" prefWidth="437.0" HBox.hgrow="ALWAYS" />
+                              <Pane layoutX="10.0" layoutY="10.0" prefHeight="138.0" prefWidth="312.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
-                        <HBox alignment="TOP_CENTER" prefHeight="390.0" prefWidth="863.0">
+                     </children>
+                  </VBox>
+                  <HBox layoutX="9.0" layoutY="153.0" prefHeight="557.0" prefWidth="915.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="153.0">
+                     <children>
+                        <AnchorPane opacity="0.89" prefHeight="557.0" prefWidth="927.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                            <children>
-                              <TableView fx:id="addToGarage" prefHeight="296.0" prefWidth="812.0">
+                              <TableView fx:id="addToGarage" layoutX="30.0" layoutY="39.0" prefHeight="382.0" prefWidth="850.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="39.0">
                                  <columns>
-                                    <TableColumn fx:id="Modify" editable="false" minWidth="73.33337342739105" prefWidth="73.33337342739105" resizable="false" sortable="false" text="Remove" />
-                                    <TableColumn fx:id="Name" editable="false" maxWidth="570.6666870117188" prefWidth="564.0000610351562" resizable="false" sortable="false" text="Name" />
-                                    <TableColumn fx:id="Price" editable="false" maxWidth="474.00006103515625" prefWidth="172.0" resizable="false" sortable="false" text="Price" />
+                                    <TableColumn fx:id="Modify" editable="false" maxWidth="100.0" minWidth="73.33337342739105" prefWidth="73.33337342739105" sortable="false" text="Remove" />
+                                    <TableColumn fx:id="Name" editable="false" maxWidth="10000.0" minWidth="100.0" prefWidth="648.0000839233398" sortable="false" text="Products Name" />
+                                    <TableColumn fx:id="Price" editable="false" maxWidth="500.0" minWidth="127.333251953125" prefWidth="127.333251953125" sortable="false" text="Price" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
+                              <JFXButton alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="30.0" layoutX="724.0" layoutY="435.0" maxHeight="56.0" maxWidth="200.0" onAction="#Checkout" prefHeight="56.0" prefWidth="156.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Proceed to Checkout" textFill="#e9e9e9" AnchorPane.bottomAnchor="66.33333333333337" AnchorPane.rightAnchor="34.66666666666663">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXButton>
                            </children>
-                           <padding>
-                              <Insets left="25.0" right="25.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="863.0">
-                           <children>
-                              <Pane prefHeight="71.0" prefWidth="673.0" HBox.hgrow="ALWAYS" />
-                              <Button fx:id="ProceedToCheckout" mnemonicParsing="false" onAction="#Checkout" prefHeight="40.0" prefWidth="137.0" text="Proceed to Checkout" />
-                              <Pane prefHeight="71.0" prefWidth="26.0" />
-                           </children>
-                        </HBox>
-                        <Pane prefHeight="88.0" prefWidth="863.0" VBox.vgrow="ALWAYS" />
+                        </AnchorPane>
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
             </AnchorPane>
          </center>

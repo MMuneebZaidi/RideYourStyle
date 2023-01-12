@@ -2,20 +2,26 @@ package codes.rideyourstyle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+
+import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +35,32 @@ public class PendingRequestsController implements Initializable {
     private TableColumn<Pendings, StringBuilder> requests;
     @FXML
     private TableColumn<Pendings, String> Action;
+    @FXML
+    void backButton(ActionEvent ev) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
+    @FXML
+    void HomeButton(ActionEvent ev) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
 
     LoginDatabaseConnection db = new LoginDatabaseConnection();
     Connection pendings = db.getDatabaseLink();
@@ -39,6 +71,7 @@ public class PendingRequestsController implements Initializable {
         customerName.setStyle( "-fx-alignment: CENTER-LEFT;");
 
         Callback<TableColumn<Pendings, String>, TableCell<Pendings, String>> cellFactory = (TableColumn<Pendings, String> param) -> new TableCell<>() {
+            @SuppressWarnings("SuspiciousListRemoveInLoop")
             @Override
             public void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -76,6 +109,7 @@ public class PendingRequestsController implements Initializable {
                             Statement stm = db.DatabaseLink.createStatement();
                             String status = "UPDATE `pendings` SET `Status` = 'Approved' WHERE user_id = '" + this.getTableRow().getItem().getUser_id()+ "'";
                             String managedBy = "UPDATE `pendings` SET `Managed By` = '"+AdminLoginController.loggedInAdmin.Email+"' WHERE user_id = '" + this.getTableRow().getItem().getUser_id()+ "'";
+
                             stm.execute(status);
                             stm.execute(managedBy);
 
@@ -106,7 +140,6 @@ public class PendingRequestsController implements Initializable {
                                     db.insertSellPurchaseData(new Pendings(pendingRequest.get(i).getUser_id(),pendingRequest.get(i).getRequests(),pendingRequest.get(i).getStatus(),pendingRequest.get(i).getManagedBy()));
                                     String delete = "DELETE FROM pendings WHERE `pendings`.`user_id` = "+pendingRequest.get(i).getUser_id();
                                     stm.execute(delete);
-                                    //noinspection SuspiciousListRemoveInLoop
                                     pendingRequest.remove(i);
                                 }
                             }

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,16 +13,34 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AddToGarageController implements Initializable {
+    @FXML
+    void HomeButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
     @FXML
     private TableView<Vehicle> addToGarage;
     @FXML
@@ -36,10 +55,15 @@ public class AddToGarageController implements Initializable {
     @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
     private void loadDate() {
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -56,7 +80,7 @@ public class AddToGarageController implements Initializable {
                     setGraphic(null);
                     setText(null);
                 } else {
-                    ImageView img = new ImageView(new Image("E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\delete.png",15,15,true,false));
+                    ImageView img = new ImageView(new Image("delete.png",15,15,true,false));
                     Button del = new Button("Delete",img);
 
                     del.setText(null);
@@ -102,21 +126,22 @@ public class AddToGarageController implements Initializable {
         addToGarage.setItems(Garage.getCars());
     }
     @FXML
-    void Checkout(){
+    void Checkout() {
         try {
             Statement stm = cart.createStatement();
             String check = "SELECT `user_id` FROM `pendings`";
             ResultSet checking = stm.executeQuery(check);
+            String list = null;
             boolean test = true;
-            while (checking.next()){
-                if(UserLoginController.loggedIn.id==checking.getInt("user_id")){
-                    test=false;
+            while (checking.next()) {
+                if (UserLoginController.loggedIn.id == checking.getInt("user_id")) {
+                    test = false;
                 }
             }
-            if (test){
+            if (test) {
                 String query = "SELECT car1, car2 , car3 , car4 , car5 FROM garage WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
                 ResultSet output = stm.executeQuery(query);
-                StringBuilder cars= new StringBuilder();
+                StringBuilder cars = new StringBuilder();
                 while (output.next()) {
                     if (output.getString("car1") != null) {
                         cars.append(output.getString("car1")).append("\n");
@@ -134,19 +159,41 @@ public class AddToGarageController implements Initializable {
                         cars.append(output.getString("car5"));
                     }
                 }
-                db.insertPendingData(UserLoginController.loggedIn,cars);
+
+                db.insertPendingData(UserLoginController.loggedIn, cars);
                 db.UpdateGarageData(UserLoginController.loggedIn);
                 Garage.cars.clear();
                 addToGarage.refresh();
+                String q = "SELECT Listed from pendings";
+
+                ResultSet rs = stm.executeQuery(q);
+                while (rs.next()){
+                    list = rs.getString("Listed");
+                }
+                if(!(list== null)) {
+                    JReportController jr = new JReportController();
+                    LoginDatabaseConnection link = new LoginDatabaseConnection();
+                    Connection connectDB = link.getDatabaseLink();
+                    byte[] reportData = JasperExportManager.exportReportToPdf(jr.createReport());
+                    String INSERT_PICTURE = "UPDATE pendings SET jasper_reports = '" + reportData + "' WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+                    connectDB.setAutoCommit(false);
+
+                    PreparedStatement ps = connectDB.prepareStatement(INSERT_PICTURE);
+
+                    ps.executeUpdate();
+                    connectDB.commit();
+                    connectDB.close();
+                }
             }else {
                 Alert pending = new Alert(Alert.AlertType.INFORMATION,
                         "You already have a pending request!", ButtonType.OK);
                 pending.showAndWait();
             }
-
-        }catch (SQLException e) {
+            }catch (SQLException e) {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
-        }
+        } catch (JRException e) {
+            System.out.println(e);
+            }
     }
 
     @Override

@@ -2,6 +2,9 @@ package codes.rideyourstyle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -87,24 +90,39 @@ public class LoginDatabaseConnection {
     }
     public void insertPendingData(Info data,StringBuilder cars) {
         try {
-            String insert = "INSERT INTO `pendings`(`user_id`, `Listed`, `Status`)";
-            String values = "VALUES ('"+data.id+"','"+cars+"','"+"Request Pending"+"')";
-            String query = insert + values;
-            Connection connectDB = getDatabaseLink();
-            Statement stm = connectDB.createStatement();
-            stm.execute(query);
+            if(!(cars.isEmpty())) {
+                String insert = "INSERT INTO `pendings`(`user_id`, `Listed`, `Status`)";
+                String values = "VALUES ('" + data.id + "','" + cars + "','" + "Request Pending" + "')";
+                String query = insert + values;
+                Connection connectDB = getDatabaseLink();
+                Statement stm = connectDB.createStatement();
+                stm.execute(query);
+            } else {
+                Alert pending = new Alert(Alert.AlertType.INFORMATION,
+                        "Your cart is empty!", ButtonType.OK);
+                pending.showAndWait();
+            }
         } catch (Exception e) {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     public void insertSellPurchaseData(Pendings data) {
         try {
+            Blob report = null;
             String insert = "INSERT INTO `sell/purchase`(`user_id`, `Listed`, `Status`, `Managed By`)";
             String values = "VALUES ('"+data.getUser_id()+"','"+data.getRequests()+"','"+data.getStatus()+"','"+data.getManagedBy()+"')";
             String query = insert + values;
             Connection connectDB = getDatabaseLink();
             Statement stm = connectDB.createStatement();
             stm.execute(query);
+            String q = "SELECT jasper_reports from `pendings` where user_id = '" + data.getUser_id() + "'";
+            ResultSet rs = stm.executeQuery(q);
+            while (rs.next()){
+                report = rs.getBlob("jasper_reports");
+            }
+            String q2 = "UPDATE `sell/purchase` SET jasper_reports = '" + report + "' WHERE user_id = '" + data.getUser_id() + "' AND Listed = '" + data.getRequests() + "'";
+            PreparedStatement ps = connectDB.prepareStatement(q2);
+            ps.executeUpdate();
         } catch (Exception e) {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         }

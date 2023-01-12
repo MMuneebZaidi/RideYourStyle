@@ -4,12 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -26,18 +28,28 @@ public class CompareController implements Initializable {
     @FXML
     void HomeButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
     @FXML
     void backButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
         stage.setScene(scene);
-        stage.show();
     }
 
     String car1;
@@ -49,7 +61,7 @@ public class CompareController implements Initializable {
     private ChoiceBox<String> choicebox2;
     DataSingleton data = DataSingleton.getInstance();
     @FXML
-    void compareButton() throws IOException {
+    void compareButton(ActionEvent ev) throws IOException {
             if(Objects.equals(car1, car2)){
                 ImageView img = new ImageView( new Image("E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\Mohtaram.png"));
                 Stage stage = new Stage();
@@ -63,10 +75,15 @@ public class CompareController implements Initializable {
             }else {data.setCar1(car1);
                 data.setCar2(car2);
                 FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("ComparedScene.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-                Stage stage = (Stage) choicebox1.getScene().getWindow();
+                Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+                Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                Scene scene;
+                if (stage.isMaximized()) {
+                    scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+                } else {
+                    scene = new Scene(fxmlLoader.load());
+                }
                 stage.setScene(scene);
-                stage.show();
             }
     }
     ArrayList<String> carName = new ArrayList<>();

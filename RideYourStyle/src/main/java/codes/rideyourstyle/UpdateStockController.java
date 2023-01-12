@@ -1,5 +1,8 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXScrollPane;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,13 +38,25 @@ public class UpdateStockController implements Initializable {
     @FXML
     private TableColumn<Vehicle,String> updateCol;
     @FXML
-    private ListView<String> searchlistView;
+    private JFXListView<String> searchlistView;
     @FXML
-    private ScrollPane searchscroll;
+    private JFXScrollPane searchscroll;
 
     @FXML
-    private TextField searchBar;
-
+    private JFXTextField searchBar;
+    @FXML
+    void HomeButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("AdminDashboard.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
     static Vehicle car;
 
     ArrayList<String> carName = new ArrayList<>();

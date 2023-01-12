@@ -2,17 +2,18 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
-<?import java.lang.String?>
-<?import java.net.URL?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -20,371 +21,404 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.MainController">
-   <AnchorPane prefHeight="720.0" prefWidth="216.0" style="-fx-background-color: #a19c9c;">
-      <Polygon fill="#404040" layoutX="80.0" layoutY="638.0" points="-79.99998474121094, 84.6666259765625, 135.99996948242188, 85.33331298828125, 136.0, -219.33334350585938, -80.0, -374.8888854980469" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <VBox layoutX="14.0" layoutY="411.0" prefHeight="213.0" prefWidth="174.0">
-         <Button mnemonicParsing="false" onAction="#findButton" prefHeight="53.0" prefWidth="181.0" stylesheets="@../../css-files/Buttons.css" text="Find A Car" textFill="#a19c9c">
-            <font>
-               <Font size="20.0" />
-            </font>
-         </Button>
-         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#CompareButton" prefHeight="53.0" prefWidth="176.0" stylesheets="@../../css-files/Buttons.css" text="Compare Cars" textFill="#a19c9c">
-            <font>
-               <Font size="20.0" />
-            </font>
-         </Button>
-      </VBox>
-      <AnchorPane layoutX="43.0" layoutY="28.0" prefHeight="130.0" prefWidth="129.0">
-         <children>
-            <ImageView fitHeight="130.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/logos/RideYourStyleLOGO.png" />
-               </image>
-            </ImageView>
-         </children></AnchorPane>
-   </AnchorPane>
-   <HBox layoutX="215.0" prefHeight="176.0" prefWidth="865.0" AnchorPane.rightAnchor="-0.33333333333337123" AnchorPane.topAnchor="0.0">
-      <Label prefHeight="176.0" prefWidth="510.0" text="Ride Your Style" HBox.hgrow="ALWAYS">
-         <HBox.margin>
-            <Insets left="25.0" />
-         </HBox.margin>
-         <font>
-            <Font name="Brush Script MT Italic" size="86.0" />
-         </font>
-         <textFill>
-            <RadialGradient centerX="0.6107010647819491" centerY="0.5662460206810984" focusDistance="-0.44274806248322696" radius="0.9427481935224461">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.7982456088066101" green="0.7982456088066101" blue="0.7982456088066101" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006711409395973154">
-                     <color>
-                        <Color red="0.7982456088066101" green="0.7982456088066101" blue="0.7982456088066101" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.02237136465324384">
-                     <color>
-                        <Color red="0.18421052396297455" green="0.18421052396297455" blue="0.18421052396297455" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.43875156872374094">
-                     <color>
-                        <Color red="0.3245614171028137" green="0.3245614171028137" blue="0.3245614171028137" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.7723577235772358">
-                     <color>
-                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </textFill>
-      </Label>
-      <Pane prefHeight="176.0" prefWidth="239.0" HBox.hgrow="ALWAYS">
-         <children>
-            <JFXButton fx:id="ProfileB" layoutX="87.0" layoutY="42.0" onAction="#Profile" prefHeight="108.0" prefWidth="136.0" text="Profile">
-               <font>
-                  <Font name="Berlin Sans FB" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="51.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../user.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children></Pane>
-      <VBox prefHeight="176.0" prefWidth="121.0">
-         <children>
-            <Pane prefHeight="50.0" prefWidth="139.0" VBox.vgrow="ALWAYS" />
-            <GridPane alignment="CENTER" hgap="5.0" prefHeight="72.0" prefWidth="127.0" VBox.vgrow="ALWAYS">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+<AnchorPane fx:id="acc" prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../../css-files/background.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.MainController">
+   <children>
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox alignment="TOP_CENTER" opacity="0.97" prefHeight="720.0" prefWidth="147.0" style="-fx-background-color: #161a1f;" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" layoutX="26.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchButton" prefHeight="60.0" prefWidth="83.0" style="-fx-background-radius: 5;" text="Admin" textAlignment="CENTER" GridPane.columnIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../switchuser.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <stylesheets>
-                        <URL value="@../../css-files/Style.css" />
-                        <URL value="@../../css-files/CarGrid.css" />
-                     </stylesheets>
-                     <styleClass>
-                        <String fx:value="transparent" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </Button>
-                  <Button fx:id="userloginbutton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#UserLoginButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 5;" text="Login" textAlignment="CENTER" visible="false">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../icons8-login-rounded-up-50.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <stylesheets>
-                        <URL value="@../../css-files/Style.css" />
-                        <URL value="@../../css-files/CarGrid.css" />
-                     </stylesheets>
-                     <styleClass>
-                        <String fx:value="transparent" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </Button>
+                  <Pane maxWidth="111.0" minHeight="118.0" prefHeight="118.0" prefWidth="111.0" style="-fx-background-radius: 10;" styleClass="logo" stylesheets="@../../css-files/background.css">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow height="48.26" radius="23.1425" spread="0.36" width="46.31">
+                           <color>
+                              <Color red="0.48627451062202454" green="0.1882352977991104" blue="0.5254902243614197" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="188.0" prefWidth="147.0" VBox.vgrow="ALWAYS" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <JFXDrawer fx:id="profiledraw" defaultDrawerSize="350.0" direction="BOTTOM" layoutY="-171.0" minWidth="147.0" prefHeight="290.0" prefWidth="147.0" styleClass="transparent" stylesheets="@../../css-files/CarGrid.css" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="48.0" layoutY="141.0" onAction="#Profile" prefHeight="39.0" prefWidth="21.0" ripplerFill="#7c3086" style="-fx-border-radius: 100;" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../SettingsIcon.png" />
+                                 </image>
+                                 <effect>
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                       <color>
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children></Pane>
                </children>
-               <styleClass>
-                  <String fx:value="shadow" />
-                  <String fx:value="transparent" />
-               </styleClass>
-               <stylesheets>
-                  <URL value="@../../css-files/CarGrid.css" />
-                  <URL value="@../../css-files/StartButton.css" />
-               </stylesheets>
-            </GridPane>
-            <Pane prefHeight="47.0" prefWidth="164.0" VBox.vgrow="ALWAYS" />
-         </children>
-      </VBox>
-      <Pane prefHeight="176.0" prefWidth="67.0" HBox.hgrow="ALWAYS" />
-   </HBox>
-   <AnchorPane layoutX="213.0" layoutY="176.0" prefHeight="481.0" prefWidth="1056.0">
-      <Label alignment="CENTER" layoutX="18.0" layoutY="-2.0" prefHeight="48.0" prefWidth="281.0" text="Find Car By Company" textAlignment="CENTER" textFill="#404040" textOverrun="CENTER_ELLIPSIS">
-         <font>
-            <Font name="Berlin Sans FB" size="26.0" />
-         </font>
-      </Label>
-      <TextField fx:id="searchBar" layoutX="497.0" layoutY="11.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="263.0" promptText="Enter Car Name" />
-      <JFXDrawer fx:id="profiledraw" defaultDrawerSize="200.0" direction="RIGHT" layoutX="672.0" layoutY="-11.0" prefHeight="550.0" prefWidth="197.0" />
-      <VBox fx:id="profv" layoutX="442.0" layoutY="47.0" prefHeight="471.0" prefWidth="181.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#profile" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="My Profile">
-               <styleClass>
-                  <String fx:value="shadow" />
-                  <String fx:value="transparent" />
-               </styleClass>
-               <stylesheets>
-                  <URL value="@../../css-files/CarGrid.css" />
-                  <URL value="@../../css-files/Style.css" />
-               </stylesheets>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#MyCartButton" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="My Garage">
-               <styleClass>
-                  <String fx:value="shadow" />
-                  <String fx:value="transparent" />
-               </styleClass>
-               <stylesheets>
-                  <URL value="@../../css-files/CarGrid.css" />
-                  <URL value="@../../css-files/Style.css" />
-               </stylesheets>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#PurchaseHistoryButton" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="Purchase History">
-               <styleClass>
-                  <String fx:value="shadow" />
-                  <String fx:value="transparent" />
-               </styleClass>
-               <stylesheets>
-                  <URL value="@../../css-files/CarGrid.css" />
-                  <URL value="@../../css-files/Style.css" />
-               </stylesheets>
-            </Button>
-            <Button fx:id="LogoutButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#LogoutButton" prefHeight="50.0" prefWidth="185.0" style="-fx-background-radius: 5;" text="Logout" textAlignment="CENTER">
-               <stylesheets>
-                  <URL value="@../../css-files/Style.css" />
-                  <URL value="@../../css-files/CarGrid.css" />
-               </stylesheets>
-               <styleClass>
-                  <String fx:value="transparent" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </Button>
-         </children>
-      </VBox>
-      <AnchorPane layoutX="21.0" layoutY="321.0" prefHeight="200.0" prefWidth="430.0">
-         <children>
-            <HBox layoutY="49.0" prefHeight="144.0" prefWidth="417.0">
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="background">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AllCarsButton" prefHeight="50.0" prefWidth="408.0" text="ALL CARS" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font name="Forte" size="24.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="transparent" />
-                        <String fx:value="button" />
-                     </styleClass>
-                     <stylesheets>
-                        <URL value="@../../css-files/CarGrid.css" />
-                        <URL value="@../../css-files/Style.css" />
-                     </stylesheets>
-                  </Button>
+                  <Pane layoutX="9.0" layoutY="10.0" opacity="0.89" prefHeight="138.0" prefWidth="915.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
+                  <VBox layoutX="9.0" layoutY="10.0" prefHeight="138.0" prefWidth="915.0" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="183.0" prefWidth="394.0">
+                           <children>
+                              <Pane prefHeight="138.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="65.0" prefWidth="425.0" text="User Dashboard" textFill="#d9c9c9">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="50.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Pane layoutX="10.0" layoutY="10.0" prefHeight="138.0" prefWidth="449.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox layoutX="9.0" layoutY="153.0" prefHeight="557.0" prefWidth="915.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="153.0">
+                     <children>
+                        <AnchorPane opacity="0.89" prefHeight="557.0" prefWidth="523.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label layoutX="10.0" layoutY="149.0" prefHeight="65.0" prefWidth="493.0" text="Companies" textFill="#d9c9c9" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="149.0">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="36.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <GridPane alignment="CENTER" layoutX="60.0" layoutY="232.0" prefHeight="330.0" prefWidth="393.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="208.33333333333337">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <JFXButton contentDisplay="TOP" focusTraversable="false" onAction="#MercedesButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Mercedes" textFill="#e9e9e9">
+                                       <graphic>
+                                          <ImageView fitHeight="80.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/logos/mercedes-logo.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9100000262260437" green="0.9100000262260437" blue="0.9100000262260437" opacity="0.5203046202659607" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton contentDisplay="TOP" focusTraversable="false" layoutX="41.0" layoutY="21.0" onAction="#BMWButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="BMW" textFill="#e9e9e9" GridPane.columnIndex="1">
+                                       <graphic>
+                                          <ImageView fitHeight="80.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/logos/bmwlogo.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="20.0" layoutX="214.0" layoutY="21.0" onAction="#BentlyButton" prefHeight="112.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Bentley" textFill="#e9e9e9" GridPane.columnIndex="2">
+                                       <graphic>
+                                          <ImageView fitHeight="80.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/logos/bently.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9100000262260437" green="0.9100000262260437" blue="0.9100000262260437" opacity="0.11421319842338562" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton contentDisplay="TOP" focusTraversable="false" layoutX="387.0" layoutY="21.0" onAction="#PorscheButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Porsche" textFill="#e9e9e9" GridPane.rowIndex="1">
+                                       <graphic>
+                                          <ImageView fitHeight="80.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/logos/Porsche.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9100000262260437" green="0.9100000262260437" blue="0.9100000262260437" opacity="0.20558375120162964" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="20.0" layoutX="41.0" layoutY="153.0" onAction="#CheveroletButton" prefHeight="112.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Chevrolet" textFill="#e9e9e9" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <graphic>
+                                          <ImageView fitHeight="80.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/logos/CheveroletLogo.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9100000262260437" green="0.9100000262260437" blue="0.9100000262260437" opacity="0.16751272976398468" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton contentDisplay="TOP" focusTraversable="false" layoutX="214.0" layoutY="153.0" onAction="#RollsRoyceButton" prefHeight="112.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Rolls Royce" textFill="#e9e9e9" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <graphic>
+                                          <ImageView fitHeight="80.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../images/logos/rollsroyce.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9100000262260437" green="0.9100000262260437" blue="0.9100000262260437" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" maxWidth="362.0" onAction="#AllCarsButton" prefHeight="57.0" prefWidth="179.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="ALL CARS" textAlignment="RIGHT" textFill="#e9e9e9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../allCars.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </GridPane>
+                              <Label prefHeight="65.0" prefWidth="493.0" text="Features" textFill="#d9c9c9" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="30.000000000000057" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="36.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="20.0" layoutX="94.0" layoutY="81.0" maxHeight="56.0" maxWidth="200.0" onAction="#findButton" prefHeight="56.0" prefWidth="156.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Find Car" textFill="#e9e9e9" AnchorPane.rightAnchor="273.33333333333337">
+                                 <graphic>
+                                    <ImageView fitHeight="31.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../FIndButton.png" />
+                                       </image>
+                                       <effect>
+                                          <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                             <color>
+                                                <Color red="0.6470588445663452" green="0.21960784494876862" blue="0.7098039388656616" />
+                                             </color>
+                                          </InnerShadow>
+                                       </effect>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton focusTraversable="false" layoutX="274.0" layoutY="81.0" maxHeight="56.0" maxWidth="200.0" onAction="#CompareButton" prefHeight="56.0" prefWidth="156.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Car Comparison" textFill="#e9e9e9" AnchorPane.leftAnchor="274.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Compare.png" />
+                                       </image>
+                                       <effect>
+                                          <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                             <color>
+                                                <Color red="0.6470588445663452" green="0.21960784494876862" blue="0.7098039388656616" />
+                                             </color>
+                                          </InnerShadow>
+                                       </effect>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </AnchorPane>
+                        <AnchorPane opacity="0.89" prefHeight="406.0" prefWidth="386.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;">
+                           <children>
+                              <JFXTextField fx:id="searchBar" focusColor="#e9e9e9" layoutX="52.0" layoutY="33.0" onKeyReleased="#search" prefHeight="30.0" prefWidth="311.0" promptText="Enter car name" styleClass="textField" stylesheets="@../../css-files/jfoenix.css" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="22.666666666666686" AnchorPane.topAnchor="33.0" />
+                              <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="23.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="22.666666666666668" AnchorPane.rightAnchor="342.0" AnchorPane.topAnchor="38.0">
+                                 <image>
+                                    <Image url="@../../searchIcon.png" />
+                                 </image>
+                                 <effect>
+                                    <InnerShadow choke="0.63" height="255.0" radius="113.27000000000001" width="200.08">
+                                       <color>
+                                          <Color red="0.640350878238678" green="0.640350878238678" blue="0.640350878238678" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </ImageView>
+                              <JFXScrollPane fx:id="searchscroll" layoutX="52.0" layoutY="63.0" prefHeight="329.0" prefWidth="311.0" visible="false" AnchorPane.bottomAnchor="13.666666666666686" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="63.0">
+                                 <children>
+                                    <JFXListView fx:id="searchlistView" />
+                                 </children>
+                              </JFXScrollPane>
+                              <VBox fx:id="profv" alignment="TOP_CENTER" layoutX="107.0" layoutY="171.0" prefHeight="235.0" prefWidth="147.0" style="-fx-background-color: #161a1f;">
+                                 <children>
+                                    <JFXButton fx:id="ProfileB" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="28.0" layoutY="53.0" onAction="#profile" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="My Profile" textFill="#e9e9e9">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../user.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="MyGarage" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="28.0" layoutY="53.0" onAction="#MyCartButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="My Garage" textFill="#e9e9e9">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../car-in-garage.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="MyRecord" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="6.0" layoutX="28.0" layoutY="171.0" onAction="#PurchaseHistoryButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="My Record" textFill="#e9e9e9">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../Records.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="LogoutButton" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="12.0" layoutX="28.0" layoutY="171.0" onAction="#LogoutButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Logout" textFill="#e9e9e9">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../logoutButton.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="userloginbutton" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="13.0" layoutX="28.0" layoutY="144.0" onAction="#UserLoginButton" prefHeight="39.0" prefWidth="111.0" ripplerFill="#7c3086" style="-fx-border-color: #7c3086; -fx-border-radius: 5;" text="Log In" textFill="#e9e9e9">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icons8-login-rounded-up-50.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                                   <color>
+                                                      <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-   </AnchorPane>
-   <HBox alignment="CENTER_LEFT" layoutX="228.0" layoutY="241.0" prefHeight="266.0" prefWidth="452.0">
-      <children>
-         <GridPane alignment="CENTER" prefHeight="259.0" prefWidth="417.0">
-           <columnConstraints>
-               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-           </columnConstraints>
-           <rowConstraints>
-             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-           </rowConstraints>
-            <children>
-               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#MercedesButton" prefHeight="99.0" prefWidth="113.0" text="Mercedes">
-                  <graphic>
-                     <ImageView fitHeight="82.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/logos/mercedes-logo.png" />
-                     </ImageView>
-                  </graphic>
-                  <styleClass>
-                     <String fx:value="button" />
-                     <String fx:value="shadow" />
-                     <String fx:value="transparent" />
-                  </styleClass>
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style2.css" />
-                  </stylesheets>
-               </Button>
-               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="20.0" mnemonicParsing="false" onAction="#CheveroletButton" prefHeight="99.0" prefWidth="113.0" text="Cheverolet" GridPane.columnIndex="1">
-                  <graphic>
-                     <ImageView fitHeight="68.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/logos/CheveroletLogo.png" />
-                     </ImageView>
-                  </graphic>
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style2.css" />
-                  </stylesheets>
-                  <styleClass>
-                     <String fx:value="button" />
-                     <String fx:value="shadow" />
-                     <String fx:value="transparent" />
-                  </styleClass>
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-               </Button>
-               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#BMWButton" prefHeight="99.0" prefWidth="113.0" text="BMW" GridPane.columnIndex="2">
-                  <graphic>
-                     <ImageView fitHeight="71.0" fitWidth="70.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/logos/bmwlogo.png" />
-                     </ImageView>
-                  </graphic>
-                  <styleClass>
-                     <String fx:value="button" />
-                     <String fx:value="shadow" />
-                     <String fx:value="transparent" />
-                  </styleClass>
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style2.css" />
-                  </stylesheets>
-               </Button>
-               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="20.0" mnemonicParsing="false" onAction="#BentlyButton" prefHeight="99.0" prefWidth="113.0" text="Bently" GridPane.rowIndex="1">
-                  <graphic>
-                     <ImageView fitHeight="44.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../images/logos/bently.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-                  <styleClass>
-                     <String fx:value="button" />
-                     <String fx:value="shadow" />
-                     <String fx:value="transparent" />
-                  </styleClass>
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style2.css" />
-                  </stylesheets>
-               </Button>
-               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#PorscheButton" prefHeight="99.0" prefWidth="113.0" text="Porsche" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                  <graphic>
-                     <ImageView fitHeight="70.0" fitWidth="63.0" pickOnBounds="true">
-                        <image>
-                           <Image url="@../../images/logos/Porsche.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-                  <styleClass>
-                     <String fx:value="button" />
-                     <String fx:value="shadow" />
-                     <String fx:value="transparent" />
-                  </styleClass>
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style2.css" />
-                  </stylesheets>
-               </Button>
-               <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#RollsRoyceButton" prefHeight="99.0" prefWidth="113.0" text="Rolls Royce" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                  <graphic>
-                     <ImageView fitHeight="79.0" fitWidth="88.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../images/logos/rollsroyce.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-                  <styleClass>
-                     <String fx:value="button" />
-                     <String fx:value="shadow" />
-                     <String fx:value="transparent" />
-                  </styleClass>
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-                  <stylesheets>
-                     <URL value="@../../css-files/CarGrid.css" />
-                     <URL value="@../../css-files/Style2.css" />
-                  </stylesheets>
-               </Button>
-               <ScrollPane fx:id="searchscroll" hbarPolicy="NEVER" prefHeight="251.0" prefWidth="263.0" visible="false">
-                  <content>
-                     <ListView fx:id="searchlistView" prefHeight="477.0" prefWidth="350.0" visible="false" />
-                  </content>
-               </ScrollPane>
-            </children>
-         </GridPane>
-      </children>
-   </HBox>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>

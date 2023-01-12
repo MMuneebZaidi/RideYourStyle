@@ -1,14 +1,17 @@
 package codes.rideyourstyle;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,7 +24,20 @@ public class ForgetPassController implements Initializable {
 
     CarDataSingleton data = CarDataSingleton.getInstance();
     @FXML
-    private TextField Phone;
+    private JFXTextField Phone;
+    @FXML
+    void backButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("UserLogin.fxml"));
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Scene scene;
+        if (stage.isMaximized()) {
+            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+        } else {
+            scene = new Scene(fxmlLoader.load());
+        }
+        stage.setScene(scene);
+    }
     private void setRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         if(!styleClass.contains("error")) {
@@ -47,8 +63,14 @@ public class ForgetPassController implements Initializable {
             if(UserLoginController.data.PhoneNumber.equals(Phone.getText())){
                 data.setPass_name("Reset Password");
                 FXMLLoader fxmlLoader = new FXMLLoader(RideYouStyle.class.getResource("PasswordReset.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-                Stage stage = (Stage) (((Node)ev.getSource()).getScene().getWindow());
+                Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+                Stage stage = (Stage) (((Node) ev.getSource()).getScene().getWindow());
+                Scene scene;
+                if (stage.isMaximized()) {
+                    scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
+                } else {
+                    scene = new Scene(fxmlLoader.load());
+                }
                 stage.setScene(scene);
                 stage.show();
             }else{

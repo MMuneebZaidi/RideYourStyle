@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../../css-files/background.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.ReportController">
+   <children>
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox alignment="TOP_CENTER" opacity="0.97" prefHeight="720.0" prefWidth="147.0" style="-fx-background-color: #161a1f;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane maxWidth="111.0" minHeight="118.0" prefHeight="118.0" prefWidth="111.0" style="-fx-background-radius: 10;" styleClass="logo" stylesheets="@../../css-files/background.css">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow height="48.26" radius="23.1425" spread="0.36" width="46.31">
+                           <color>
+                              <Color red="0.48627451062202454" green="0.1882352977991104" blue="0.5254902243614197" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="188.0" prefWidth="147.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <JFXButton alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="3.0" layoutX="8.0" layoutY="14.0" maxHeight="56.0" maxWidth="200.0" onAction="#backButton" prefHeight="20.0" prefWidth="19.0" ripplerFill="#7c3086" style="-fx-border-radius: 5;" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../backButton.png" />
+                                 </image>
+                                 <effect>
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                       <color>
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="3.0" layoutX="44.0" layoutY="14.0" maxHeight="56.0" maxWidth="200.0" onAction="#HomeButton" prefHeight="20.0" prefWidth="19.0" ripplerFill="#7c3086" style="-fx-border-radius: 5;" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" textFill="#e9e9e9">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/logos/home.png" />
+                                 </image>
+                                 <effect>
+                                    <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                       <color>
+                                          <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="background">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" opacity="0.89" prefHeight="138.0" prefWidth="915.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
+                  <VBox layoutX="9.0" layoutY="10.0" prefHeight="138.0" prefWidth="915.0" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="183.0" prefWidth="394.0">
+                           <children>
+                              <Pane prefHeight="138.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="65.0" prefWidth="563.0" text="Monthly Profit" textFill="#d9c9c9">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="50.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Pane layoutX="10.0" layoutY="10.0" prefHeight="138.0" prefWidth="312.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox layoutX="9.0" layoutY="153.0" prefHeight="557.0" prefWidth="915.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="153.0">
+                     <children>
+                        <AnchorPane opacity="0.89" prefHeight="557.0" prefWidth="927.0" style="-fx-background-color: #161a1f; -fx-background-radius: 25;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label prefHeight="65.0" prefWidth="309.0" text="Details for month:" textFill="#d9c9c9" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="606.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="29.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <GridPane layoutX="166.0" layoutY="76.0" prefHeight="201.0" prefWidth="550.0" vgap="5.0" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="199.0" AnchorPane.topAnchor="76.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="334.66668701171875" minWidth="137.0" prefWidth="333.33331298828125" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="390.13337402343745" minWidth="256.66666666666663" prefWidth="302.000020345052" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label maxWidth="228.0" prefHeight="53.0" prefWidth="228.0" text="Total no. of Cars Sold:" textFill="#d9c9c9">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="20.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label layoutX="36.0" layoutY="10.0" maxWidth="275.0" prefHeight="53.0" prefWidth="275.0" text="Total Revenue Generated:" textFill="#d9c9c9" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="20.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label layoutX="36.0" layoutY="65.0" maxWidth="221.0" prefHeight="53.0" prefWidth="221.0" text="Total Expenses:" textFill="#d9c9c9" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="20.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <Label layoutX="36.0" layoutY="121.0" maxWidth="241.0" prefHeight="53.0" prefWidth="241.0" text="Total Profit this month:" textFill="#d9c9c9" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="20.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                             <color>
+                                                <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <TextField fx:id="RevenueG" editable="false" focusTraversable="false" prefHeight="38.0" prefWidth="234.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="CarsSold" editable="false" focusTraversable="false" layoutX="199.0" layoutY="72.0" prefHeight="38.0" prefWidth="234.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" />
+                                    <TextField fx:id="ExpensesG" editable="false" focusTraversable="false" layoutX="199.0" layoutY="16.0" prefHeight="38.0" prefWidth="234.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="Profitg" editable="false" focusTraversable="false" layoutX="199.0" layoutY="239.0" prefHeight="38.0" prefWidth="234.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                              <LineChart fx:id="graph" layoutX="218.0" layoutY="289.0" maxHeight="273.0" prefHeight="273.0" prefWidth="485.0" title="Monthly Report" titleSide="BOTTOM" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="217.99999999999994" AnchorPane.rightAnchor="211.33333333333331">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                 </yAxis>
+                              </LineChart>
+                              <Label fx:id="cmonth" layoutX="302.0" prefHeight="65.0" prefWidth="309.0" text="Details for month:" textFill="#d9c9c9" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="303.3333333333333" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="29.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                       <color>
+                                          <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

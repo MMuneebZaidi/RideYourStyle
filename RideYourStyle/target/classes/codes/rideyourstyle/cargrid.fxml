@@ -1,115 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.CarGridController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="180.0" prefWidth="590.0" styleClass="buttonStart" stylesheets="@../../css-files/StartButton.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codes.rideyourstyle.CarGridController">
    <children>
-      <HBox prefHeight="200.0" prefWidth="800.0" AnchorPane.bottomAnchor="-50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="180.0" prefWidth="590.0">
          <children>
-            <ImageView fx:id="CarImage" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="CarImage" fitHeight="137.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
+                  <Insets left="5.0" top="20.0" />
                </HBox.margin>
             </ImageView>
-            <VBox prefHeight="200.0" prefWidth="600.0">
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Pane prefHeight="24.0" prefWidth="600.0" />
-                  <HBox prefHeight="74.0" prefWidth="600.0">
+                  <Pane prefHeight="24.0" prefWidth="384.0" />
+                  <HBox prefHeight="36.0" prefWidth="384.0">
                      <children>
-                        <Label fx:id="CarName" prefHeight="73.0" prefWidth="300.0">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
+                        <Label fx:id="CarName" prefHeight="36.0" prefWidth="398.0" text="Name" textFill="#d9c9c9">
                            <font>
-                              <Font name="Comic Sans MS Bold" size="24.0" />
+                              <Font name="Arial Rounded MT Bold" size="24.0" />
                            </font>
-                        </Label>
-                        <Pane prefHeight="74.0" prefWidth="81.0" />
-                        <Label fx:id="CarPrice" prefHeight="73.0" prefWidth="197.0">
-                           <font>
-                              <Font name="Ebrima Bold" size="24.0" />
-                           </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                 <color>
+                                    <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </Label>
                      </children>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="600.0">
+                  <GridPane prefHeight="60.0" prefWidth="365.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="69.0" minWidth="10.0" prefWidth="31.33334859212239" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.3333180745443" minWidth="10.0" prefWidth="162.0000203450521" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="69.0" minWidth="10.0" prefWidth="39.66664632161459" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.00002034505212" minWidth="10.0" prefWidth="152.00002034505212" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <VBox.margin>
+                        <Insets left="5.0" top="20.0" />
+                     </VBox.margin>
                      <children>
-                        <Label prefHeight="45.0" prefWidth="83.0" text="Engine:">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
+                        <Label fx:id="CarEngine" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="398.0" text="Engine:" textAlignment="CENTER" textFill="#d9c9c9" GridPane.columnIndex="1">
                            <font>
-                              <Font name="Ebrima Bold" size="14.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                 <color>
+                                    <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </Label>
-                        <Label fx:id="CarEngine" prefHeight="45.0" prefWidth="83.0">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
+                        <Label fx:id="CarPrice" alignment="CENTER" layoutX="208.0" layoutY="10.0" prefHeight="36.0" prefWidth="398.0" text="Engine:" textFill="#d9c9c9" GridPane.columnIndex="3">
                            <font>
-                              <Font name="Arial" size="14.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                 <color>
+                                    <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </Label>
-                        <Label prefHeight="45.0" prefWidth="83.0" text="Mileage:">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
+                        <Label fx:id="CarMileage" alignment="CENTER" layoutX="10.0" layoutY="40.0" prefHeight="36.0" prefWidth="398.0" text="Engine:" textFill="#d9c9c9" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Ebrima Bold" size="14.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                 <color>
+                                    <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </Label>
-                        <Label fx:id="CarMileage" prefHeight="45.0" prefWidth="95.0">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
+                        <Label fx:id="CarTransmissionType" alignment="CENTER" layoutX="208.0" layoutY="40.0" prefHeight="36.0" prefWidth="398.0" text="Engine:" textFill="#d9c9c9" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Arial" size="14.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="93.02" radius="36.2775" spread="0.17" width="54.09">
+                                 <color>
+                                    <Color red="1.0" green="0.4722222089767456" blue="0.4722222089767456" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </Label>
-                        <Label prefHeight="45.0" prefWidth="92.0" text="Transmission:">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Ebrima Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="CarTransmissionType" prefHeight="45.0" prefWidth="83.0">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </Label>
+                        <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../engine.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow choke="0.47" radius="32.8725" width="112.49">
+                                 <color>
+                                    <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="10.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                           <image>
+                              <Image url="@../../Price.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow choke="0.66" height="203.98" radius="89.81" width="157.26">
+                                 <color>
+                                    <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="10.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../TransIcon.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow choke="0.89" radius="68.5" width="255.0">
+                                 <color>
+                                    <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="213.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../fuelEco.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow choke="0.5" radius="54.77" width="200.08">
+                                 <color>
+                                    <Color red="0.9137254953384399" green="0.9137254953384399" blue="0.9137254953384399" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
                      </children>
-                  </HBox>
+                  </GridPane>
                </children>
-               <HBox.margin>
-                  <Insets bottom="50.0" />
-               </HBox.margin>
             </VBox>
          </children>
       </HBox>
    </children>
-   <stylesheets>
-      <URL value="@../../css-files/CarGrid.css" />
-      <URL value="@../../css-files/carGridAnchor.css" />
-   </stylesheets>
-   <styleClass>
-      <String fx:value="carGrid" />
-      <String fx:value="anchorPane" />
-   </styleClass>
-   <padding>
-      <Insets left="20.0" />
-   </padding>
 </AnchorPane>
