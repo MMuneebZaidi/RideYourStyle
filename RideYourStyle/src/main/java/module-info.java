@@ -3,9 +3,9 @@ module codes.rideyourstyle {
     requires javafx.fxml;
     requires java.sql;
     requires javafx.graphics;
-    requires mysql.connector.j;
-    requires com.jfoenix;
     requires jasperreports;
+    requires com.jfoenix;
+    requires mysql.connector.j;
 
     opens codes.rideyourstyle to javafx.fxml;
     exports codes.rideyourstyle;

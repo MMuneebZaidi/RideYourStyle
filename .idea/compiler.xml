@@ -9,8 +9,5 @@
         <module name="RideYourStyle" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="RideYourStyle" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>

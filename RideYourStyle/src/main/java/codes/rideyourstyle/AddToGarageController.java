@@ -22,6 +22,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -174,7 +175,7 @@ public class AddToGarageController implements Initializable {
                     LoginDatabaseConnection link = new LoginDatabaseConnection();
                     Connection connectDB = link.getDatabaseLink();
                     byte[] reportData = JasperExportManager.exportReportToPdf(jr.createReport());
-                    String INSERT_PICTURE = "UPDATE pendings SET jasper_reports = '" + reportData + "' WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
+                    String INSERT_PICTURE = "UPDATE pendings SET jasper_reports = '" + Arrays.toString(reportData) + "' WHERE user_id = '" + UserLoginController.loggedIn.id + "'";
                     connectDB.setAutoCommit(false);
 
                     PreparedStatement ps = connectDB.prepareStatement(INSERT_PICTURE);
@@ -192,7 +193,7 @@ public class AddToGarageController implements Initializable {
             Logger.getLogger(FindCarController.class.getName()).log(Level.SEVERE, null, e);
         } catch (JRException e) {
             System.out.println(e);
-            }
+        }
     }
 
     @Override

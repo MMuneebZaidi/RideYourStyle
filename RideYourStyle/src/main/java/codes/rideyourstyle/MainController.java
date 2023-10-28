@@ -228,19 +228,7 @@ public class MainController implements Initializable {
         }
         stage.setScene(scene);
     }
-    @FXML
-    void switchButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("AdminLogin.fxml"));
-        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
-        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-        Scene scene;
-        if (stage.isMaximized()) {
-            scene = new Scene(fxmlLoader.load(), screenSize.getWidth(), screenSize.getHeight());
-        } else {
-            scene = new Scene(fxmlLoader.load());
-        }
-        stage.setScene(scene);
-    }
+
     @FXML
     void UserLoginButton(ActionEvent ev) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("UserLogin.fxml"));
@@ -261,7 +249,7 @@ public class MainController implements Initializable {
     @FXML
     void MercedesButton(ActionEvent event) throws IOException {
         Company="Mercedes";
-        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\mercedes-logo.png";
+        Logo="mercedes-logo.png";
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
@@ -279,7 +267,7 @@ public class MainController implements Initializable {
     @FXML
     void BMWButton(ActionEvent event) throws IOException {
         Company="BMW";
-        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\bmwlogo.png";
+        Logo="bmwlogo.png";
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
@@ -297,7 +285,7 @@ public class MainController implements Initializable {
     @FXML
     void CheveroletButton(ActionEvent event) throws IOException {
         Company="Cheverolet";
-        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\CheveroletLogo.png";
+        Logo="CheveroletLogo.png";
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
@@ -315,7 +303,7 @@ public class MainController implements Initializable {
     @FXML
     void PorscheButton(ActionEvent event) throws IOException {
         Company="Porsche";
-        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\Porsche.png";
+        Logo="Porsche.png";
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
@@ -333,7 +321,7 @@ public class MainController implements Initializable {
     @FXML
     void RollsRoyceButton(ActionEvent event) throws IOException {
         Company="Rolls Royce";
-        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\rollsroyce.png";
+        Logo="rollsroyce.png";
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
@@ -351,7 +339,7 @@ public class MainController implements Initializable {
     @FXML
     void BentlyButton(ActionEvent event) throws IOException {
         Company="Bently";
-        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\bently.png";
+        Logo="bently.png";
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();
@@ -369,7 +357,7 @@ public class MainController implements Initializable {
     @FXML
     void AllCarsButton(ActionEvent event) throws IOException {
         Company="All Cars";
-        Logo="E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\images\\logos\\ALL-CARS.png";
+        Logo="ALL-CARS.png";
         FXMLLoader fxmlLoader = new FXMLLoader(RideYourStyle.class.getResource("CarCompany.fxml"));
         root = fxmlLoader.load();
         CarCompanyController ccc = fxmlLoader.getController();

@@ -27,7 +27,7 @@ public class JReportController {
     public JasperPrint createReport() {
 
         Map<String, Object> parameters = new HashMap<>();
-        String path = "E:\\JavaFX Codes\\SemProject\\CarIMDB\\RideYourStyle\\src\\main\\resources\\JasperReports\\Order_Receipt.jrxml";
+        String path = "D:\\Ride Your Style\\RideYourStyle\\RideYourStyle\\src\\main\\resources\\JasperReports\\Order_Receipt.jrxml";
         try {
             jReport = JasperCompileManager.compileReport(path);
             LoginDatabaseConnection link = new LoginDatabaseConnection();
@@ -61,7 +61,7 @@ public class JReportController {
         }
             jasperPrint = JasperFillManager.fillReport(jReport, parameters, new JREmptyDataSource());
 
-//
+
                 JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             JasperExportManager.exportReportToPdfFile(jasperPrint,"jasper.pdf");
                 jasperViewer.setTitle("My Jasper Report");
